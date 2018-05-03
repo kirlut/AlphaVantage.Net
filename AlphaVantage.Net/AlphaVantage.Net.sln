@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{768F93FA-CA7A-4828-8ECA-BC4EF5433811}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Stocks", "src\AlphaVantage.Net.Stocks\AlphaVantage.Net.Stocks.csproj", "{6A482C82-3191-4026-9284-2A02DE195A8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A482C82-3191-4026-9284-2A02DE195A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A482C82-3191-4026-9284-2A02DE195A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A482C82-3191-4026-9284-2A02DE195A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A482C82-3191-4026-9284-2A02DE195A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6A482C82-3191-4026-9284-2A02DE195A8D} = {768F93FA-CA7A-4828-8ECA-BC4EF5433811}
+	EndGlobalSection
+EndGlobal
