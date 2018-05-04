@@ -7,36 +7,18 @@ namespace AlphaVantage.Net.Stocks.TimeSeries
     /// </summary>
     public class StockDataPoint
     {
-        internal StockDataPoint(
-            DateTime time, 
-            StockTimeSeries timeSeries, 
-            double openingPrice, 
-            double closingPrice,
-            double highestPrice, 
-            double lowestPrice, 
-            long volume)
-        {
-            Time = time;
-            TimeSeries = timeSeries;
-            OpeningPrice = openingPrice;
-            ClosingPrice = closingPrice;
-            HighestPrice = highestPrice;
-            LowestPrice = lowestPrice;
-            Volume = volume;
-        }
-
-        public DateTime Time { get; }
+        public DateTime Time {get; set;}
         
-        public StockTimeSeries TimeSeries { get; }
+        public StockTimeSeries TimeSeries {get; set;}
         
-        public double OpeningPrice { get; }
+        public double OpeningPrice {get; set;}
         
-        public double ClosingPrice { get; }
+        public double ClosingPrice {get; set;}
         
-        public double HighestPrice { get; }
+        public double HighestPrice {get; set;}
         
-        public double LowestPrice { get; }
+        public double LowestPrice {get; set;}
         
-        public long Volume { get; }
+        public long Volume {get; set;}
     }
 }

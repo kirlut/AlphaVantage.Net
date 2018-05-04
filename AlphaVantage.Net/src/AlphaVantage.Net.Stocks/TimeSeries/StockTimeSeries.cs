@@ -5,32 +5,16 @@ namespace AlphaVantage.Net.Stocks.TimeSeries
 {
     public class StockTimeSeries
     {
-        internal StockTimeSeries(
-            TimeSeriesType type, 
-            TimeSeriesSize size,
-            DateTime lastRefreshed, 
-            string symbol, 
-            bool isAdjusted,
-            ICollection<StockDataPoint> elements)
-        {
-            Type = type;
-            Size = size;
-            LastRefreshed = lastRefreshed;
-            Symbol = symbol;
-            IsAdjusted = isAdjusted;
-            Elements = elements;
-        }
-
-        public TimeSeriesType Type { get; }
+        public TimeSeriesType Type {get; set;}
         
-        public TimeSeriesSize Size { get; }
+        public TimeSeriesSize Size {get; set;}
         
-        public DateTime LastRefreshed { get; }
+        public DateTime LastRefreshed {get; set;}
         
-        public string Symbol { get; }
+        public string Symbol {get; set;}
         
-        public bool IsAdjusted { get; }
+        public bool IsAdjusted {get; set;}
         
-        public ICollection<StockDataPoint> Elements { get; }
+        public ICollection<StockDataPoint> Elements {get; set;}
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using AlphaVantage.Net.Core;
 using AlphaVantage.Net.Stocks.BatchQuotes;
 using AlphaVantage.Net.Stocks.TimeSeries;
+using AlphaVantage.Net.Stocks.Validation;
 
 namespace AlphaVantage.Net.Stocks
 {
@@ -11,12 +13,14 @@ namespace AlphaVantage.Net.Stocks
     public class AlphaVantageStocksClient
     {
         private readonly string _apiKey;
-
+        private readonly AlfaVantageCoreClient _coreClient;
+        
         public AlphaVantageStocksClient(string apiKey)
         {
             if(string.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
             
             _apiKey = apiKey;
+            _coreClient = new AlfaVantageCoreClient(new StocksApiCallValidator());
         }
 
         public StockTimeSeries RequestIntradayTimeSeries(
