@@ -23,7 +23,7 @@ namespace AlphaVantage.Net.Core.Tests
                 {nameof(interval), interval}
             };
             
-            var client = new AlfaVantageCoreClient();
+            var client = new AlphaVantageCoreClient();
             var response = await client.RequestApiAsync(ApiKey, function, query);
             
             Assert.NotNull(response);
@@ -42,9 +42,9 @@ namespace AlphaVantage.Net.Core.Tests
                 {nameof(interval), interval}
             };
             
-            var client = new AlfaVantageCoreClient();
+            var client = new AlphaVantageCoreClient();
 
-            await Assert.ThrowsAsync<AlfaVantageException>(async () =>
+            await Assert.ThrowsAsync<AlphaVantageException>(async () =>
             {
                 await client.RequestApiAsync(ApiKey, function, query);
             });
@@ -62,9 +62,9 @@ namespace AlphaVantage.Net.Core.Tests
                 {nameof(interval), interval}
             };
             
-            var client = new AlfaVantageCoreClient(new TestValidator());
+            var client = new AlphaVantageCoreClient(new TestValidator());
 
-            var exception = await Assert.ThrowsAsync<AlfaVantageException>(async () =>
+            var exception = await Assert.ThrowsAsync<AlphaVantageException>(async () =>
             {
                 await client.RequestApiAsync(ApiKey, function, query);
             });

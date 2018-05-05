@@ -13,14 +13,14 @@ namespace AlphaVantage.Net.Stocks
     public class AlphaVantageStocksClient
     {
         private readonly string _apiKey;
-        private readonly AlfaVantageCoreClient _coreClient;
+        private readonly AlphaVantageCoreClient _coreClient;
         
         public AlphaVantageStocksClient(string apiKey)
         {
             if(string.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
             
             _apiKey = apiKey;
-            _coreClient = new AlfaVantageCoreClient(new StocksApiCallValidator());
+            _coreClient = new AlphaVantageCoreClient(new StocksApiCallValidator());
         }
 
         public StockTimeSeries RequestIntradayTimeSeries(

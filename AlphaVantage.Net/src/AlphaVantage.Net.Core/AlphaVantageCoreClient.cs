@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 
 namespace AlphaVantage.Net.Core
 {
-    public class AlfaVantageCoreClient
+    public class AlphaVantageCoreClient
     {
         [CanBeNull]
         private readonly IApiCallValidator _apiCallValidator;
@@ -20,7 +20,7 @@ namespace AlphaVantage.Net.Core
         [CanBeNull]
         private readonly TimeSpan? _timeout;
 
-        public AlfaVantageCoreClient(IApiCallValidator apiCallValidator = null, TimeSpan? timeout = null)
+        public AlphaVantageCoreClient(IApiCallValidator apiCallValidator = null, TimeSpan? timeout = null)
         {
             _apiCallValidator = apiCallValidator;
             _timeout = timeout;
@@ -70,13 +70,13 @@ namespace AlphaVantage.Net.Core
             var validationResult = _apiCallValidator.Validate(apiKey, function, query);
             
             if(!validationResult.IsValid)
-                throw new AlfaVantageException(validationResult.ErrorMsg);
+                throw new AlphaVantageException(validationResult.ErrorMsg);
         }
         
         private void AssertNotBadRequest(JObject jObject)
         {
             if(jObject.ContainsKey(ApiConstants.BadRequestToken))
-                throw new AlfaVantageException(jObject[ApiConstants.BadRequestToken].ToString());
+                throw new AlphaVantageException(jObject[ApiConstants.BadRequestToken].ToString());
         }
     }
 }
