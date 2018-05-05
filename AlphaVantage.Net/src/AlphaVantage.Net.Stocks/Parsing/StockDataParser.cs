@@ -7,7 +7,7 @@ namespace AlphaVantage.Net.Stocks.Parsing
 {
     internal class StockDataParser
     {
-        public StockTimeSeries ParseTimeSeries(JObject jObject, bool isAdjusted)
+        public StockTimeSeries ParseTimeSeries(JObject jObject, bool isAdjusted = false)
         {
             //todo:
             return null;

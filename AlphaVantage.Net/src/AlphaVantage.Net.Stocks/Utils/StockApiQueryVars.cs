@@ -1,4 +1,4 @@
-﻿namespace AlphaVantage.Net.Stocks
+﻿namespace AlphaVantage.Net.Stocks.Utils
 {
     internal static class StockApiQueryVars
     {
