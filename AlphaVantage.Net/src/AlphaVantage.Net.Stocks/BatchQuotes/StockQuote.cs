@@ -4,20 +4,12 @@ namespace AlphaVantage.Net.Stocks.BatchQuotes
 {
     public class StockQuote
     {
-        internal StockQuote(string symbol, DateTime time, double price, long volume)
-        {
-            Symbol = symbol;
-            Time = time;
-            Price = price;
-            Volume = volume;
-        }
-
-        public string Symbol { get; }
+        public string Symbol {get; set;}
         
-        public DateTime Time { get; }
+        public DateTime Time {get; set;}
         
-        public double Price { get; }
+        public double Price {get; set;}
         
-        public long Volume { get; }
+        public long Volume {get; set;}
     }
 }

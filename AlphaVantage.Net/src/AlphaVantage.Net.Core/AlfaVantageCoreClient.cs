@@ -26,7 +26,7 @@ namespace AlphaVantage.Net.Core
             _timeout = timeout;
         }
 
-        public async Task<JObject> RequestApiAsync(string apiKey, string function, IDictionary<string, string> query = null)
+        public async Task<JObject> RequestApiAsync(string apiKey, ApiFunction function, IDictionary<string, string> query = null)
         {
             AssertValid(apiKey, function, query);
 
@@ -45,11 +45,11 @@ namespace AlphaVantage.Net.Core
             return jObject;
         }
 
-        private HttpRequestMessage ComposeHttpRequest(string apiKey, string function, IDictionary<string, string> query)
+        private HttpRequestMessage ComposeHttpRequest(string apiKey, ApiFunction function, IDictionary<string, string> query)
         {
             var fullQueryDict = new Dictionary<string, string>(query);
             fullQueryDict.Add(ApiConstants.ApiKeyQueryVar, apiKey);
-            fullQueryDict.Add(ApiConstants.FunctionQueryVar, function);
+            fullQueryDict.Add(ApiConstants.FunctionQueryVar, function.ToString());
             
             var urlWithQueryString = QueryHelpers.AddQueryString(ApiConstants.AlfaVantageUrl, fullQueryDict);
             var urlWithQuery = new Uri(urlWithQueryString);
@@ -63,7 +63,7 @@ namespace AlphaVantage.Net.Core
             return request;
         }
 
-        private void AssertValid(string apiKey, string function, IDictionary<string, string> query = null)
+        private void AssertValid(string apiKey, ApiFunction function, IDictionary<string, string> query = null)
         {
             if(_apiCallValidator == null) return;
 

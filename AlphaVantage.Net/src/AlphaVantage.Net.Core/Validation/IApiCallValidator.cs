@@ -10,6 +10,6 @@ namespace AlphaVantage.Net.Core.Validation
     /// </remarks>
     public interface IApiCallValidator
     {
-        ValidationResult Validate(string apiKey, string function, IDictionary<string, string> query);
+        ValidationResult Validate(string apiKey, ApiFunction function, IDictionary<string, string> query);
     }
 }

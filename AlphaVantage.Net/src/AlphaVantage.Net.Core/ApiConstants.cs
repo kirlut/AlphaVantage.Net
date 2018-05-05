@@ -2,12 +2,12 @@
 {
     internal static class ApiConstants
     {
-        public static string AlfaVantageUrl => "https://www.alphavantage.co";
+        public const string AlfaVantageUrl = "https://www.alphavantage.co/query";
         
-        public static string FunctionQueryVar => "function";
+        public const string FunctionQueryVar = "function";
 
-        public static string ApiKeyQueryVar => "apikey";
+        public const string ApiKeyQueryVar = "apikey";
 
-        public static string BadRequestToken => "Error Message";
+        public const string BadRequestToken = "Error Message";
     }
 }
