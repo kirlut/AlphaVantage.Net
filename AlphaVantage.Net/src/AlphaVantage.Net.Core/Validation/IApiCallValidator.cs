@@ -6,7 +6,7 @@ namespace AlphaVantage.Net.Core.Validation
     /// Interface for request's validator. 
     /// </summary>
     /// <remarks>
-    /// Implement it for your client.
+    /// Implement it for your client in case you need pre-request validation
     /// </remarks>
     public interface IApiCallValidator
     {

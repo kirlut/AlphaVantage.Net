@@ -15,6 +15,6 @@ namespace AlphaVantage.Net.Stocks.TimeSeries
         
         public bool IsAdjusted {get; set;}
         
-        public ICollection<StockDataPoint> Elements {get; set;}
+        public ICollection<StockDataPoint> DataPoints {get; set;}
     }
 }

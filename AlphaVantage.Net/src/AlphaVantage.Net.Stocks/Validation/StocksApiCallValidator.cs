@@ -4,7 +4,7 @@ using AlphaVantage.Net.Core.Validation;
 
 namespace AlphaVantage.Net.Stocks.Validation
 {
-    public class StocksApiCallValidator : IApiCallValidator
+    internal class StocksApiCallValidator : IApiCallValidator
     {
         public ValidationResult Validate(string apiKey, ApiFunction function, IDictionary<string, string> query)
         {
