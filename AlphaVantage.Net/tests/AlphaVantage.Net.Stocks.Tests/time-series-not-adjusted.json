@@ -1,0 +1,33 @@
+{
+  "Meta Data": {
+    "1. Information": "Intraday (1min) prices and volumes",
+    "2. Symbol": "MSFT",
+    "3. Last Refreshed": "2018-05-04 16:00:00",
+    "4. Interval": "1min",
+    "5. Output Size": "Compact",
+    "6. Time Zone": "US/Eastern"
+  },
+  "Time Series (1min)": {
+    "2018-05-04 16:00:00": {
+      "1. open": "94.9700",
+      "2. high": "95.2200",
+      "3. low": "94.9700",
+      "4. close": "95.1600",
+      "5. volume": "2522498"
+    },
+    "2018-05-04 15:59:00": {
+      "1. open": "94.9950",
+      "2. high": "95.0100",
+      "3. low": "94.9400",
+      "4. close": "94.9700",
+      "5. volume": "166628"
+    },
+    "2018-05-04 15:58:00": {
+      "1. open": "94.9800",
+      "2. high": "95.0400",
+      "3. low": "94.9600",
+      "4. close": "95.0000",
+      "5. volume": "129749"
+    }
+  }
+}

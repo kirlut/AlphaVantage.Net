@@ -6,7 +6,7 @@ namespace AlphaVantage.Net.Stocks.Validation
 {
     internal class StocksApiCallValidator : IApiCallValidator
     {
-        public ValidationResult Validate(string apiKey, ApiFunction function, IDictionary<string, string> query)
+        public ValidationResult Validate(ApiFunction function, IDictionary<string, string> query)
         {
             throw new System.NotImplementedException();
         }

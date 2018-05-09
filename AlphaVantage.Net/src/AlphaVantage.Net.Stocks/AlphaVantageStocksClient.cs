@@ -110,7 +110,7 @@ namespace AlphaVantage.Net.Stocks
             bool adjusted = false)
         {
             var jObject = await _coreClient.RequestApiAsync(_apiKey, function, query);
-            var timeSeries = _parser.ParseTimeSeries(jObject, adjusted);
+            var timeSeries = _parser.ParseTimeSeries(jObject);
             
             return timeSeries;
         }

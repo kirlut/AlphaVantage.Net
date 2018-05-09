@@ -76,7 +76,7 @@ namespace AlphaVantage.Net.Core.Tests
         {
             public static string ErrorMsg = "test";
             
-            public ValidationResult Validate(string apiKey, ApiFunction function, IDictionary<string, string> query)
+            public ValidationResult Validate(ApiFunction function, IDictionary<string, string> query)
             {
                 return new ValidationResult()
                 {

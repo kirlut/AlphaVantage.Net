@@ -7,10 +7,8 @@ namespace AlphaVantage.Net.Stocks.TimeSeries
     /// </summary>
     public sealed class StockAdjustedDataPoint : StockDataPoint
     {
-        public double AdjustedClosingPrice {get; set;}
+        public decimal AdjustedClosingPrice {get; set;}
         
-        public double DividendAmount {get; set;}
-        
-        public double SplitCoefficient {get; set;}
+        public decimal DividendAmount {get; set;}
     }
 }

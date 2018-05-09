@@ -28,7 +28,7 @@ namespace AlphaVantage.Net.Core
 
         public async Task<JObject> RequestApiAsync(string apiKey, ApiFunction function, IDictionary<string, string> query = null)
         {
-            AssertValid(apiKey, function, query);
+            AssertValid(function, query);
 
             var client = new HttpClient();
             if (_timeout.HasValue)
@@ -63,11 +63,11 @@ namespace AlphaVantage.Net.Core
             return request;
         }
 
-        private void AssertValid(string apiKey, ApiFunction function, IDictionary<string, string> query = null)
+        private void AssertValid(ApiFunction function, IDictionary<string, string> query = null)
         {
             if(_apiCallValidator == null) return;
 
-            var validationResult = _apiCallValidator.Validate(apiKey, function, query);
+            var validationResult = _apiCallValidator.Validate(function, query);
             
             if(!validationResult.IsValid)
                 throw new AlphaVantageException(validationResult.ErrorMsg);

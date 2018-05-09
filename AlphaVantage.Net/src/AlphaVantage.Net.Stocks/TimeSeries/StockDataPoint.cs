@@ -8,16 +8,14 @@ namespace AlphaVantage.Net.Stocks.TimeSeries
     public class StockDataPoint
     {
         public DateTime Time {get; set;}
+                
+        public decimal OpeningPrice {get; set;}
         
-        public StockTimeSeries TimeSeries {get; set;}
+        public decimal ClosingPrice {get; set;}
         
-        public double OpeningPrice {get; set;}
+        public decimal HighestPrice {get; set;}
         
-        public double ClosingPrice {get; set;}
-        
-        public double HighestPrice {get; set;}
-        
-        public double LowestPrice {get; set;}
+        public decimal LowestPrice {get; set;}
         
         public long Volume {get; set;}
     }
