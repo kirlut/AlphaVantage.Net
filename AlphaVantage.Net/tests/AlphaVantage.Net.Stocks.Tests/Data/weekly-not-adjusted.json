@@ -1,0 +1,31 @@
+{
+  "Meta Data": {
+    "1. Information": "Weekly Prices (open, high, low, close) and Volumes",
+    "2. Symbol": "MSFT",
+    "3. Last Refreshed": "2018-05-10 14:04:05",
+    "4. Time Zone": "US/Eastern"
+  },
+  "Weekly Time Series": {
+    "2018-05-10": {
+      "1. open": "95.1700",
+      "2. high": "97.8700",
+      "3. low": "95.0500",
+      "4. close": "97.4050",
+      "5. volume": "87437616"
+    },
+    "2018-05-04": {
+      "1. open": "96.3300",
+      "2. high": "96.3964",
+      "3. low": "92.4500",
+      "4. close": "95.1600",
+      "5. volume": "154077356"
+    },
+    "2018-04-27": {
+      "1. open": "95.7436",
+      "2. high": "97.9000",
+      "3. low": "90.2800",
+      "4. close": "95.8200",
+      "5. volume": "181387708"
+    }
+  }
+}

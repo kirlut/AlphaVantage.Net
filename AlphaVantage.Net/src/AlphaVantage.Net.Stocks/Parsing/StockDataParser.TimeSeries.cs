@@ -112,8 +112,8 @@ namespace AlphaVantage.Net.Stocks.Parsing
                 var dataPointContent = dataPointJsonProperty.Single();
                 foreach (var field in dataPointContent)
                 {
-                    var temp = (JProperty) field;
-                    contentDict.Add(temp.Name, temp.Value.ToString());
+                    var property = (JProperty) field;
+                    contentDict.Add(property.Name, property.Value.ToString());
                 }
 
                 var dataPoint = ComposeDataPoint(contentDict);
@@ -147,6 +147,10 @@ namespace AlphaVantage.Net.Stocks.Parsing
                     Decimal.Parse(dataPointContent[TimeSeriesJsonTokens.AdjustedClosingPriceToken]);
                 adjustedPoint.DividendAmount = 
                     Decimal.Parse(dataPointContent[TimeSeriesJsonTokens.DividendAmountToken]);
+                
+                if(dataPointContent.ContainsKey(TimeSeriesJsonTokens.SplitCoefficientToken))
+                    adjustedPoint.SplitCoefficient = 
+                        Decimal.Parse(dataPointContent[TimeSeriesJsonTokens.SplitCoefficientToken]);
             }
             else
             {

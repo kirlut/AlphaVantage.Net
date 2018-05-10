@@ -23,5 +23,7 @@ namespace AlphaVantage.Net.Stocks.Parsing.JsonTokens
         public const string VolumeAdjustedToken = "6. volume";
         public const string AdjustedClosingPriceToken = "5. adjusted close";
         public const string DividendAmountToken = "7. dividend amount";
+        public const string SplitCoefficientToken = "8. split coefficient";
+
     }
 }

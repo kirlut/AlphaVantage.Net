@@ -10,5 +10,7 @@ namespace AlphaVantage.Net.Stocks.TimeSeries
         public decimal AdjustedClosingPrice {get; set;}
         
         public decimal DividendAmount {get; set;}
+        
+        public decimal? SplitCoefficient { get; set; }
     }
 }

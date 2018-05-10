@@ -1,0 +1,41 @@
+{
+  "Meta Data": {
+    "1. Information": "Daily Time Series with Splits and Dividend Events",
+    "2. Symbol": "MSFT",
+    "3. Last Refreshed": "2018-05-10 12:27:46",
+    "4. Output Size": "Compact",
+    "5. Time Zone": "US/Eastern"
+  },
+  "Time Series (Daily)": {
+    "2018-05-10": {
+      "1. open": "97.4600",
+      "2. high": "97.8700",
+      "3. low": "97.0700",
+      "4. close": "97.5700",
+      "5. adjusted close": "97.5700",
+      "6. volume": "8798622",
+      "7. dividend amount": "0.0000",
+      "8. split coefficient": "1.0000"
+    },
+    "2018-05-09": {
+      "1. open": "96.0100",
+      "2. high": "96.9700",
+      "3. low": "95.0500",
+      "4. close": "96.9400",
+      "5. adjusted close": "96.9400",
+      "6. volume": "27278881",
+      "7. dividend amount": "0.0000",
+      "8. split coefficient": "1.0000"
+    },
+    "2018-05-08": {
+      "1. open": "95.8456",
+      "2. high": "96.1600",
+      "3. low": "95.0631",
+      "4. close": "95.8100",
+      "5. adjusted close": "95.8100",
+      "6. volume": "23484589",
+      "7. dividend amount": "0.0000",
+      "8. split coefficient": "1.0000"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "Meta Data": {
+    "1. Information": "Daily Time Series with Splits and Dividend Events",
+    "2. Symbol": "MSFT"
+  },
+  "Time Series (Daily)": {
+    "2018-05-10": {
+      "open": "r",
+      "2. high": "97.8700",
+      "3. low": "97.0700",
+      "4. close": "97.5700",
+      "5. adjusted close": "97.5700",
+      "6. volume": "8798622",
+      "7. dividend amount": "0.0000",
+      "8. split coefficient": "1.0000"
+    }
+  }
+}
