@@ -47,5 +47,9 @@
     <EmbeddedResource Include="Data\bad-data.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <None Remove="Data\stock-quotes.json" />
+    <EmbeddedResource Include="Data\stock-quotes.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

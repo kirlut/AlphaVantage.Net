@@ -58,7 +58,7 @@ namespace AlphaVantage.Net.Stocks
                 ApiFunction.TIME_SERIES_DAILY_ADJUSTED : 
                 ApiFunction.TIME_SERIES_DAILY;
             
-            return await RequestTimeSeriesAsync(function, query, adjusted);
+            return await RequestTimeSeriesAsync(function, query);
         }
         
         public async Task<StockTimeSeries> RequestWeeklyTimeSeriesAsync(string symbol, bool adjusted = false)
@@ -72,7 +72,7 @@ namespace AlphaVantage.Net.Stocks
                 ApiFunction.TIME_SERIES_WEEKLY_ADJUSTED : 
                 ApiFunction.TIME_SERIES_WEEKLY;
             
-            return await RequestTimeSeriesAsync(function, query, adjusted);
+            return await RequestTimeSeriesAsync(function, query);
         }
         
         public async Task<StockTimeSeries> RequestMonthlyTimeSeriesAsync(string symbol, bool adjusted = false)
@@ -86,7 +86,7 @@ namespace AlphaVantage.Net.Stocks
                 ApiFunction.TIME_SERIES_WEEKLY_ADJUSTED : 
                 ApiFunction.TIME_SERIES_WEEKLY;
 
-            return await RequestTimeSeriesAsync(function, query, adjusted);
+            return await RequestTimeSeriesAsync(function, query);
         }
 
         public async Task<ICollection<StockQuote>> RequestBatchQuotesAsync(string[] symbols)
@@ -106,8 +106,7 @@ namespace AlphaVantage.Net.Stocks
 
         private async Task<StockTimeSeries> RequestTimeSeriesAsync(
             ApiFunction function, 
-            Dictionary<string, string> query, 
-            bool adjusted = false)
+            Dictionary<string, string> query)
         {
             var jObject = await _coreClient.RequestApiAsync(_apiKey, function, query);
             var timeSeries = _parser.ParseTimeSeries(jObject);
