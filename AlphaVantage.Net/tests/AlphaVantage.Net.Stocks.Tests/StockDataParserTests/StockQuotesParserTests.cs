@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using AlphaVantage.Net.Stocks.Parsing;
 using AlphaVantage.Net.Stocks.TimeSeries;
 using Newtonsoft.Json;
@@ -19,6 +20,11 @@ namespace AlphaVantage.Net.Stocks.Tests.StockDataParserTests
             var result = parser.ParseStockQuotes(jObject);
             
             Assert.NotNull(result);
+            Assert.Equal(3, result.Count);
+            Assert.True(
+                result.Any(r => r.Symbol == "MSFT") &&
+                result.Any(r => r.Symbol == "FB") && 
+                result.Any(r => r.Symbol == "AAPL"));
         }
     }
 }

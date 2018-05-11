@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Core.Validation;
@@ -9,7 +10,12 @@ namespace AlphaVantage.Net.Core.Tests
 {
     public class CoreClientTests
     {
-        private const string ApiKey = "1"; // yep, this api key really exist :)
+        private const string ApiKey = "1";
+        
+        public CoreClientTests()
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(10)); // to avoid api rejection
+        }
         
         [Fact]
         public async Task CorrectRequestTest()

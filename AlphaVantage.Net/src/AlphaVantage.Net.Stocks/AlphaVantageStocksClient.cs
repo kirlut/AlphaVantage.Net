@@ -83,8 +83,8 @@ namespace AlphaVantage.Net.Stocks
             };
             
             var function = adjusted ? 
-                ApiFunction.TIME_SERIES_WEEKLY_ADJUSTED : 
-                ApiFunction.TIME_SERIES_WEEKLY;
+                ApiFunction.TIME_SERIES_MONTHLY_ADJUSTED : 
+                ApiFunction.TIME_SERIES_MONTHLY;
 
             return await RequestTimeSeriesAsync(function, query);
         }
