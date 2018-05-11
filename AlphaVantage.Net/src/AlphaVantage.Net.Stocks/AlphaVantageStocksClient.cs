@@ -91,7 +91,7 @@ namespace AlphaVantage.Net.Stocks
 
         public async Task<ICollection<StockQuote>> RequestBatchQuotesAsync(string[] symbols)
         {
-            var symbolsString = string.Join(',', symbols);
+            var symbolsString = string.Join(",", symbols);
             
             var query = new Dictionary<string, string>()
             {
