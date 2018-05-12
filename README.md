@@ -7,9 +7,9 @@ Solution consist of two packages:
 ## AlphaVantage.Net.Stocks
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.Stocks -Version 1.0.1`  
+`Install-Package AlphaVantage.Net.Stocks -Version 1.0.2`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.Stocks --version 1.0.1`  
+`dotnet add package AlphaVantage.Net.Stocks --version 1.0.2`  
 ### Usage example: 
 ```csharp
 public async Task AlphaVantageStocksDemo()
@@ -37,9 +37,9 @@ public async Task AlphaVantageStocksDemo()
 ## AlphaVantage.Net.Core
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.Core -Version 1.0.0`  
+`Install-Package AlphaVantage.Net.Core -Version 1.0.2`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.Core --version 1.0.0`  
+`dotnet add package AlphaVantage.Net.Core --version 1.0.2`  
 ### Usage example: 
 ```csharp
 public static async Task AlphaVantageCoreDemo()
