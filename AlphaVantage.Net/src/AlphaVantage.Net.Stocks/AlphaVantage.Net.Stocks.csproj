@@ -2,7 +2,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>AlphaVantage.Net.Stocks</PackageId>
-    <Version>1.0.1</Version>
+    <Description>Client for retrieving stock time series data from Alpha Vantage API based on AlphaVantage.Net.Core</Description>
+    <Version>1.0.2</Version>
     <Authors>LutsenkoKirill</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
