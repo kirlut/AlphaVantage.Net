@@ -51,13 +51,17 @@ namespace AlphaVantage.Net.Stocks.Parsing
 
         private StockQuote ComposeStockQuote(IDictionary<string, string> stockQuoteContent)
         {
-            return new StockQuote()
+            var result = new StockQuote()
             {
                 Symbol = stockQuoteContent[StockQuoteJsonTokens.SymbolToken],
                 Time = DateTime.Parse(stockQuoteContent[StockQuoteJsonTokens.TimestampToken]),
-                Price = Decimal.Parse(stockQuoteContent[StockQuoteJsonTokens.PriceToken]),
-                Volume = Int64.Parse(stockQuoteContent[StockQuoteJsonTokens.VolumeToken])
+                Price = Decimal.Parse(stockQuoteContent[StockQuoteJsonTokens.PriceToken])
             };
+            
+            if(Int64.TryParse(stockQuoteContent[StockQuoteJsonTokens.VolumeToken], out var volume))
+                result.Volume = volume;
+
+            return result;
         }
     }
 }

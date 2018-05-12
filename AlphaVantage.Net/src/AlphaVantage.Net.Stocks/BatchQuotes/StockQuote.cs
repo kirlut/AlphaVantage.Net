@@ -10,6 +10,6 @@ namespace AlphaVantage.Net.Stocks.BatchQuotes
         
         public decimal Price {get; set;}
         
-        public long Volume {get; set;}
+        public long? Volume {get; set;}
     }
 }
