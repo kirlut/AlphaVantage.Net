@@ -1,6 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>AlphaVantage.Net.Stocks</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>LutsenkoKirill</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlphaVantage.Net.Core\AlphaVantage.Net.Core.csproj" />
