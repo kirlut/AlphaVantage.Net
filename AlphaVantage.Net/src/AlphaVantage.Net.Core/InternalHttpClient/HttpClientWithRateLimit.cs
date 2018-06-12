@@ -54,12 +54,12 @@ namespace AlphaVantage.Net.Core.InternalHttpClient
                     delayInterval = _minRequestInterval - timeSinceLastRequest;
                 }
                 _previousRequestStartTime = DateTime.Now;
-                if (delayInterval != null)
+                if (delayInterval.HasValue)
                 {
                     _previousRequestStartTime.AddMilliseconds(delayInterval.Value.Milliseconds);
                 }
             }
-            if (delayInterval != null)
+            if (delayInterval.HasValue)
             {
                 await Task.Delay(delayInterval.Value.Milliseconds);
             }
