@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core.Exceptions;
+using AlphaVantage.Net.Core.InternalHttpClient;
 using AlphaVantage.Net.Core.Validation;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.WebUtilities;
@@ -20,6 +21,8 @@ namespace AlphaVantage.Net.Core
         [CanBeNull]
         private readonly TimeSpan? _timeout;
 
+        private static IHttpClient _client = new HttpClientWithRateLimit(new HttpClient(), 20, 10);
+
         public AlphaVantageCoreClient(IApiCallValidator apiCallValidator = null, TimeSpan? timeout = null)
         {
             _apiCallValidator = apiCallValidator;
@@ -30,12 +33,11 @@ namespace AlphaVantage.Net.Core
         {
             AssertValid(function, query);
 
-            var client = new HttpClient();
             if (_timeout.HasValue)
-                client.Timeout = _timeout.Value;
+                _client.SetTimeOut(_timeout.Value);
             
             var request = ComposeHttpRequest(apiKey, function, query);
-            var response = await client.SendAsync(request);
+            var response = await _client.SendAsync(request);
 
             var jsonString = await response.Content.ReadAsStringAsync();
             var jObject = (JObject)JsonConvert.DeserializeObject(jsonString);
