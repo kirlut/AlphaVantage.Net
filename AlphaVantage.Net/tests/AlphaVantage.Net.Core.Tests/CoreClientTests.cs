@@ -14,7 +14,7 @@ namespace AlphaVantage.Net.Core.Tests
         
         public CoreClientTests()
         {
-            Thread.Sleep(TimeSpan.FromSeconds(10)); // to avoid api rejection
+         //   Thread.Sleep(TimeSpan.FromSeconds(10)); // to avoid api rejection
         }
         
         [Fact]

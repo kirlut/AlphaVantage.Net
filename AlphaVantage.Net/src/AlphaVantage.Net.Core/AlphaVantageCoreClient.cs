@@ -29,7 +29,7 @@ namespace AlphaVantage.Net.Core
             _timeout = timeout;
         }
 
-        public async Task<JObject> RequestApiAsync(string apiKey, ApiFunction function, IDictionary<string, string> query = null)
+        public virtual async Task<JObject> RequestApiAsync(string apiKey, ApiFunction function, IDictionary<string, string> query = null)
         {
             AssertValid(function, query);
 
