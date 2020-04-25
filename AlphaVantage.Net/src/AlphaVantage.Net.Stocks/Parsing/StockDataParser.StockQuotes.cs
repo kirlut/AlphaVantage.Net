@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using AlphaVantage.Net.Stocks.BatchQuotes;
 using AlphaVantage.Net.Stocks.Parsing.Exceptions;
@@ -55,7 +56,7 @@ namespace AlphaVantage.Net.Stocks.Parsing
             {
                 Symbol = stockQuoteContent[StockQuoteJsonTokens.SymbolToken],
                 Time = DateTime.Parse(stockQuoteContent[StockQuoteJsonTokens.TimestampToken]),
-                Price = Decimal.Parse(stockQuoteContent[StockQuoteJsonTokens.PriceToken])
+                Price = Decimal.Parse(stockQuoteContent[StockQuoteJsonTokens.PriceToken], CultureInfo.InvariantCulture)
             };
             
             if(Int64.TryParse(stockQuoteContent[StockQuoteJsonTokens.VolumeToken], out var volume))
