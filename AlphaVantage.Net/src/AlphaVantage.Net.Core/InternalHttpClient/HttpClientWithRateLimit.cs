@@ -16,6 +16,7 @@ namespace AlphaVantage.Net.Core.InternalHttpClient
         private Semaphore _concurrentRequestsCounter;
         private DateTime _previousRequestStartTime;
         private Object _lockObject = new Object();
+        
         internal HttpClientWithRateLimit(HttpClient client, int maxRequestPerMinutes, int maxConcurrentRequests)
         {
             _client = client;
@@ -27,22 +28,24 @@ namespace AlphaVantage.Net.Core.InternalHttpClient
         {
             _concurrentRequestsCounter.Dispose();
         }
+        
         public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
         {
-            HttpResponseMessage response = null;
+            HttpResponseMessage? response = null;
             _concurrentRequestsCounter.WaitOne();
             await WaitForRequestedMinimumInterval();
             try
             {
                 response = await _client.SendAsync(request);
             }
-            catch
+            finally
             {
                 _concurrentRequestsCounter.Release();
-                throw;
             }
+            
             return response;
         }
+        
         private async Task WaitForRequestedMinimumInterval()
         {
             TimeSpan? delayInterval = null;
@@ -59,11 +62,13 @@ namespace AlphaVantage.Net.Core.InternalHttpClient
                     _previousRequestStartTime.AddMilliseconds(delayInterval.Value.Milliseconds);
                 }
             }
+            
             if (delayInterval.HasValue)
             {
                 await Task.Delay(delayInterval.Value.Milliseconds);
             }
         }
+        
         public void SetTimeOut(TimeSpan timeSpan)
         {
             _client.Timeout = timeSpan;

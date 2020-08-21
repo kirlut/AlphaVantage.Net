@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Core.InternalHttpClient;
@@ -11,25 +10,27 @@ using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+// ReSharper disable once CheckNamespace
 namespace AlphaVantage.Net.Core
 {
+    [Obsolete("This class is from old version of AlfaVantage.Net library and will be removed in version 3.1. " +
+              "Consider using classes from the latest version: https://github.com/LutsenkoKirill/AlphaVantage.Net")]
     public class AlphaVantageCoreClient
     {
-        [CanBeNull]
-        private readonly IApiCallValidator _apiCallValidator;
+        private readonly IApiCallValidator? _apiCallValidator;
         
         [CanBeNull]
         private readonly TimeSpan? _timeout;
 
         private static IHttpClient _client = new HttpClientWithRateLimit(new HttpClient(), 20, 10);
 
-        public AlphaVantageCoreClient(IApiCallValidator apiCallValidator = null, TimeSpan? timeout = null)
+        public AlphaVantageCoreClient(IApiCallValidator? apiCallValidator = null, TimeSpan? timeout = null)
         {
             _apiCallValidator = apiCallValidator;
             _timeout = timeout;
         }
 
-        public virtual async Task<JObject> RequestApiAsync(string apiKey, ApiFunction function, IDictionary<string, string> query = null)
+        public virtual async Task<JObject> RequestApiAsync(string apiKey, ApiFunction function, IDictionary<string, string>? query = null)
         {
             AssertValid(function, query);
 
@@ -47,9 +48,9 @@ namespace AlphaVantage.Net.Core
             return jObject;
         }
 
-        private HttpRequestMessage ComposeHttpRequest(string apiKey, ApiFunction function, IDictionary<string, string> query)
+        private HttpRequestMessage ComposeHttpRequest(string apiKey, ApiFunction function, IDictionary<string, string>? query)
         {
-            var fullQueryDict = new Dictionary<string, string>(query);
+            var fullQueryDict = new Dictionary<string, string>(query ?? new Dictionary<string, string>(0));
             fullQueryDict.Add(ApiConstants.ApiKeyQueryVar, apiKey);
             fullQueryDict.Add(ApiConstants.FunctionQueryVar, function.ToString());
             
@@ -65,14 +66,14 @@ namespace AlphaVantage.Net.Core
             return request;
         }
 
-        private void AssertValid(ApiFunction function, IDictionary<string, string> query = null)
+        private void AssertValid(ApiFunction function, IDictionary<string, string>? query = null)
         {
             if(_apiCallValidator == null) return;
 
             var validationResult = _apiCallValidator.Validate(function, query);
             
             if(!validationResult.IsValid)
-                throw new AlphaVantageException(validationResult.ErrorMsg);
+                throw new AlphaVantageException(validationResult.ErrorMsg ?? "");
         }
         
         private void AssertNotBadRequest(JObject jObject)

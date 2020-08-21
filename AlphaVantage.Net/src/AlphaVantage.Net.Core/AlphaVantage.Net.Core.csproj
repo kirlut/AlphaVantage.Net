@@ -7,6 +7,9 @@
     <Authors>LutsenkoKirill</Authors>
     <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
