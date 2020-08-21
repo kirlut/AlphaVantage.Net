@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Core.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Stocks.Tests", "tests\AlphaVantage.Net.Stocks.Tests\AlphaVantage.Net.Stocks.Tests.csproj", "{B7495AA4-20AF-4628-9C3C-4CE384A21EB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.TestUtils", "tests\AlphaVantage.Net.TestUtils\AlphaVantage.Net.TestUtils.csproj", "{A0714AEF-E8F1-4950-8785-3365E9AF0196}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,11 +36,16 @@ Global
 		{B7495AA4-20AF-4628-9C3C-4CE384A21EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7495AA4-20AF-4628-9C3C-4CE384A21EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7495AA4-20AF-4628-9C3C-4CE384A21EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0714AEF-E8F1-4950-8785-3365E9AF0196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0714AEF-E8F1-4950-8785-3365E9AF0196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0714AEF-E8F1-4950-8785-3365E9AF0196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0714AEF-E8F1-4950-8785-3365E9AF0196}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6A482C82-3191-4026-9284-2A02DE195A8D} = {768F93FA-CA7A-4828-8ECA-BC4EF5433811}
 		{B5A4D94C-91C7-4DDA-9E44-588AA32B19AB} = {768F93FA-CA7A-4828-8ECA-BC4EF5433811}
 		{591EDA71-AF9B-461B-A41F-54266ACB2C64} = {059E80BE-F596-41CE-ABCA-243EE7987523}
 		{B7495AA4-20AF-4628-9C3C-4CE384A21EB0} = {059E80BE-F596-41CE-ABCA-243EE7987523}
+		{A0714AEF-E8F1-4950-8785-3365E9AF0196} = {059E80BE-F596-41CE-ABCA-243EE7987523}
 	EndGlobalSection
 EndGlobal

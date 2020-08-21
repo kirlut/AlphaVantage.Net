@@ -2,7 +2,7 @@ using System;
 using System.Net.Http;
 using AlphaVantage.Net.Core.HttpClientWrapper;
 
-namespace AlphaVantage.Net.Core
+namespace AlphaVantage.Net.Core.Client
 {
     public partial class AlphaVantageClient
     {
@@ -10,8 +10,9 @@ namespace AlphaVantage.Net.Core
         /// Create new instance of Alpha Vantage client with
         /// default <see cref="HttpClient"/> wrapped in <see cref="DefaultHttpClientWrapper"/>
         /// </summary>
-        public AlphaVantageClient()
+        public AlphaVantageClient(string apiKey)
         {
+            _apiKey = apiKey;
             _httpClient = new DefaultHttpClientWrapper(new HttpClient());
         }
 
@@ -20,9 +21,12 @@ namespace AlphaVantage.Net.Core
         /// <see cref="HttpClient"/> with timeout = <paramref name="timeout"/>
         /// wrapped in <see cref="DefaultHttpClientWrapper"/> 
         /// </summary>
+        /// <param name="apiKey"></param>
         /// <param name="timeout"></param>
-        public AlphaVantageClient(TimeSpan timeout)
+        public AlphaVantageClient(string apiKey, TimeSpan timeout)
         {
+            _apiKey = apiKey;
+
             _httpClient = new DefaultHttpClientWrapper(new HttpClient());
             _httpClient.SetTimeOut(timeout);
         }
@@ -31,18 +35,22 @@ namespace AlphaVantage.Net.Core
         /// Create new instance of Alpha Vantage client with <paramref name="httpClient"/> 
         /// wrapped in <see cref="DefaultHttpClientWrapper"/>
         /// </summary>
+        /// <param name="apiKey"></param>
         /// <param name="httpClient"></param>
-        public AlphaVantageClient(HttpClient httpClient)
+        public AlphaVantageClient(string apiKey, HttpClient httpClient)
         {
+            _apiKey = apiKey;
             _httpClient = new DefaultHttpClientWrapper(httpClient);
         }
 
         /// <summary>
         /// Create new instance of Alpha Vantage client with <paramref name="httpClientWrapper"/> 
         /// </summary>
+        /// <param name="apiKey"></param>
         /// <param name="httpClientWrapper"></param>
-        public AlphaVantageClient(IHttpClientWrapper httpClientWrapper)
+        public AlphaVantageClient(string apiKey, IHttpClientWrapper httpClientWrapper)
         {
+            _apiKey = apiKey;
             _httpClient = httpClientWrapper;
         }
 
@@ -50,9 +58,11 @@ namespace AlphaVantage.Net.Core
         /// Create new instance of Alpha Vantage client with HttpClientWrapper
         /// returned by <paramref name="httpClientWrapperFactory"/> 
         /// </summary>
+        /// <param name="apiKey"></param>
         /// <param name="httpClientWrapperFactory"></param>
-        public AlphaVantageClient(Func<IHttpClientWrapper> httpClientWrapperFactory)
+        public AlphaVantageClient(string apiKey, Func<IHttpClientWrapper> httpClientWrapperFactory)
         {
+            _apiKey = apiKey;
             _httpClient = httpClientWrapperFactory.Invoke();
         }
 
@@ -61,9 +71,11 @@ namespace AlphaVantage.Net.Core
         /// <see cref="HttpClient"/> returned by <paramref name="httpClientFactory"/> 
         /// and wrapped in <see cref="DefaultHttpClientWrapper"/>
         /// </summary>
+        /// <param name="apiKey"></param>
         /// <param name="httpClientFactory"></param>
-        public AlphaVantageClient(Func<HttpClient> httpClientFactory)
+        public AlphaVantageClient(string apiKey, Func<HttpClient> httpClientFactory)
         {
+            _apiKey = apiKey;
             _httpClient = new DefaultHttpClientWrapper(httpClientFactory.Invoke());
         }
     }

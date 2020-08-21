@@ -1,18 +1,19 @@
-using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Core.Validation;
+using AlphaVantage.Net.TestUtils;
 using Xunit;
 
-namespace AlphaVantage.Net.Core.Tests
+#pragma warning disable 618
+
+namespace AlphaVantage.Net.Core.Tests.Obsolete
 {
-    public class CoreClientTests
+    public class ObsoleteCoreClientTests
     {
-        private const string ApiKey = "1";
+        private readonly string _apiKey = ConfigProvider.Configuration["ApiKey"];
         
-        public CoreClientTests()
+        public ObsoleteCoreClientTests()
         {
          //   Thread.Sleep(TimeSpan.FromSeconds(10)); // to avoid api rejection
         }
@@ -30,7 +31,7 @@ namespace AlphaVantage.Net.Core.Tests
             };
             
             var client = new AlphaVantageCoreClient();
-            var response = await client.RequestApiAsync(ApiKey, function, query);
+            var response = await client.RequestApiAsync(_apiKey, function, query);
             
             Assert.NotNull(response);
             Assert.True(response.ContainsKey("Time Series (15min)"));
@@ -52,7 +53,7 @@ namespace AlphaVantage.Net.Core.Tests
 
             await Assert.ThrowsAsync<AlphaVantageException>(async () =>
             {
-                await client.RequestApiAsync(ApiKey, function, query);
+                await client.RequestApiAsync(_apiKey, function, query);
             });
         }
         
@@ -72,7 +73,7 @@ namespace AlphaVantage.Net.Core.Tests
 
             var exception = await Assert.ThrowsAsync<AlphaVantageException>(async () =>
             {
-                await client.RequestApiAsync(ApiKey, function, query);
+                await client.RequestApiAsync(_apiKey, function, query);
             });
             
             Assert.Equal(TestValidator.ErrorMsg, exception.Message);
@@ -82,7 +83,7 @@ namespace AlphaVantage.Net.Core.Tests
         {
             public static string ErrorMsg = "test";
             
-            public ValidationResult Validate(ApiFunction function, IDictionary<string, string> query)
+            public ValidationResult Validate(ApiFunction function, IDictionary<string, string>? query)
             {
                 return new ValidationResult()
                 {
