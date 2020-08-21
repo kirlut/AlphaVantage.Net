@@ -141,15 +141,10 @@ namespace AlphaVantage.Net.Stocks.Tests
         {
             var client = new AlphaVantageStocksClient(ApiKey);
 
-            var result =
+            await Assert.ThrowsAsync<NotImplementedException>(async () =>
+            {
                 await client.RequestBatchQuotesAsync(new []{"AAPL", "FB", "MSFT"});
-            
-            Assert.NotNull(result);
-            Assert.Equal(3, result.Count);
-            Assert.True(
-                result.Any(r => r.Symbol == "MSFT") &&
-                result.Any(r => r.Symbol == "FB") && 
-                result.Any(r => r.Symbol == "AAPL"));
+            });
         }
     }
 }

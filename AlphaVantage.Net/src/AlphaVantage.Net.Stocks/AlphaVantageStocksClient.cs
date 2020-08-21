@@ -91,17 +91,7 @@ namespace AlphaVantage.Net.Stocks
 
         public async Task<ICollection<StockQuote>> RequestBatchQuotesAsync(string[] symbols)
         {
-            var symbolsString = string.Join(",", symbols);
-            
-            var query = new Dictionary<string, string>()
-            {
-                {StockApiQueryVars.BatchSymbols, symbolsString},
-            };
-                        
-            var jObject = await _coreClient.RequestApiAsync(_apiKey, ApiFunction.BATCH_STOCK_QUOTES, query);
-            var timeSeries = _parser.ParseStockQuotes(jObject);
-            
-            return timeSeries;
+            throw new NotImplementedException("AlphaVantage no longer support batch quotes");
         }
 
         private async Task<StockTimeSeries> RequestTimeSeriesAsync(
