@@ -3,7 +3,7 @@ using AlphaVantage.Net.Stocks.TimeSeries;
 
 namespace AlphaVantage.Net.Stocks.Utils
 {
-    internal static class StockClientExtentions
+    internal static class StockClientExtensions
     {
         public static string ConvertToString(this TimeSeriesSize sizeEnum)
         {

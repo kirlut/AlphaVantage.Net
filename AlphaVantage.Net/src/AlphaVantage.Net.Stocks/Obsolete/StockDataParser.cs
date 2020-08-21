@@ -9,10 +9,13 @@ using AlphaVantage.Net.Stocks.Parsing.JsonTokens;
 using AlphaVantage.Net.Stocks.TimeSeries;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
+// ReSharper disable CheckNamespace
 
 namespace AlphaVantage.Net.Stocks.Parsing
 {
-    internal partial class StockDataParser
+    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 3.1. " +
+              "Consider using classes from the latest version: https://github.com/LutsenkoKirill/AlphaVantage.Net")]
+    internal class StockDataParser
     {
         private const string TimeStampKey = "timestamp";
         
@@ -48,7 +51,7 @@ namespace AlphaVantage.Net.Stocks.Parsing
             }
         }
 
-        private void EnrichWithMetadata([NotNull] JProperty metadataJson, [NotNull] StockTimeSeries timeSeries)
+        private void EnrichWithMetadata(JProperty metadataJson, StockTimeSeries timeSeries)
         {
             var metadatas = metadataJson.Children().Single();
 
@@ -96,7 +99,7 @@ namespace AlphaVantage.Net.Stocks.Parsing
                 metadataValue.Contains(TimeSeriesJsonTokens.AdjustedToken_2);
         }
         
-        private ICollection<StockDataPoint> GetStockDataPoints([NotNull] JProperty timeSeriesJson)
+        private ICollection<StockDataPoint> GetStockDataPoints(JProperty timeSeriesJson)
         {
             var result = new List<StockDataPoint>();
             
@@ -141,7 +144,7 @@ namespace AlphaVantage.Net.Stocks.Parsing
 
             if (isAdjusted)
             {
-                var adjustedPoint = dataPoint as StockAdjustedDataPoint;
+                var adjustedPoint = dataPoint as StockAdjustedDataPoint ?? new StockAdjustedDataPoint();
                 adjustedPoint.Volume = 
                     Int64.Parse(dataPointContent[TimeSeriesJsonTokens.VolumeAdjustedToken], CultureInfo.InvariantCulture);
                 adjustedPoint.AdjustedClosingPrice = 

@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using AlphaVantage.Net.Stocks.TimeSeries;
 using Xunit;
 
-namespace AlphaVantage.Net.Stocks.Tests
+#pragma warning disable 618
+
+namespace AlphaVantage.Net.Stocks.Tests.Obsolete
 {
     public class AlphaVantageStocksClientTests
     {

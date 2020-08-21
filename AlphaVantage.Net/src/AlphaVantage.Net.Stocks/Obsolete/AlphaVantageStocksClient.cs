@@ -7,12 +7,15 @@ using AlphaVantage.Net.Stocks.Parsing;
 using AlphaVantage.Net.Stocks.TimeSeries;
 using AlphaVantage.Net.Stocks.Utils;
 using AlphaVantage.Net.Stocks.Validation;
+// ReSharper disable CheckNamespace
 
 namespace AlphaVantage.Net.Stocks
 {
     /// <summary>
     /// Client for Alpha Vantage API (stock data only)
     /// </summary>
+    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 3.1. " +
+              "Consider using classes from the latest version: https://github.com/LutsenkoKirill/AlphaVantage.Net")]
     public class AlphaVantageStocksClient
     {
         private readonly string _apiKey;
@@ -89,7 +92,7 @@ namespace AlphaVantage.Net.Stocks
             return await RequestTimeSeriesAsync(function, query);
         }
 
-        public async Task<ICollection<StockQuote>> RequestBatchQuotesAsync(string[] symbols)
+        public Task<ICollection<StockQuote>> RequestBatchQuotesAsync(string[] symbols)
         {
             throw new NotImplementedException("AlphaVantage no longer support batch quotes");
         }

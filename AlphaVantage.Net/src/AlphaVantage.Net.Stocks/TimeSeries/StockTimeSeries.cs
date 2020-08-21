@@ -9,10 +9,10 @@ namespace AlphaVantage.Net.Stocks.TimeSeries
                 
         public DateTime LastRefreshed {get; set;}
         
-        public string Symbol {get; set;}
+        public string Symbol {get; set;} = String.Empty;
         
         public bool IsAdjusted {get; set;}
         
-        public ICollection<StockDataPoint> DataPoints {get; set;}
+        public ICollection<StockDataPoint> DataPoints {get; set;} = new List<StockDataPoint>();
     }
 }
