@@ -3,19 +3,19 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AlphaVantage.Net.Core.InternalHttpClient
+namespace AlphaVantage.Net.Core.HttpClientWrapper
 {
     /// <summary>
     /// Only requests passing thru given instance of the client are throttled.
     /// Two different instances of the client may have totally different rate limites.
     /// </summary>
-    internal class HttpClientWithRateLimit : IHttpClient, IDisposable
+    public class HttpClientWithRateLimit : IHttpClientWrapper
     {
-        private HttpClient _client;
-        private TimeSpan _minRequestInterval;//Calculated based on rpm limit in constructor
-        private Semaphore _concurrentRequestsCounter;
+        private readonly HttpClient _client;
+        private readonly TimeSpan _minRequestInterval;//Calculated based on rpm limit in constructor
+        private readonly Semaphore _concurrentRequestsCounter;
         private DateTime _previousRequestStartTime;
-        private Object _lockObject = new Object();
+        private readonly Object _lockObject = new Object();
         
         internal HttpClientWithRateLimit(HttpClient client, int maxRequestPerMinutes, int maxConcurrentRequests)
         {
@@ -24,11 +24,7 @@ namespace AlphaVantage.Net.Core.InternalHttpClient
             _concurrentRequestsCounter = new Semaphore(maxConcurrentRequests, maxConcurrentRequests);
             _previousRequestStartTime = DateTime.MinValue;
         }
-        public void Dispose()
-        {
-            _concurrentRequestsCounter.Dispose();
-        }
-        
+
         public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
         {
             HttpResponseMessage? response = null;
@@ -72,6 +68,12 @@ namespace AlphaVantage.Net.Core.InternalHttpClient
         public void SetTimeOut(TimeSpan timeSpan)
         {
             _client.Timeout = timeSpan;
+        }
+
+        public void Dispose()
+        {
+            _client.Dispose();
+            _concurrentRequestsCounter.Dispose();
         }
     }
 }

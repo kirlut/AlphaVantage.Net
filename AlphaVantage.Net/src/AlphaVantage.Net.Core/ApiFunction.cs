@@ -2,8 +2,11 @@
 namespace AlphaVantage.Net.Core
 {
     /// <summary>
-    /// Possible functions of Alpha Vantage API
+    /// All possible functions of Alpha Vantage API
     /// </summary>
+    /// <remarks>
+    /// https://www.alphavantage.co/documentation
+    /// </remarks>
     public enum ApiFunction
     {
         // Stock Time Series Data
