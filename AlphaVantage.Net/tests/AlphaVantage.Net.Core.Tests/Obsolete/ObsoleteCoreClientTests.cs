@@ -12,12 +12,7 @@ namespace AlphaVantage.Net.Core.Tests.Obsolete
     public class ObsoleteCoreClientTests
     {
         private readonly string _apiKey = ConfigProvider.Configuration["ApiKey"];
-        
-        public ObsoleteCoreClientTests()
-        {
-         //   Thread.Sleep(TimeSpan.FromSeconds(10)); // to avoid api rejection
-        }
-        
+
         [Fact]
         public async Task CorrectRequestTest()
         {

@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core.Exceptions;
 using FluentAssertions;
-using Microsoft.Extensions.Configuration;
 using AlphaVantage.Net.TestUtils;
 using Xunit;
 
