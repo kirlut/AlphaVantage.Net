@@ -1,6 +1,12 @@
 ﻿// ReSharper disable InconsistentNaming
+
+using System;
+
+// ReSharper disable once CheckNamespace
 namespace AlphaVantage.Net.Stocks.Parsing.JsonTokens
 {
+    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 3.1. " +
+              "Consider using classes from the latest version: https://github.com/LutsenkoKirill/AlphaVantage.Net")]
     internal static class TimeSeriesJsonTokens
     {
         public const string TimeSeriesHeader = "Time Series";

@@ -80,6 +80,7 @@ namespace AlphaVantage.Net.Core.Client
 
         private string CleanJsonFromSequenceNumbers(string jsonString)
         {
+            // "(\d+)[a-z]?\.\s
             return Regex.Replace(jsonString, "\"(\\d+)[a-z]?\\.\\s", "\"", RegexOptions.Multiline);
         }
         

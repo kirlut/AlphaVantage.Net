@@ -2,8 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using AlphaVantage.Net.Core.Client;
+using AlphaVantage.Net.Core.Parsing;
 using AlphaVantage.Net.TestUtils;
 using FluentAssertions;
+using JetBrains.Annotations;
 using Xunit;
 
 namespace AlphaVantage.Net.Core.Tests
@@ -24,19 +27,26 @@ namespace AlphaVantage.Net.Core.Tests
                 {nameof(interval), interval}
             };
 
-            using var client = new Client.AlphaVantageClient(_apiKey);
-            using var typedClient = new Client.TypedAlphaVantageClient(client);
+            using var client = new AlphaVantageClient(_apiKey);
+            using var typedClient = new TestTypedAlphaVantageClient(client);
             
             var typedResponse = await typedClient.RequestApiAsync(new TestParser(), function, query);
 
             typedResponse.Should().BeOfType<string>().And.Be("Meta Data");
         }
         
-        private class TestParser : IAlphaVantageParser<string>
+        private class TestParser : IAlphaVantageJsonDocumentParser<string>
         {
             public string ParseApiResponse(JsonDocument jsonDocument)
             {
                 return jsonDocument.RootElement.EnumerateObject().FirstOrDefault().Name;
+            }
+        }
+
+        private class TestTypedAlphaVantageClient : TypedAlphaVantageClient
+        {
+            public TestTypedAlphaVantageClient([NotNull] AlphaVantageClient alphaVantageClient) : base(alphaVantageClient)
+            {
             }
         }
     }

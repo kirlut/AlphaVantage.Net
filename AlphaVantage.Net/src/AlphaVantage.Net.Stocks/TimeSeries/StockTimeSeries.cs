@@ -4,11 +4,9 @@ using System.Collections.Generic;
 
 namespace AlphaVantage.Net.Stocks.TimeSeries
 {
-    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 3.1. " +
-              "Consider using classes from the latest version: https://github.com/LutsenkoKirill/AlphaVantage.Net")]
     public class StockTimeSeries
     {
-        public TimeSeriesType Type {get; set;}
+        public TimeSeriesType Type { get; set; } = TimeSeriesType.Unknown;
         
         public bool IsAdjusted {get; set;}
         
