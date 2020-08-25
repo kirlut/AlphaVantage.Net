@@ -14,19 +14,13 @@ namespace AlphaVantage.Net.Core.Tests
         private readonly string _apiKey = ConfigProvider.Configuration["ApiKey"];
         
         [Fact]
-        public async Task ReturnJsonDocumentOnCorrectRequest()
+        public async Task ReturnJsonDocument_OnCorrectRequest_WithoutClean()
         {
             var function = ApiFunction.TIME_SERIES_INTRADAY;
-            var symbol = "AAPL";
-            var interval = "15min";
-            var query = new Dictionary<string, string>()
-            {
-                {nameof(symbol), symbol},
-                {nameof(interval), interval}
-            };
+            var query = GetQuery("AAPL", "15min");
 
             using var client = new Client.AlphaVantageClient(_apiKey);
-            var response = await client.RequestApiAsync(function, query);
+            var response = await client.RequestParsedJsonAsync(function, query);
 
             response
                 .Should().NotBeNull()
@@ -36,25 +30,85 @@ namespace AlphaVantage.Net.Core.Tests
                         .LastOrDefault().NameEquals("Time Series (15min)")
                     );
         }
+        [Fact]
+        public async Task ReturnJsonDocument_OnCorrectRequest_WithClean()
+        {
+            var function = ApiFunction.TIME_SERIES_INTRADAY;
+            var query = GetQuery("AAPL", "15min");
+
+            using var client = new Client.AlphaVantageClient(_apiKey);
+            var response = await client.RequestParsedJsonAsync(function, query, true);
+
+            response
+                .Should().NotBeNull()
+                .And
+                .Match<JsonDocument>(
+                    resp => resp.RootElement.EnumerateObject()
+                        .LastOrDefault().NameEquals("Time Series (15min)")
+                    )
+                .And
+                .Match<JsonDocument>(
+                    resp => resp
+                        .RootElement.EnumerateObject().LastOrDefault()
+                        .Value.EnumerateObject().FirstOrDefault()
+                        .Value.EnumerateObject().FirstOrDefault()
+                        .NameEquals("open")
+                    );
+        }
+        
+        [Fact]
+        public async Task ReturnJsonString_OnCorrectRequest_WithoutClean()
+        {
+            var function = ApiFunction.TIME_SERIES_INTRADAY;
+            var query = GetQuery("AAPL", "15min");
+
+            using var client = new Client.AlphaVantageClient(_apiKey);
+            var response = await client.RequestPureJsonAsync(function, query);
+
+            response
+                .Should().NotBeNull()
+                .And
+                .Contain("Time Series (15min)");
+        }
+        
+        [Fact]
+        public async Task ReturnJsonString_OnCorrectRequest_WithClean()
+        {
+            var function = ApiFunction.TIME_SERIES_INTRADAY;
+            var query = GetQuery("AAPL", "15min");
+
+            using var client = new Client.AlphaVantageClient(_apiKey);
+            var response = await client.RequestPureJsonAsync(function, query, true);
+
+            response
+                .Should().NotBeNull()
+                .And
+                .Contain("Time Series (15min)")
+                .And
+                .NotContain("1. ");
+        }
         
         [Fact]
         public async Task ThrowExceptionOnIncorrectRequest()
         {
             var function = ApiFunction.TIME_SERIES_INTRADAY;
-            var symbol = "wrong_symbol"; // Bad request!  No such symbol exist
-            var interval = "15min";
-            var query = new Dictionary<string, string>()
-            {
-                {nameof(symbol), symbol},
-                {nameof(interval), interval}
-            };
+            var query = GetQuery("wrong_symbol", "15min");
 
             using var client = new Client.AlphaVantageClient(_apiKey);
 
             await Assert.ThrowsAsync<AlphaVantageException>(async () =>
             {
-                await client.RequestApiAsync(function, query);
+                await client.RequestParsedJsonAsync(function, query);
             });
+        }
+
+        private Dictionary<string, string> GetQuery(string symbolValue, string intervalValue)
+        {
+            return new Dictionary<string, string>()
+            {
+                {"symbol", symbolValue},
+                {"interval", intervalValue}
+            };
         }
     }
 }

@@ -19,7 +19,7 @@ namespace AlphaVantage.Net.Core.Client
             ApiFunction function,
             IDictionary<string, string>? query = null)
         {
-            var jsonDocument = await _alphaVantageClient.RequestApiAsync(function, query);
+            var jsonDocument = await _alphaVantageClient.RequestParsedJsonAsync(function, query, true);
             var result = parser.ParseApiResponse(jsonDocument);
 
             return result;

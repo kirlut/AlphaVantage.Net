@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Core.HttpClientWrapper;
@@ -14,22 +15,48 @@ namespace AlphaVantage.Net.Core.Client
         private readonly IHttpClientWrapper _httpClient;
         private readonly string _apiKey;
 
-        public async Task<JsonDocument> RequestApiAsync(
+        public async Task<JsonDocument> RequestParsedJsonAsync(
             ApiFunction function,
-            IDictionary<string, string>? query = null)
+            IDictionary<string, string>? query = null,
+            bool cleanJsonFromSequenceNumbers = false)
+        {
+            var jsonString = await RequestPureJsonAsync(function, query, cleanJsonFromSequenceNumbers)
+                .ConfigureAwait(false);
+            
+            var jsonDocument = JsonDocument.Parse(jsonString);
+
+            return jsonDocument;
+        }
+
+        public async Task<string> RequestPureJsonAsync(
+            ApiFunction function,
+            IDictionary<string, string>? query = null,
+            bool cleanJsonFromSequenceNumbers = false)
+        {
+            var jsonString = await RequestApiAsync(_apiKey, function, query)
+                .ConfigureAwait(false);
+
+            AssertNotBadRequest(jsonString);
+
+            if (cleanJsonFromSequenceNumbers)
+            {
+                jsonString = CleanJsonFromSequenceNumbers(jsonString);
+            }
+            
+            return jsonString;
+        }
+
+        private async Task<string> RequestApiAsync(string apiKey, ApiFunction function, 
+            IDictionary<string, string>? query)
         {
             var request = ComposeHttpRequest(_apiKey, function, query);
+            
             var response = await _httpClient.SendAsync(request)
                 .ConfigureAwait(false);
-
-            var stream = await response.Content.ReadAsStreamAsync()
+            var jsonString = await response.Content.ReadAsStringAsync()
                 .ConfigureAwait(false);
-            var jsonDocument = await JsonDocument.ParseAsync(stream)
-                .ConfigureAwait(false);
-
-            AssertNotBadRequest(jsonDocument);
             
-            return jsonDocument;
+            return jsonString;
         }
         
         private HttpRequestMessage ComposeHttpRequest(string apiKey, ApiFunction function, IDictionary<string, string>? query)
@@ -50,12 +77,17 @@ namespace AlphaVantage.Net.Core.Client
 
             return request;
         }
-        
-        private void AssertNotBadRequest(JsonDocument jsonDocument)
+
+        private string CleanJsonFromSequenceNumbers(string jsonString)
         {
-            if (jsonDocument.RootElement.TryGetProperty(ApiConstants.BadRequestToken, out var errorElement))
+            return Regex.Replace(jsonString, "\"(\\d+)[a-z]?\\.\\s", "\"", RegexOptions.Multiline);
+        }
+        
+        private void AssertNotBadRequest(string jsonString)
+        {
+            if (jsonString.Contains(ApiConstants.BadRequestToken))
             {
-                throw new AlphaVantageException(errorElement.GetString());
+                throw new AlphaVantageException(jsonString);
             }
         }
         
