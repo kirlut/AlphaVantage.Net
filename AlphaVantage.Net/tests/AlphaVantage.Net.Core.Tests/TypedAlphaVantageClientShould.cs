@@ -16,7 +16,7 @@ namespace AlphaVantage.Net.Core.Tests
         private readonly string _apiKey = ConfigProvider.Configuration["ApiKey"];
         
         [Fact]
-        public async Task ReturnTypedResult()
+        public async Task ReturnResultWithSameTypeAsParser()
         {
             var function = ApiFunction.TIME_SERIES_INTRADAY;
             var symbol = "AAPL";

@@ -1,7 +1,9 @@
 using System;
+using JetBrains.Annotations;
 
 namespace AlphaVantage.Net.Stocks
 {
+    [UsedImplicitly]
     public class GlobalQuote
     {
         public string Symbol { get; set; } = String.Empty;

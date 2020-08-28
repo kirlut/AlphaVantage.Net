@@ -15,6 +15,7 @@
     <ProjectReference Include="..\AlphaVantage.Net.Core\AlphaVantage.Net.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Parsing" />
+    <PackageReference Include="NodaTime" Version="3.0.0" />
+    <PackageReference Include="NodaTime.Serialization.SystemTextJson" Version="1.0.0" />
   </ItemGroup>
 </Project>

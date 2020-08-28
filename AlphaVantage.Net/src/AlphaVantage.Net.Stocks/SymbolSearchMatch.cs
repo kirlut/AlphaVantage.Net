@@ -1,7 +1,10 @@
 using System;
+using JetBrains.Annotations;
+using NodaTime;
 
-namespace AlphaVantage.Net.Stocks.SymbolSearch
+namespace AlphaVantage.Net.Stocks
 {
+    [UsedImplicitly]
     public class SymbolSearchMatch
     {
         public string Symbol { get; set; } = String.Empty;
@@ -12,9 +15,9 @@ namespace AlphaVantage.Net.Stocks.SymbolSearch
         
         public string Region { get; set; } = String.Empty;
 
-        public string MarketOpen { get; set; } = String.Empty;
+        public LocalTime MarketOpen { get; set; }
         
-        public string MarketClose { get; set; } = String.Empty;
+        public LocalTime MarketClose { get; set; }
         
         public string Timezone { get; set; } = String.Empty;
         

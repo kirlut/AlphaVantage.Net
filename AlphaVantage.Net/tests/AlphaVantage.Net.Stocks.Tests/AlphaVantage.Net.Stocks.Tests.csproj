@@ -17,9 +17,13 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\AlphaVantage.Net.Stocks\AlphaVantage.Net.Stocks.csproj" />
+    <ProjectReference Include="..\AlphaVantage.Net.TestUtils\AlphaVantage.Net.TestUtils.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="StockDataParserTests\Data\intraday.json" />
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data\intraday.json">
