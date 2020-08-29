@@ -2,7 +2,7 @@
   <PropertyGroup>
     <PackageId>AlphaVantage.Net.Core</PackageId>
     <Description>Low-level wrapper for Alpha Vantage API based on HttpClient and Newtonsoft Json.Net</Description>
-    <Version>1.0.3</Version>
+    <Version>2.0.0</Version>
     <Authors>LutsenkoKirill</Authors>
     <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

@@ -7,7 +7,7 @@ namespace AlphaVantage.Net.Core.Validation
     /// Result of API call validation
     /// </summary>
     
-    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 3.1. " +
+    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 2.1. " +
               "Consider using classes from the latest version: https://github.com/LutsenkoKirill/AlphaVantage.Net")]
     public class ValidationResult
     {

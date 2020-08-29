@@ -6,7 +6,7 @@ using AlphaVantage.Net.Core.Validation;
 
 namespace AlphaVantage.Net.Stocks.Validation
 {
-    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 3.1. " +
+    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 2.1. " +
               "Consider using classes from the latest version: https://github.com/LutsenkoKirill/AlphaVantage.Net")]
     internal class StocksApiCallValidator : IApiCallValidator
     {

@@ -11,7 +11,7 @@ namespace AlphaVantage.Net.Core.Validation
     /// Implement it for your client in case you need pre-request validation
     /// </remarks>
     
-    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 3.1. " +
+    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 2.1. " +
     "Consider using classes from the latest version: https://github.com/LutsenkoKirill/AlphaVantage.Net")]
     public interface IApiCallValidator
     {

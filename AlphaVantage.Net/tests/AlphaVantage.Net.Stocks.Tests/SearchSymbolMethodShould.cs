@@ -26,16 +26,16 @@ namespace AlphaVantage.Net.Stocks.Tests
             foreach (var searchMatch in searchMatches)
             {
                 searchMatch.Should().NotBeNull()
-                    .And.Match<SymbolSearchMatch>(searchMatch =>
-                        string.IsNullOrWhiteSpace(searchMatch.Symbol) == false &&
-                        string.IsNullOrWhiteSpace(searchMatch.Name) == false &&
-                        string.IsNullOrWhiteSpace(searchMatch.Type) == false &&
-                        string.IsNullOrWhiteSpace(searchMatch.Region) == false &&
-                        string.IsNullOrWhiteSpace(searchMatch.Timezone) == false &&
-                        string.IsNullOrWhiteSpace(searchMatch.Currency) == false &&
-                        searchMatch.MarketOpen != default &&
-                        searchMatch.MarketClose != default &&
-                        searchMatch.MatchScore <= 1 && searchMatch.MatchScore > 0
+                    .And.Match<SymbolSearchMatch>(sm =>
+                        string.IsNullOrWhiteSpace(sm.Symbol) == false &&
+                        string.IsNullOrWhiteSpace(sm.Name) == false &&
+                        string.IsNullOrWhiteSpace(sm.Type) == false &&
+                        string.IsNullOrWhiteSpace(sm.Region) == false &&
+                        string.IsNullOrWhiteSpace(sm.Timezone) == false &&
+                        string.IsNullOrWhiteSpace(sm.Currency) == false &&
+                        sm.MarketOpen != default &&
+                        sm.MarketClose != default &&
+                        sm.MatchScore <= 1 && sm.MatchScore > 0
                     );
             }
         }

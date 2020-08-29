@@ -14,7 +14,7 @@ namespace AlphaVantage.Net.Stocks
     /// <summary>
     /// Client for Alpha Vantage API (stock data only)
     /// </summary>
-    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 3.1. " +
+    [Obsolete("This class is from the old version of AlfaVantage.Net library and will be removed in version 2.1. " +
               "Consider using classes from the latest version: https://github.com/LutsenkoKirill/AlphaVantage.Net")]
     public class AlphaVantageStocksClient
     {
