@@ -41,7 +41,7 @@ namespace AlphaVantage.Net.Stocks.Tests
         }
         
         [Fact]
-        public async Task ReturnEmptyCollectionOnMeaninglessKeyword()
+        public async Task ReturnEmptyCollection_OnMeaninglessKeyword()
         {
             using var client = new AlphaVantageClient(_apiKey);
             using var stocksClient = client.Stocks();

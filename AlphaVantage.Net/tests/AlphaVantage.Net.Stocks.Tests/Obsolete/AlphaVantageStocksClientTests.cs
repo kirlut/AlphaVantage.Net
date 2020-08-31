@@ -19,7 +19,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             Thread.Sleep(TimeSpan.FromSeconds(10)); // to avoid api rejection
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task RequestIntradayTimeSeriesAsync_Test()
         {
             var client = new AlphaVantageStocksClient(ApiKey);
@@ -36,7 +36,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
                 p.GetType() != typeof(StockAdjustedDataPoint)));
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task RequestDailyTimeSeriesAsync_NotAdjusted_Test()
         {
             var client = new AlphaVantageStocksClient(ApiKey);
@@ -54,7 +54,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
                 p.GetType() != typeof(StockAdjustedDataPoint)));
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task RequestDailyTimeSeriesAsync_Adjusted_Test()
         {
             var client = new AlphaVantageStocksClient(ApiKey);
@@ -70,7 +70,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             Assert.True(result.DataPoints.All(p => p is StockAdjustedDataPoint));
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task RequestWeeklyTimeSeriesAsync_NotAdjusted_Test()
         {
             var client = new AlphaVantageStocksClient(ApiKey);
@@ -88,7 +88,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
                 p.GetType() != typeof(StockAdjustedDataPoint)));
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task RequestWeeklyTimeSeriesAsync_Adjusted_Test()
         {
             var client = new AlphaVantageStocksClient(ApiKey);
@@ -104,7 +104,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             Assert.True(result.DataPoints.All(p => p is StockAdjustedDataPoint));
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task RequestMonthlyTimeSeriesAsync_NotAdjusted_Test()
         {
             var client = new AlphaVantageStocksClient(ApiKey);
@@ -122,7 +122,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
                 p.GetType() != typeof(StockAdjustedDataPoint)));
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task RequestMonthlyTimeSeriesAsync_Adjusted_Test()
         {
             var client = new AlphaVantageStocksClient(ApiKey);
@@ -138,7 +138,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             Assert.True(result.DataPoints.All(p => p is StockAdjustedDataPoint));
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task RequestBatchQuotesAsync_Test()
         {
             var client = new AlphaVantageStocksClient(ApiKey);

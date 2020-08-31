@@ -11,7 +11,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
 {
     public class TimeSeriesParserTests
     {
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public void Intraday_ParsingTest()
         {
             var json = File.ReadAllText("Data/intraday.json");
@@ -31,7 +31,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             }
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public void DailyNotAdjusted_ParsingTest()
         {
             var json = File.ReadAllText("Data/daily-not-adjusted.json");
@@ -51,7 +51,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             }
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public void DailyAdjusted_ParsingTest()
         {
             var json = File.ReadAllText("Data/daily-adjusted.json");
@@ -71,7 +71,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             }
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public void WeeklyNotAdjusted_ParsingTest()
         {
             var json = File.ReadAllText("Data/weekly-not-adjusted.json");
@@ -91,7 +91,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             }
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public void WeeklyAdjusted_ParsingTest()
         {
             var json = File.ReadAllText("Data/weekly-adjusted.json");
@@ -110,7 +110,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             }
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public void MonthlyNotAdjusted_ParsingTest()
         {
             var json = File.ReadAllText("Data/monthly-not-adjusted.json");
@@ -130,7 +130,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             }
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public void MonthlyAdjusted_ParsingTest()
         {
             var json = File.ReadAllText("Data/monthly-adjusted.json");
@@ -149,7 +149,7 @@ namespace AlphaVantage.Net.Stocks.Tests.Obsolete
             }
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public void ParsingError_Test()
         {
             var json = File.ReadAllText("Data/bad-data.json");

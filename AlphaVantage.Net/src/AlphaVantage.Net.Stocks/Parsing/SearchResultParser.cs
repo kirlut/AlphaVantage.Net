@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Core.Parsing;
 using JetBrains.Annotations;
 using NodaTime;
@@ -12,20 +14,22 @@ namespace AlphaVantage.Net.Stocks.Parsing
 {
     public class SearchResultParser : IAlphaVantageJsonParser<ICollection<SymbolSearchMatch>>
     {
+        private static readonly JsonSerializerOptions SerializerOptions =
+            SerializerOptionsFactory.GetSerializerOptions();
+
         public ICollection<SymbolSearchMatch> ParseApiResponse(string jsonString)
         {
-            var options = new JsonSerializerOptions
+            try
             {
-                PropertyNameCaseInsensitive = true,
-            };
-
-            var localTimeConverter = new NodaPatternConverter<LocalTime>(
-                LocalTimePattern.CreateWithInvariantCulture("HH:mm"));   
-            options.Converters.Add(localTimeConverter);
-            options.Converters.Add(new DecimalConverter());
-            
-            var searchResult = JsonSerializer.Deserialize<SymbolSearchResult>(jsonString, options);
-            return searchResult.BestMatches;
+                var searchResult = JsonSerializer.Deserialize<SymbolSearchResult>(jsonString, SerializerOptions);
+                return searchResult.BestMatches;
+            }
+            catch (Exception ex)
+            {
+                throw new AlphaVantageParsingException(
+                    "Error occured while parsing Symbol Search response",
+                    ex);
+            }
         }
 
         [UsedImplicitly]
@@ -33,21 +37,6 @@ namespace AlphaVantage.Net.Stocks.Parsing
         {
             [JsonPropertyName("bestMatches")]
             public ICollection<SymbolSearchMatch> BestMatches { get; set; } = new List<SymbolSearchMatch>();
-        }
-        
-        private class DecimalConverter : JsonConverter<decimal>
-        {
-            public override decimal Read(
-                ref Utf8JsonReader reader,
-                Type typeToConvert,
-                JsonSerializerOptions options) =>
-                decimal.Parse(reader.GetString());
-
-            public override void Write(
-                Utf8JsonWriter writer,
-                decimal dateTimeValue,
-                JsonSerializerOptions options) =>
-                throw new NotImplementedException();
         }
     }
 }

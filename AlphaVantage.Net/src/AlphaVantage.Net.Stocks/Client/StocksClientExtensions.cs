@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core;
+using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Stocks.Parsing;
 using AlphaVantage.Net.Stocks.TimeSeries;
+using AlphaVantage.Net.Stocks.Utils;
 
 namespace AlphaVantage.Net.Stocks.Client
 {
@@ -11,21 +13,44 @@ namespace AlphaVantage.Net.Stocks.Client
         private static readonly GlobalQuoteParser GlobalQuoteParser = new GlobalQuoteParser();
         private static readonly SearchResultParser SearchResultParser = new SearchResultParser();
         
-        public static Task<StockTimeSeries> GetTimeSeriesAsync(this StocksClient stocksClient, 
+        private const string SymbolQueryVar = "symbol";
+        private const string IntradayIntervalQueryVar = "interval";
+        private const string OutputSizeQueryVar = "outputsize";
+        
+        public static async Task<StockTimeSeries> GetTimeSeriesAsync(this StocksClient stocksClient, 
             string symbol, 
-            IntradayInterval interval,
+            TimeSeriesType seriesType,
             TimeSeriesSize size,
             bool isAdjusted = false)
         {
-            return Task.FromResult(new StockTimeSeries());
+            var parser = new StockTimeSeriesParser(seriesType, isAdjusted);
+            
+            var query = new Dictionary<string, string>()
+            {
+                {SymbolQueryVar, symbol},
+                {OutputSizeQueryVar, size.ConvertToString()}
+            };
+
+            var function = seriesType.ConvertToApiFunction(isAdjusted);
+            
+            return await stocksClient.RequestApiAsync(parser, function, query);
         }
         
-        public static Task<StockTimeSeries> GetIntradayTimeSeriesAsync(this StocksClient stocksClient, 
+        public static async Task<StockTimeSeries> GetIntradayTimeSeriesAsync(this StocksClient stocksClient, 
             string symbol, 
             IntradayInterval interval,
             TimeSeriesSize size)
         {
-            return Task.FromResult(new StockTimeSeries());
+            var parser = new StockTimeSeriesParser(TimeSeriesType.Intraday, false);
+            
+            var query = new Dictionary<string, string>()
+            {
+                {SymbolQueryVar, symbol},
+                {IntradayIntervalQueryVar, interval.ConvertToString()},
+                {OutputSizeQueryVar, size.ConvertToString()}
+            };
+            
+            return await stocksClient.RequestApiAsync(parser, ApiFunction.TIME_SERIES_INTRADAY, query);
         }
         
         /// <summary>
@@ -38,7 +63,7 @@ namespace AlphaVantage.Net.Stocks.Client
         /// </remarks>
         public static async Task<GlobalQuote?> GetGlobalQuoteAsync(this StocksClient stocksClient, string symbol)
         {
-            var query = new Dictionary<string, string>(){{"symbol", symbol}};
+            var query = new Dictionary<string, string>(){{SymbolQueryVar, symbol}};
             return await stocksClient.RequestApiAsync(GlobalQuoteParser, ApiFunction.GLOBAL_QUOTE, query);
         }
         

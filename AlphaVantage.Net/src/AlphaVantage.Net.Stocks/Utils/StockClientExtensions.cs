@@ -1,4 +1,6 @@
 ﻿using System;
+using AlphaVantage.Net.Core;
+using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Stocks.TimeSeries;
 
 namespace AlphaVantage.Net.Stocks.Utils
@@ -7,31 +9,41 @@ namespace AlphaVantage.Net.Stocks.Utils
     {
         public static string ConvertToString(this TimeSeriesSize sizeEnum)
         {
-            if(sizeEnum == TimeSeriesSize.Compact)
-                    return "compact";
-
-            return "full";
+            return sizeEnum == TimeSeriesSize.Compact ? "compact" : "full";
         }
 
         public static string ConvertToString(this IntradayInterval interval)
         {
-            switch (interval)
+            return interval switch
             {
-                case IntradayInterval.OneMin:
-                    return "1min";
-                case IntradayInterval.FiveMin:
-                    return "5min";
-                case IntradayInterval.FifteenMin:
-                    return "15min";
-                case IntradayInterval.ThirtyMin:
-                    return "30min";
-                case IntradayInterval.SixtyMin:
-                    return "60min";
-                    
-                //unreachable:
-                default:
-                    return String.Empty;
-            }
+                IntradayInterval.OneMin => "1min",
+                IntradayInterval.FiveMin => "5min",
+                IntradayInterval.FifteenMin => "15min",
+                IntradayInterval.ThirtyMin => "30min",
+                IntradayInterval.SixtyMin => "60min",
+                _ => String.Empty
+            };
+        }
+
+        public static ApiFunction ConvertToApiFunction(this TimeSeriesType timeSeriesType, bool isAdjusted)
+        {
+            return (timeSeriesType, isAdjusted) switch
+            {
+                (TimeSeriesType.Daily, false) => ApiFunction.TIME_SERIES_DAILY,
+                (TimeSeriesType.Daily, true) => ApiFunction.TIME_SERIES_DAILY_ADJUSTED,
+                
+                (TimeSeriesType.Weekly, false) => ApiFunction.TIME_SERIES_WEEKLY,
+                (TimeSeriesType.Weekly, true) => ApiFunction.TIME_SERIES_WEEKLY_ADJUSTED,
+                
+                (TimeSeriesType.Monthly, false) => ApiFunction.TIME_SERIES_MONTHLY,
+                (TimeSeriesType.Monthly, true) => ApiFunction.TIME_SERIES_MONTHLY_ADJUSTED,
+                
+                (TimeSeriesType.Intraday, _) => ApiFunction.TIME_SERIES_INTRADAY,
+                
+                // unreachable
+                _ => throw new AlphaVantageException(
+                    $"Unpredictable combination: seriesType = {timeSeriesType}, isAdjusted = {isAdjusted}")
+            };
         }
     }
 }

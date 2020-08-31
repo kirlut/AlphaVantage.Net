@@ -13,7 +13,7 @@ namespace AlphaVantage.Net.Core.Tests.Obsolete
     {
         private readonly string _apiKey = ConfigProvider.Configuration["ApiKey"];
 
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task CorrectRequestTest()
         {
             var function = ApiFunction.TIME_SERIES_INTRADAY;
@@ -32,7 +32,7 @@ namespace AlphaVantage.Net.Core.Tests.Obsolete
             Assert.True(response.ContainsKey("Time Series (15min)"));
         }
 
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task BadRequestTest()
         {
             var function = ApiFunction.TIME_SERIES_INTRADAY;
@@ -52,7 +52,7 @@ namespace AlphaVantage.Net.Core.Tests.Obsolete
             });
         }
         
-        [Fact]
+        [Fact(Skip = "Obsolete")]
         public async Task ValidationErrorTest()
         {
             var function = ApiFunction.TIME_SERIES_INTRADAY;
