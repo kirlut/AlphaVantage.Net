@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core.Client;
 using AlphaVantage.Net.Stocks.Client;

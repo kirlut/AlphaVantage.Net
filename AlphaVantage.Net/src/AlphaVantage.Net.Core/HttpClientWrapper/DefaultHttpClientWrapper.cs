@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace AlphaVantage.Net.Core.HttpClientWrapper
 {
     /// <summary>
-    /// Default wrapper for <see cref="HttpClient"/> that doesn't add any additional logic
+    /// Default wrapper for <see cref="HttpClient"/> that doesn't contains any additional logic
     /// </summary>
     public class DefaultHttpClientWrapper : IHttpClientWrapper
     {

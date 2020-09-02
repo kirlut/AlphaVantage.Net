@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 namespace AlphaVantage.Net.Core.HttpClientWrapper
 {
     /// <summary>
-    /// Only requests passing thru given instance of the client are throttled.
-    /// Two different instances of the client may have totally different rate limites.
+    /// Only requests passing through given instance of the client are throttled.
+    /// Two different instances of the client may have totally different rate limits.
     /// </summary>
     public class HttpClientWithRateLimit : IHttpClientWrapper
     {

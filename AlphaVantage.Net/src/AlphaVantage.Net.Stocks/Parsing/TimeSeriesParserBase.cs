@@ -7,7 +7,7 @@ using AlphaVantage.Net.Stocks.TimeSeries;
 
 namespace AlphaVantage.Net.Stocks.Parsing
 {
-    public class TimeSeriesParserBase
+    internal class TimeSeriesParserBase
     {
         protected List<StockDataPoint> GetDataPoints(JsonDocument jsonDocument, bool isAdjusted)
         {

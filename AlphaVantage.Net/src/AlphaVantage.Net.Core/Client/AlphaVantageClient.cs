@@ -6,10 +6,12 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Core.HttpClientWrapper;
+using JetBrains.Annotations;
 using Microsoft.AspNetCore.WebUtilities;
 
 namespace AlphaVantage.Net.Core.Client
 {
+    [UsedImplicitly]
     public partial class AlphaVantageClient : IDisposable
     {
         private readonly IHttpClientWrapper _httpClient;

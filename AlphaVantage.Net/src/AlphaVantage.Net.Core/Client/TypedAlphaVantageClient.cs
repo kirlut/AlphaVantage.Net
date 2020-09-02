@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AlphaVantage.Net.Core.HttpClientWrapper;
 using AlphaVantage.Net.Core.Parsing;
 
 namespace AlphaVantage.Net.Core.Client

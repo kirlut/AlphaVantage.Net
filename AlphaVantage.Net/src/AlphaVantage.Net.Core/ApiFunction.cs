@@ -26,6 +26,7 @@ namespace AlphaVantage.Net.Core
         INCOME_STATEMENT,
         BALANCE_SHEET,
         CASH_FLOW,
+        LISTING_STATUS,
         
         // Forex (FX)
         CURRENCY_EXCHANGE_RATE,

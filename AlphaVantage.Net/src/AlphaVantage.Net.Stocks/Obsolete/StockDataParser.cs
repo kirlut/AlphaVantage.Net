@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
-using AlphaVantage.Net.Stocks.BatchQuotes;
 using AlphaVantage.Net.Stocks.Parsing.Exceptions;
 using AlphaVantage.Net.Stocks.Parsing.JsonTokens;
 using AlphaVantage.Net.Stocks.TimeSeries;
-using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 // ReSharper disable CheckNamespace
 

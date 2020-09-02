@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Text.Json;
 using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Core.Parsing;
@@ -10,7 +6,7 @@ using AlphaVantage.Net.Stocks.TimeSeries;
 
 namespace AlphaVantage.Net.Stocks.Parsing
 {
-    public class StockTimeSeriesParser : TimeSeriesParserBase, IAlphaVantageJsonDocumentParser<StockTimeSeries>
+    internal class StockTimeSeriesParser : TimeSeriesParserBase, IAlphaVantageJsonDocumentParser<StockTimeSeries>
     {
         private readonly TimeSeriesType _type;
         private readonly bool _isAdjusted;

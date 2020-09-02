@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 
 namespace AlphaVantage.Net.Stocks.Parsing
 {
-    public class GlobalQuoteParser : IAlphaVantageJsonParser<GlobalQuote?>
+    internal class GlobalQuoteParser : IAlphaVantageJsonParser<GlobalQuote?>
     {
         private static readonly JsonSerializerOptions SerializerOptions =
             SerializerOptionsFactory.GetSerializerOptions();

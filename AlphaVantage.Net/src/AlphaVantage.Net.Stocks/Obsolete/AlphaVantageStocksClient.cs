@@ -6,7 +6,7 @@ using AlphaVantage.Net.Stocks.BatchQuotes;
 using AlphaVantage.Net.Stocks.Parsing;
 using AlphaVantage.Net.Stocks.TimeSeries;
 using AlphaVantage.Net.Stocks.Utils;
-using AlphaVantage.Net.Stocks.Validation;
+
 // ReSharper disable CheckNamespace
 
 namespace AlphaVantage.Net.Stocks

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-// ReSharper disable CheckNamespace
 
 namespace AlphaVantage.Net.Stocks.TimeSeries
 {
