@@ -17,12 +17,26 @@ namespace AlphaVantage.Net.Stocks.Client
         private const string IntradayIntervalQueryVar = "interval";
         private const string OutputSizeQueryVar = "outputsize";
         
+        /// <summary>
+        /// Return stocks time series for requested symbol 
+        /// </summary>
+        /// <param name="stocksClient"></param>
+        /// <param name="symbol"></param>
+        /// <param name="seriesType"></param>
+        /// <param name="size"></param>
+        /// <param name="isAdjusted"></param>
+        /// <returns></returns>
         public static async Task<StockTimeSeries> GetTimeSeriesAsync(this StocksClient stocksClient, 
             string symbol, 
             TimeSeriesType seriesType,
             TimeSeriesSize size,
             bool isAdjusted = false)
         {
+#pragma warning disable 618
+            if(seriesType == TimeSeriesType.Intraday ) throw new AlphaVantageException(
+                "Please consider using GetIntradayTimeSeriesAsync() method for Intraday time series");
+#pragma warning restore 618
+            
             var parser = new StockTimeSeriesParser(seriesType, isAdjusted);
             
             var query = new Dictionary<string, string>()
@@ -36,12 +50,20 @@ namespace AlphaVantage.Net.Stocks.Client
             return await stocksClient.RequestApiAsync(parser, function, query);
         }
         
-        public static async Task<StockTimeSeries> GetIntradayTimeSeriesAsync(this StocksClient stocksClient, 
+        /// <summary>
+        /// Return intraday stocks time series for requested symbol
+        /// </summary>
+        /// <param name="stocksClient"></param>
+        /// <param name="symbol"></param>
+        /// <param name="interval"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static async Task<IntradayTimeSeries> GetIntradayTimeSeriesAsync(this StocksClient stocksClient, 
             string symbol, 
             IntradayInterval interval,
             TimeSeriesSize size)
         {
-            var parser = new StockTimeSeriesParser(TimeSeriesType.Intraday, false);
+            var parser = new IntradayTimeSeriesParser(interval);
             
             var query = new Dictionary<string, string>()
             {

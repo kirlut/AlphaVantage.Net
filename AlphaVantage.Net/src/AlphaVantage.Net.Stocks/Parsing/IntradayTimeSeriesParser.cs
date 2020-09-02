@@ -10,29 +10,26 @@ using AlphaVantage.Net.Stocks.TimeSeries;
 
 namespace AlphaVantage.Net.Stocks.Parsing
 {
-    public class StockTimeSeriesParser : TimeSeriesParserBase, IAlphaVantageJsonDocumentParser<StockTimeSeries>
+    public class IntradayTimeSeriesParser : TimeSeriesParserBase, IAlphaVantageJsonDocumentParser<IntradayTimeSeries>
     {
-        private readonly TimeSeriesType _type;
-        private readonly bool _isAdjusted;
+        private readonly IntradayInterval _interval;
 
-        public StockTimeSeriesParser(TimeSeriesType type, bool isAdjusted)
+        public IntradayTimeSeriesParser(IntradayInterval interval)
         {
-            _isAdjusted = isAdjusted;
-            _type = type;
+            _interval = interval;
         }
 
-        public StockTimeSeries ParseApiResponse(JsonDocument jsonDocument)
+        public IntradayTimeSeries ParseApiResponse(JsonDocument jsonDocument)
         {
-            var result = new StockTimeSeries()
+            var result = new IntradayTimeSeries()
             {
-                Type = _type,
-                IsAdjusted = _isAdjusted,
+                Interval = _interval
             };
 
             try
             {
                 result.MetaData = jsonDocument.ExtractMetaData();
-                result.DataPoints = GetDataPoints(jsonDocument, _isAdjusted);
+                result.DataPoints = GetDataPoints(jsonDocument, false);
 
                 return result;
             }

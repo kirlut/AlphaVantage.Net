@@ -38,8 +38,6 @@ namespace AlphaVantage.Net.Stocks.Utils
                 (TimeSeriesType.Monthly, false) => ApiFunction.TIME_SERIES_MONTHLY,
                 (TimeSeriesType.Monthly, true) => ApiFunction.TIME_SERIES_MONTHLY_ADJUSTED,
                 
-                (TimeSeriesType.Intraday, _) => ApiFunction.TIME_SERIES_INTRADAY,
-                
                 // unreachable
                 _ => throw new AlphaVantageException(
                     $"Unpredictable combination: seriesType = {timeSeriesType}, isAdjusted = {isAdjusted}")

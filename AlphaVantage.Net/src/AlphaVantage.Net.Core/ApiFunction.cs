@@ -11,6 +11,7 @@ namespace AlphaVantage.Net.Core
     {
         // Stock Time Series Data
         TIME_SERIES_INTRADAY,
+        TIME_SERIES_INTRADAY_EXTENDED,
         TIME_SERIES_DAILY,
         TIME_SERIES_DAILY_ADJUSTED,
         TIME_SERIES_WEEKLY,

@@ -16,7 +16,7 @@ namespace AlphaVantage.Net.Core.Tests
         [Fact]
         public async Task ReturnJsonDocument_OnCorrectRequest_WithoutClean()
         {
-            var function = ApiFunction.TIME_SERIES_INTRADAY;
+            const ApiFunction function = ApiFunction.TIME_SERIES_INTRADAY;
             var query = GetQuery("AAPL", "15min");
 
             using var client = new Client.AlphaVantageClient(_apiKey);
@@ -33,7 +33,7 @@ namespace AlphaVantage.Net.Core.Tests
         [Fact]
         public async Task ReturnJsonDocument_OnCorrectRequest_WithClean()
         {
-            var function = ApiFunction.TIME_SERIES_INTRADAY;
+            const ApiFunction function = ApiFunction.TIME_SERIES_INTRADAY;
             var query = GetQuery("AAPL", "15min");
 
             using var client = new Client.AlphaVantageClient(_apiKey);
@@ -59,7 +59,7 @@ namespace AlphaVantage.Net.Core.Tests
         [Fact]
         public async Task ReturnJsonString_OnCorrectRequest_WithoutClean()
         {
-            var function = ApiFunction.TIME_SERIES_INTRADAY;
+            const ApiFunction function = ApiFunction.TIME_SERIES_INTRADAY;
             var query = GetQuery("AAPL", "15min");
 
             using var client = new Client.AlphaVantageClient(_apiKey);
@@ -74,7 +74,7 @@ namespace AlphaVantage.Net.Core.Tests
         [Fact]
         public async Task ReturnJsonString_OnCorrectRequest_WithClean()
         {
-            var function = ApiFunction.TIME_SERIES_INTRADAY;
+            const ApiFunction function = ApiFunction.TIME_SERIES_INTRADAY;
             var query = GetQuery("AAPL", "15min");
 
             using var client = new Client.AlphaVantageClient(_apiKey);
@@ -91,7 +91,7 @@ namespace AlphaVantage.Net.Core.Tests
         [Fact]
         public async Task ThrowExceptionOnIncorrectRequest()
         {
-            var function = ApiFunction.TIME_SERIES_INTRADAY;
+            const ApiFunction function = ApiFunction.TIME_SERIES_INTRADAY;
             var query = GetQuery("wrong_symbol", "15min");
 
             using var client = new Client.AlphaVantageClient(_apiKey);

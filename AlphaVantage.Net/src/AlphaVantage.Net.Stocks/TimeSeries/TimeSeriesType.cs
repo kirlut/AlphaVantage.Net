@@ -1,11 +1,14 @@
-﻿namespace AlphaVantage.Net.Stocks.TimeSeries
+﻿using System;
+
+namespace AlphaVantage.Net.Stocks.TimeSeries
 {
     public enum TimeSeriesType
     {
-        Unknown = 0,
-        Intraday = 1,
-        Daily = 2,
-        Weekly = 3,
-        Monthly = 4
+        Daily,
+        Weekly,
+        Monthly,
+        
+        [Obsolete("This enum value is no longer in use in 2.0 and will be removed in 2.1")]
+        Intraday
     }
 }
