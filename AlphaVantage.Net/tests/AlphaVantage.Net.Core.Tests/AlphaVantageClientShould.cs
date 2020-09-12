@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using AlphaVantage.Net.Core.Client;
 using AlphaVantage.Net.Core.Exceptions;
 using FluentAssertions;
 using AlphaVantage.Net.TestUtils;
@@ -19,7 +20,7 @@ namespace AlphaVantage.Net.Core.Tests
             const ApiFunction function = ApiFunction.TIME_SERIES_INTRADAY;
             var query = GetQuery("AAPL", "15min");
 
-            using var client = new Client.AlphaVantageClient(_apiKey);
+            using var client = new AlphaVantageClient(_apiKey);
             var response = await client.RequestParsedJsonAsync(function, query);
 
             response
@@ -62,7 +63,7 @@ namespace AlphaVantage.Net.Core.Tests
             const ApiFunction function = ApiFunction.TIME_SERIES_INTRADAY;
             var query = GetQuery("AAPL", "15min");
 
-            using var client = new Client.AlphaVantageClient(_apiKey);
+            using var client = new AlphaVantageClient(_apiKey);
             var response = await client.RequestPureJsonAsync(function, query);
 
             response
@@ -77,7 +78,7 @@ namespace AlphaVantage.Net.Core.Tests
             const ApiFunction function = ApiFunction.TIME_SERIES_INTRADAY;
             var query = GetQuery("AAPL", "15min");
 
-            using var client = new Client.AlphaVantageClient(_apiKey);
+            using var client = new AlphaVantageClient(_apiKey);
             var response = await client.RequestPureJsonAsync(function, query, true);
 
             response
@@ -94,7 +95,7 @@ namespace AlphaVantage.Net.Core.Tests
             const ApiFunction function = ApiFunction.TIME_SERIES_INTRADAY;
             var query = GetQuery("wrong_symbol", "15min");
 
-            using var client = new Client.AlphaVantageClient(_apiKey);
+            using var client = new AlphaVantageClient(_apiKey);
 
             await Assert.ThrowsAsync<AlphaVantageException>(async () =>
             {

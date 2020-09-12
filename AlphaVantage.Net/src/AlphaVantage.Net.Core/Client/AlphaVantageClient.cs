@@ -17,6 +17,17 @@ namespace AlphaVantage.Net.Core.Client
         private readonly IHttpClientWrapper _httpClient;
         private readonly string _apiKey;
 
+        /// <summary>
+        /// Request Alpha Vantage API and get result as parsed <see cref="JsonDocument"/>
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="query"></param>
+        /// <param name="cleanJsonFromSequenceNumbers">
+        /// Set to true if you want to clean response from sequential numbers.
+        /// E.g. field name "1. price" will become "price".
+        /// Default - false
+        /// </param>
+        /// <returns></returns>
         public async Task<JsonDocument> RequestParsedJsonAsync(
             ApiFunction function,
             IDictionary<string, string>? query = null,
@@ -30,6 +41,17 @@ namespace AlphaVantage.Net.Core.Client
             return jsonDocument;
         }
 
+        /// <summary>
+        /// Request Alpha Vantage API and get result as pure JSON <see cref="string"/>
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="query"></param>
+        /// <param name="cleanJsonFromSequenceNumbers">
+        /// Set to true if you want to clean response from sequential numbers.
+        /// E.g. field name "1. price" will become "price".
+        /// Default - false
+        /// </param>
+        /// <returns></returns>
         public async Task<string> RequestPureJsonAsync(
             ApiFunction function,
             IDictionary<string, string>? query = null,
