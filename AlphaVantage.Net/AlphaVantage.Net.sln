@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Stocks.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.TestUtils", "tests\AlphaVantage.Net.TestUtils\AlphaVantage.Net.TestUtils.csproj", "{A0714AEF-E8F1-4950-8785-3365E9AF0196}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.TechIndicators", "src\AlphaVantage.Net.TechIndicators\AlphaVantage.Net.TechIndicators.csproj", "{38A50CAA-7624-41E0-9EE4-5F9A1CCB45BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.TechnicalIndicators", "src\AlphaVantage.Net.TechnicalIndicators\AlphaVantage.Net.TechnicalIndicators.csproj", "{38A50CAA-7624-41E0-9EE4-5F9A1CCB45BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

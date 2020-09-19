@@ -14,8 +14,6 @@ namespace AlphaVantage.Net.Stocks.Client
         private static readonly GlobalQuoteParser GlobalQuoteParser = new GlobalQuoteParser();
         private static readonly SearchResultParser SearchResultParser = new SearchResultParser();
         
-        private const string SymbolQueryVar = "symbol";
-        private const string IntradayIntervalQueryVar = "interval";
         private const string OutputSizeQueryVar = "outputsize";
         
         /// <summary>
@@ -37,14 +35,14 @@ namespace AlphaVantage.Net.Stocks.Client
             
             var query = new Dictionary<string, string>()
             {
-                {SymbolQueryVar, symbol},
+                {ApiConstants.SymbolQueryVar, symbol},
                 {OutputSizeQueryVar, size.ConvertToString()}
             };
 
             var function = interval.ConvertToApiFunction(isAdjusted);
             if (function == ApiFunction.TIME_SERIES_INTRADAY)
             {
-                query.Add(IntradayIntervalQueryVar, interval.ConvertToString());
+                query.Add(ApiConstants.IntervalQueryVar, interval.ConvertToString());
             }
             
             return await stocksClient.RequestApiAsync(parser, function, query);
@@ -60,7 +58,7 @@ namespace AlphaVantage.Net.Stocks.Client
         /// </remarks>
         public static async Task<GlobalQuote?> GetGlobalQuoteAsync(this StocksClient stocksClient, string symbol)
         {
-            var query = new Dictionary<string, string>(){{SymbolQueryVar, symbol}};
+            var query = new Dictionary<string, string>(){{ApiConstants.SymbolQueryVar, symbol}};
             return await stocksClient.RequestApiAsync(GlobalQuoteParser, ApiFunction.GLOBAL_QUOTE, query);
         }
         

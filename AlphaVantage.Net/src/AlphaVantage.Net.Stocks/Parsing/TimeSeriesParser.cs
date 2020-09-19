@@ -46,7 +46,7 @@ namespace AlphaVantage.Net.Stocks.Parsing
             }
         }
         
-        private List<StockDataPoint> GetDataPoints(JsonDocument jsonDocument, bool isAdjusted)
+        private static List<StockDataPoint> GetDataPoints(JsonDocument jsonDocument, bool isAdjusted)
         {
             var result = new List<StockDataPoint>();
 
