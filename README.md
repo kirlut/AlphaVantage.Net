@@ -22,9 +22,9 @@ This package allow you to request any available data from API, but you have to m
 
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.Core -Version 2.0.0-preview-1`  
+`Install-Package AlphaVantage.Net.Core -Version 2.0.0-preview-2`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.Core --version 2.0.0-preview-1`  
+`dotnet add package AlphaVantage.Net.Core --version 2.0.0-preview-2`  
 
 ### Usage: 
 ```csharp
@@ -65,15 +65,16 @@ This package provide additional abstraction layer under `AlphaVantage.Net.Core` 
 
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.Stocks -Version 2.0.0-preview-1`  
+`Install-Package AlphaVantage.Net.Stocks -Version 2.0.0-preview-2`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.Stocks --version 2.0.0-preview-1`  
+`dotnet add package AlphaVantage.Net.Stocks --version 2.0.0-preview-2`  
 
 ### Usage: 
 ```csharp
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core.Client;
+using AlphaVantage.Net.Core.Intervals;
 using AlphaVantage.Net.Stocks;
 using AlphaVantage.Net.Stocks.Client;
 using AlphaVantage.Net.Stocks.TimeSeries;
@@ -88,9 +89,7 @@ public async Task AlphaVantageStocksDemo()
     using var client = new AlphaVantageClient(apiKey);
     using var stocksClient = client.Stocks();
 
-    StockTimeSeries stockTs = await stocksClient.GetTimeSeriesAsync("AAPL", TimeSeriesType.Monthly, TimeSeriesSize.Full, isAdjusted: true);
-
-    IntradayTimeSeries intradayTs = await stocksClient.GetIntradayTimeSeriesAsync("AAPL", IntradayInterval.FifteenMin, TimeSeriesSize.Full);
+    StockTimeSeries stockTs = await stocksClient.GetTimeSeriesAsync("AAPL", Interval.Daily, TimeSeriesSize.Full, isAdjusted: true);
 
     GlobalQuote globalQuote = await stocksClient.GetGlobalQuoteAsync("AAPL");
 

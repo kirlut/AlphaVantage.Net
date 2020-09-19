@@ -4,7 +4,7 @@
     <Description>
       High-level POCO classes and extensions for client from AlphaVantage.Net.Core that simplify retrieval of stock time series data from Alpha Vantage API and perform parsing for you.
     </Description>
-    <Version>2.0.0-preview-1</Version>
+    <Version>2.0.0-preview-2</Version>
     <Authors>LutsenkoKirill</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net/tree/v2</RepositoryUrl>

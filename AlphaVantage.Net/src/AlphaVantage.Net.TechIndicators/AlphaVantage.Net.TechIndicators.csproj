@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageId>AlphaVantage.Net.TechIndicators</PackageId>
+        <Description>
+            High-level POCO classes and extensions for client from AlphaVantage.Net.Core that simplify retrieval of Technical Indicators data.
+        </Description>
+        <Version>2.0.0-preview-2</Version>
+        <Authors>LutsenkoKirill</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net/tree/v2</RepositoryUrl>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+        <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    </PropertyGroup>
+
+</Project>

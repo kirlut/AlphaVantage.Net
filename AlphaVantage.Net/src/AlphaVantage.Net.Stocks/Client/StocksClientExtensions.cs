@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core;
 using AlphaVantage.Net.Core.Exceptions;
+using AlphaVantage.Net.Core.Intervals;
 using AlphaVantage.Net.Stocks.Parsing;
 using AlphaVantage.Net.Stocks.TimeSeries;
 using AlphaVantage.Net.Stocks.Utils;
@@ -22,22 +23,17 @@ namespace AlphaVantage.Net.Stocks.Client
         /// </summary>
         /// <param name="stocksClient"></param>
         /// <param name="symbol"></param>
-        /// <param name="seriesType"></param>
+        /// <param name="interval"></param>
         /// <param name="size"></param>
         /// <param name="isAdjusted"></param>
         /// <returns></returns>
         public static async Task<StockTimeSeries> GetTimeSeriesAsync(this StocksClient stocksClient, 
             string symbol, 
-            TimeSeriesType seriesType,
+            Interval interval,
             TimeSeriesSize size,
             bool isAdjusted = false)
         {
-#pragma warning disable 618
-            if(seriesType == TimeSeriesType.Intraday ) throw new AlphaVantageException(
-                "Please consider using GetIntradayTimeSeriesAsync() method for Intraday time series");
-#pragma warning restore 618
-            
-            var parser = new StockTimeSeriesParser(seriesType, isAdjusted);
+            var parser = new TimeSeriesParser(interval, isAdjusted);
             
             var query = new Dictionary<string, string>()
             {
@@ -45,36 +41,15 @@ namespace AlphaVantage.Net.Stocks.Client
                 {OutputSizeQueryVar, size.ConvertToString()}
             };
 
-            var function = seriesType.ConvertToApiFunction(isAdjusted);
+            var function = interval.ConvertToApiFunction(isAdjusted);
+            if (function == ApiFunction.TIME_SERIES_INTRADAY)
+            {
+                query.Add(IntradayIntervalQueryVar, interval.ConvertToString());
+            }
             
             return await stocksClient.RequestApiAsync(parser, function, query);
         }
-        
-        /// <summary>
-        /// Return intraday stocks time series for requested symbol
-        /// </summary>
-        /// <param name="stocksClient"></param>
-        /// <param name="symbol"></param>
-        /// <param name="interval"></param>
-        /// <param name="size"></param>
-        /// <returns></returns>
-        public static async Task<IntradayTimeSeries> GetIntradayTimeSeriesAsync(this StocksClient stocksClient, 
-            string symbol, 
-            IntradayInterval interval,
-            TimeSeriesSize size)
-        {
-            var parser = new IntradayTimeSeriesParser(interval);
-            
-            var query = new Dictionary<string, string>()
-            {
-                {SymbolQueryVar, symbol},
-                {IntradayIntervalQueryVar, interval.ConvertToString()},
-                {OutputSizeQueryVar, size.ConvertToString()}
-            };
-            
-            return await stocksClient.RequestApiAsync(parser, ApiFunction.TIME_SERIES_INTRADAY, query);
-        }
-        
+
         /// <summary>
         /// Returns the price and volume information for a symbol
         /// </summary>

@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using AlphaVantage.Net.Core.Client;
 using AlphaVantage.Net.Core.Exceptions;
+using AlphaVantage.Net.Core.Intervals;
 using AlphaVantage.Net.Stocks.Client;
 using AlphaVantage.Net.Stocks.TimeSeries;
 using AlphaVantage.Net.TestUtils;
@@ -16,29 +17,29 @@ namespace AlphaVantage.Net.Stocks.Tests
         private readonly string _apiKey = ConfigProvider.Configuration["ApiKey"];
 
         [Theory]
-        [InlineData(TimeSeriesType.Daily, TimeSeriesSize.Compact, false)]
-        [InlineData(TimeSeriesType.Weekly, TimeSeriesSize.Compact, false)]
-        [InlineData(TimeSeriesType.Monthly, TimeSeriesSize.Compact, false)]
-        [InlineData(TimeSeriesType.Daily, TimeSeriesSize.Full, false)]
-        [InlineData(TimeSeriesType.Weekly, TimeSeriesSize.Full, false)]
-        [InlineData(TimeSeriesType.Monthly, TimeSeriesSize.Full, false)]
-        [InlineData(TimeSeriesType.Daily, TimeSeriesSize.Compact, true)]
-        [InlineData(TimeSeriesType.Weekly, TimeSeriesSize.Compact, true)]
-        [InlineData(TimeSeriesType.Monthly, TimeSeriesSize.Compact, true)]
-        [InlineData(TimeSeriesType.Daily, TimeSeriesSize.Full, true)]
-        [InlineData(TimeSeriesType.Weekly, TimeSeriesSize.Full, true)]
-        [InlineData(TimeSeriesType.Monthly, TimeSeriesSize.Full, true)]
-        public async Task ReturnValidTimeSeries(TimeSeriesType seriesType, TimeSeriesSize size, bool isAdjusted)
+        [InlineData(Interval.Daily, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Weekly, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Monthly, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Daily, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Weekly, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Monthly, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Daily, TimeSeriesSize.Compact, true)]
+        [InlineData(Interval.Weekly, TimeSeriesSize.Compact, true)]
+        [InlineData(Interval.Monthly, TimeSeriesSize.Compact, true)]
+        [InlineData(Interval.Daily, TimeSeriesSize.Full, true)]
+        [InlineData(Interval.Weekly, TimeSeriesSize.Full, true)]
+        [InlineData(Interval.Monthly, TimeSeriesSize.Full, true)]
+        public async Task ReturnValidTimeSeries(Interval interval, TimeSeriesSize size, bool isAdjusted)
         {
             using var client = new AlphaVantageClient(_apiKey);
             using var stocksClient = client.Stocks();
 
-            var timeSeries = await stocksClient.GetTimeSeriesAsync("AAPL", seriesType, size, isAdjusted);
+            var timeSeries = await stocksClient.GetTimeSeriesAsync("AAPL", interval, size, isAdjusted);
 
             timeSeries.Should().NotBeNull()
                 .And.Match<StockTimeSeries>(ts =>
                     ts.IsAdjusted == isAdjusted &&
-                    ts.Type == seriesType);
+                    ts.Interval == interval);
 
             timeSeries.MetaData.Should().NotBeNull()
                 .And.HaveCountGreaterThan(1);
@@ -52,7 +53,84 @@ namespace AlphaVantage.Net.Stocks.Tests
             
             timeSeries.DataPoints.Should()
                 .OnlyContain(dp => 
-                    IsAdjustedDataPointValid(dp, seriesType == TimeSeriesType.Daily && isAdjusted));
+                    IsAdjustedDataPointValid(dp, interval == Interval.Daily && isAdjusted));
+        }
+
+        [Theory]
+        [InlineData(Interval.Min1, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Min5, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Min15, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Min30, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Min60, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Min1, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Min5, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Min15, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Min30, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Min60, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Min1, TimeSeriesSize.Full, true)]
+        [InlineData(Interval.Min5, TimeSeriesSize.Full, true)]
+        [InlineData(Interval.Min15, TimeSeriesSize.Full, true)]
+        [InlineData(Interval.Min30, TimeSeriesSize.Full, true)]
+        [InlineData(Interval.Min60, TimeSeriesSize.Full, true)]
+        [InlineData(Interval.Min1, TimeSeriesSize.Compact, true)]
+        [InlineData(Interval.Min5, TimeSeriesSize.Compact, true)]
+        [InlineData(Interval.Min15, TimeSeriesSize.Compact, true)]
+        [InlineData(Interval.Min30, TimeSeriesSize.Compact, true)]
+        [InlineData(Interval.Min60, TimeSeriesSize.Compact, true)]
+        public async Task ReturnValidIntradayTimeSeries(Interval interval, TimeSeriesSize size, bool isAdjusted)
+        {
+            using var client = new AlphaVantageClient(_apiKey);
+            using var stocksClient = client.Stocks();
+
+            var timeSeries = await stocksClient.GetTimeSeriesAsync("AAPL", interval, size, isAdjusted);
+
+            timeSeries.Should().NotBeNull()
+                .And.Match<StockTimeSeries>(ts =>
+                    ts.IsAdjusted == false && // intraday ts are always not adjusted
+                    ts.Interval == interval);
+
+            timeSeries.MetaData.Should().NotBeNull()
+                .And.HaveCountGreaterThan(1);
+
+            timeSeries.DataPoints.Should().NotBeNull()
+                .And.HaveCountGreaterThan(1)
+                .And.NotContainNulls()
+                .And.OnlyContain(dp => 
+                    IsDataPointValid(dp) && dp.GetType() != typeof(StockAdjustedDataPoint));
+        }
+
+        [Theory]
+        [InlineData(Interval.Daily, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Weekly, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Monthly, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Daily, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Weekly, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Monthly, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Daily, TimeSeriesSize.Compact, true)]
+        [InlineData(Interval.Weekly, TimeSeriesSize.Compact, true)]
+        [InlineData(Interval.Monthly, TimeSeriesSize.Compact, true)]
+        [InlineData(Interval.Daily, TimeSeriesSize.Full, true)]
+        [InlineData(Interval.Weekly, TimeSeriesSize.Full, true)]
+        [InlineData(Interval.Monthly, TimeSeriesSize.Full, true)]
+        [InlineData(Interval.Min1, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Min5, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Min15, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Min30, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Min60, TimeSeriesSize.Full, false)]
+        [InlineData(Interval.Min1, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Min5, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Min15, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Min30, TimeSeriesSize.Compact, false)]
+        [InlineData(Interval.Min60, TimeSeriesSize.Compact, false)]
+        public async Task ThrowException_ForInvalidSymbol(Interval interval, TimeSeriesSize size, bool isAdjusted)
+        {
+            using var client = new AlphaVantageClient(_apiKey);
+            using var stocksClient = client.Stocks();
+            
+            await Assert.ThrowsAsync<AlphaVantageException>(async () =>
+            {
+                await stocksClient.GetTimeSeriesAsync("wrong_symbol", interval, size, isAdjusted);
+            });
         }
 
         private static bool IsDataPointValid(StockDataPoint dp)
@@ -72,48 +150,6 @@ namespace AlphaVantage.Net.Stocks.Tests
                    adp.AdjustedClosingPrice > 0 &&
                    // adp.DividendAmount != default &&
                    (hasSplitCoefficient == false || adp.SplitCoefficient != null);
-        }
-
-        [Theory]
-        [InlineData(TimeSeriesType.Daily, TimeSeriesSize.Compact, false)]
-        [InlineData(TimeSeriesType.Weekly, TimeSeriesSize.Compact, false)]
-        [InlineData(TimeSeriesType.Monthly, TimeSeriesSize.Compact, false)]
-        [InlineData(TimeSeriesType.Daily, TimeSeriesSize.Full, false)]
-        [InlineData(TimeSeriesType.Weekly, TimeSeriesSize.Full, false)]
-        [InlineData(TimeSeriesType.Monthly, TimeSeriesSize.Full, false)]
-        [InlineData(TimeSeriesType.Daily, TimeSeriesSize.Compact, true)]
-        [InlineData(TimeSeriesType.Weekly, TimeSeriesSize.Compact, true)]
-        [InlineData(TimeSeriesType.Monthly, TimeSeriesSize.Compact, true)]
-        [InlineData(TimeSeriesType.Daily, TimeSeriesSize.Full, true)]
-        [InlineData(TimeSeriesType.Weekly, TimeSeriesSize.Full, true)]
-        [InlineData(TimeSeriesType.Monthly, TimeSeriesSize.Full, true)]
-        public async Task ThrowException_ForInvalidSymbol(TimeSeriesType seriesType, TimeSeriesSize size,
-            bool isAdjusted)
-        {
-            using var client = new AlphaVantageClient(_apiKey);
-            using var stocksClient = client.Stocks();
-
-
-            await Assert.ThrowsAsync<AlphaVantageException>(async () =>
-            {
-                await stocksClient.GetTimeSeriesAsync("wrong_symbol", seriesType, size, isAdjusted);
-            });
-        }
-
-        [Theory]
-        [InlineData(TimeSeriesSize.Compact, false)]
-        [InlineData(TimeSeriesSize.Compact, true)]
-        [InlineData(TimeSeriesSize.Full, false)]
-        [InlineData(TimeSeriesSize.Full, true)]
-        public async Task ThrowException_ForIntradayTimeSeries(TimeSeriesSize size, bool isAdjusted)
-        {
-            using var client = new AlphaVantageClient(_apiKey);
-            using var stocksClient = client.Stocks();
-
-            await Assert.ThrowsAsync<AlphaVantageException>(async () =>
-            {
-                await stocksClient.GetTimeSeriesAsync("AAPL", TimeSeriesType.Intraday, size, isAdjusted);
-            });
         }
     }
 }
