@@ -1,7 +1,7 @@
 ![GitHub](https://img.shields.io/github/license/LutsenkoKirill/AlphaVantage.Net)
 
-# AlphaVantage.Net version 2
-.Net client library for [**Alpha Vantage API**](https://www.alphavantage.co/).  
+# AlphaVantage.Net
+The most popular .Net client library for [**Alpha Vantage API**](https://www.alphavantage.co/).  
 
 # Release notes for version 2:
 - Most of the library classes were rewritten from scratch, keeping in mind all issues that were opened for the previous release. 

@@ -7,7 +7,7 @@
     </Description>
     <Version>2.0.0-preview-1</Version>
     <Authors>LutsenkoKirill</Authors>
-    <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net</RepositoryUrl>
+    <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net/tree/v2</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <LangVersion>8</LangVersion>
