@@ -1,3 +1,5 @@
+# WARNING: Current version will become outdated soon. Please consider to prepare for migration to [version 2.0](https://github.com/LutsenkoKirill/AlphaVantage.Net/tree/v2)
+
 # AlphaVantage.Net
 .Net client library for [**Alpha Vantage API**](https://www.alphavantage.co/).  
 Solution consist of two packages: 
