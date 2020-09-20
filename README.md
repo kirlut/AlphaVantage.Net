@@ -137,6 +137,6 @@ public async Task AlphaVantageTechnicalIndicatorsDemo()
         {"series_type", "close"}
     };
 
-    var result = await client.GetTechnicalIndicatorAsync(symbol, indicatorType, Interval.Min15, query);
+    TechIndicatorResult result = await client.GetTechnicalIndicatorAsync(symbol, indicatorType, Interval.Min15, query);
 }
 ```
