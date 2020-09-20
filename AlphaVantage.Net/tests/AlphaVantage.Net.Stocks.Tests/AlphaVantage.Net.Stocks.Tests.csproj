@@ -21,9 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="StockDataParserTests\Data\intraday.json" />
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data\intraday.json">

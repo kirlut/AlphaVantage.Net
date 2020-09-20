@@ -11,7 +11,7 @@ namespace AlphaVantage.Net.TestUtils
         {
             Configuration = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", false, true)
+                .AddJsonFile("secrets.json", false, true)
                 .Build();
         }
     }

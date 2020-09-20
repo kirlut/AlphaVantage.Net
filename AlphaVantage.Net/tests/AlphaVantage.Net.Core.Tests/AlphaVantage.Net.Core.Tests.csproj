@@ -19,9 +19,4 @@
     <ProjectReference Include="..\..\src\AlphaVantage.Net.Core\AlphaVantage.Net.Core.csproj" />
     <ProjectReference Include="..\AlphaVantage.Net.TestUtils\AlphaVantage.Net.TestUtils.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>

@@ -10,4 +10,10 @@
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.7" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="secrets.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
