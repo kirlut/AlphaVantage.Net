@@ -11,7 +11,10 @@ The most popular .Net client library for [**Alpha Vantage API**](https://www.alp
 
 # Packages: 
 - [AlphaVantage.Net.Core](AlphaVantage.Net/src/AlphaVantage.Net.Core) - low-level client for Alpha Vantage API based on `HttpClient` and `System.Text.Json`
-- [AlphaVantage.Net.Stocks](AlphaVantage.Net/src/AlphaVantage.Net.Stocks) - high-level POCO classes and extensions for client from `AlphaVantage.Net.Core` that simplify retrieval of [stock time series data](https://www.alphavantage.co/documentation/#time-series-data) from Alpha Vantage API and perform parsing for you
+### Extensions for the core client
+This packages contain high-level extensions and POCO classes that simplify work with corresponding API parts and do all parsing for you:
+- [AlphaVantage.Net.Stocks](AlphaVantage.Net/src/AlphaVantage.Net.Stocks) - for [stock time series data](https://www.alphavantage.co/documentation/#time-series-data)
+- [AlphaVantage.Net.TechnicalIndicators](AlphaVantage.Net/src/AlphaVantage.Net.TechnicalIndicators) - for [technical indicators data](https://www.alphavantage.co/documentation/#technical-indicators).
 
 # Documentation
 
@@ -94,5 +97,46 @@ public async Task AlphaVantageStocksDemo()
     GlobalQuote globalQuote = await stocksClient.GetGlobalQuoteAsync("AAPL");
 
     ICollection<SymbolSearchMatch> searchMatches = await stocksClient.SearchSymbolAsync("BA");
+}
+```
+
+## AlphaVantage.Net.TechnicalIndicators
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/AlphaVantage.Net.TechnicalIndicators)
+![Nuget](https://img.shields.io/nuget/dt/AlphaVantage.Net.TechnicalIndicators)  
+This package extension method for the core client and allow you to retrieve technical indicators data without dealing with parsing. Since API functions from this section have many different additional parameters, you still need to check Alpha Vantage documentation in order to use it. 
+
+### Installation: 
+- Package Manager:  
+`Install-Package AlphaVantage.Net.TechnicalIndicators -Version 2.0.0-preview-2`  
+- .NET CLI:  
+`dotnet add package AlphaVantage.Net.TechnicalIndicators --version 2.0.0-preview-2`  
+
+### Usage: 
+```csharp
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AlphaVantage.Net.Core.Client;
+using AlphaVantage.Net.Core.Intervals;
+using AlphaVantage.Net.TechnicalIndicators;
+using AlphaVantage.Net.TechnicalIndicators.Client;
+
+...
+
+public async Task AlphaVantageTechnicalIndicatorsDemo()
+{
+    // use your AlphaVantage API key
+    string apiKey = "1";
+    // there's 5 more constructors allowed
+    using var client = new AlphaVantageClient(apiKey);
+
+    var symbol = "IBM";
+    var indicatorType = TechIndicatorType.SMA;
+    var query = new Dictionary<string, string>()
+    {
+        {"time_period", "20"},
+        {"series_type", "close"}
+    };
+
+    var result = await client.GetTechnicalIndicatorAsync(symbol, indicatorType, Interval.Min15, query);
 }
 ```

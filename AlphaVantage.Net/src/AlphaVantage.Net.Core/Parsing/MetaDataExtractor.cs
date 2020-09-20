@@ -21,7 +21,7 @@ namespace AlphaVantage.Net.Core.Parsing
 
             foreach (var metaData in metaDataProperty.Value.EnumerateObject())
             {
-                result.Add(metaData.Name, metaData.Value.GetString());
+                result.Add(metaData.Name, metaData.Value.ToString());
             }
             
             return result;

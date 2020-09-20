@@ -41,7 +41,7 @@ namespace AlphaVantage.Net.TechnicalIndicators.Parsing
                 var dataPoint = new TechIndicatorDataPoint
                 {
                     Time = dataPointJson.Name.ParseToDateTime(),
-                    Parameters = GetParameters(dataPointsJsonElement)
+                    Parameters = GetParameters(dataPointFieldsJson)
                 };
                 
                 result.Add(dataPoint);
@@ -59,7 +59,7 @@ namespace AlphaVantage.Net.TechnicalIndicators.Parsing
                 var techIndicatorParameter = new TechIndicatorParameter()
                 {
                     ParameterName = fieldJson.Name,
-                    ParameterValue = fieldJson.Value.GetString().ParseToDecimal()
+                    ParameterValue = fieldJson.Value.ToString().ParseToDecimal()
                 };
                 
                 result.Add(techIndicatorParameter);
