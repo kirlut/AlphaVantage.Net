@@ -1,6 +1,6 @@
-﻿namespace AlphaVantage.Net.Stocks.TimeSeries
+namespace AlphaVantage.Net.Core.Size
 {
-    public enum TimeSeriesSize
+    public enum OutputSize
     {
         /// <summary>
         /// Latest 100 data points

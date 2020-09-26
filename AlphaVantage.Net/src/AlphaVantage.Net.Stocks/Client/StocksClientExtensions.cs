@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AlphaVantage.Net.Core;
 using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Core.Intervals;
+using AlphaVantage.Net.Core.Size;
 using AlphaVantage.Net.Stocks.Parsing;
 using AlphaVantage.Net.Stocks.TimeSeries;
 using AlphaVantage.Net.Stocks.Utils;
@@ -14,7 +15,6 @@ namespace AlphaVantage.Net.Stocks.Client
         private static readonly GlobalQuoteParser GlobalQuoteParser = new GlobalQuoteParser();
         private static readonly SearchResultParser SearchResultParser = new SearchResultParser();
         
-        private const string OutputSizeQueryVar = "outputsize";
         
         /// <summary>
         /// Return stocks time series for requested symbol 
@@ -28,7 +28,7 @@ namespace AlphaVantage.Net.Stocks.Client
         public static async Task<StockTimeSeries> GetTimeSeriesAsync(this StocksClient stocksClient, 
             string symbol, 
             Interval interval,
-            TimeSeriesSize size,
+            OutputSize size = OutputSize.Compact,
             bool isAdjusted = false)
         {
             var parser = new TimeSeriesParser(interval, isAdjusted);
@@ -36,7 +36,7 @@ namespace AlphaVantage.Net.Stocks.Client
             var query = new Dictionary<string, string>()
             {
                 {ApiConstants.SymbolQueryVar, symbol},
-                {OutputSizeQueryVar, size.ConvertToString()}
+                {ApiConstants.OutputSizeQueryVar, size.ConvertToString()}
             };
 
             var function = interval.ConvertToApiFunction(isAdjusted);

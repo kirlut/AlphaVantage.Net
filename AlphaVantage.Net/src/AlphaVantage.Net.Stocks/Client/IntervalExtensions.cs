@@ -1,18 +1,10 @@
-﻿using System;
-using AlphaVantage.Net.Core;
-using AlphaVantage.Net.Core.Exceptions;
+﻿using AlphaVantage.Net.Core;
 using AlphaVantage.Net.Core.Intervals;
-using AlphaVantage.Net.Stocks.TimeSeries;
 
-namespace AlphaVantage.Net.Stocks.Utils
+namespace AlphaVantage.Net.Stocks.Client
 {
-    internal static class StockClientExtensions
+    internal static class IntervalExtensions
     {
-        public static string ConvertToString(this TimeSeriesSize sizeEnum)
-        {
-            return sizeEnum == TimeSeriesSize.Compact ? "compact" : "full";
-        }
-
         public static ApiFunction ConvertToApiFunction(this Interval interval, bool isAdjusted)
         {
             return (timeSeriesType: interval, isAdjusted) switch

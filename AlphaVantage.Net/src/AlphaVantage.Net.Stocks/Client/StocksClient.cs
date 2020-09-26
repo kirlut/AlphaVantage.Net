@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 
 namespace AlphaVantage.Net.Stocks.Client
 {
-    public class StocksClient : TypedAlphaVantageClient
+    public sealed class StocksClient : TypedAlphaVantageClient
     {
         internal StocksClient([NotNull] AlphaVantageClient alphaVantageClient) : base(alphaVantageClient)
         {

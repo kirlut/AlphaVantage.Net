@@ -5,13 +5,14 @@
       Low-level client for Alpha Vantage API based on HttpClient and System.Text.Json. 
       This package allow you to request any available data from API, but you have to manually set all query parameters and retrieve information you need from the result
     </Description>
-    <Version>2.0.0-preview-2</Version>
+    <Version>2.0.0-preview-3</Version>
     <Authors>LutsenkoKirill</Authors>
-    <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net/tree/v2</RepositoryUrl>
+    <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <LangVersion>8</LangVersion>
     <Nullable>enable</Nullable>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>

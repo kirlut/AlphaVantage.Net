@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <PackageId>AlphaVantage.Net.TechnicalIndicators</PackageId>
+        <PackageId>AlphaVantage.Net.Currencies</PackageId>
         <Description>
-            High-level POCO classes and extensions for client from AlphaVantage.Net.Core that simplify retrieval of Technical Indicators data.
+            Common classes for AlphaVantage.Net.Forex and AlphaVantage.Net.Cryptocurrencies packages 
         </Description>
         <Version>2.0.0-preview-3</Version>
         <Authors>LutsenkoKirill</Authors>

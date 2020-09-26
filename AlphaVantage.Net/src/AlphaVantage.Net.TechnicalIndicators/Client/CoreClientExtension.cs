@@ -14,7 +14,7 @@ namespace AlphaVantage.Net.TechnicalIndicators.Client
         private static readonly TechIndicatorsResultParser Parser = new TechIndicatorsResultParser();
         
         /// <summary>
-        /// 
+        /// Retrieve technical indicators data 
         /// </summary>
         /// <param name="client"></param>
         /// <param name="symbol"></param>

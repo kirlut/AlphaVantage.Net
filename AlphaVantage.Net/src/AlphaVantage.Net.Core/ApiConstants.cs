@@ -10,6 +10,8 @@
         
         public const string SymbolQueryVar = "symbol";
         
+        public const string OutputSizeQueryVar = "outputsize";
+        
         public const string IntervalQueryVar = "interval";
 
         public const string BadRequestToken = "Error Message";
