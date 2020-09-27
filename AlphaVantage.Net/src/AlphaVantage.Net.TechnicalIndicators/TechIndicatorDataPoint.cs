@@ -1,12 +1,10 @@
-using System;
 using System.Collections.Generic;
+using AlphaVantage.Net.Common.TimeSeries;
 
 namespace AlphaVantage.Net.TechnicalIndicators
 {
-    public class TechIndicatorDataPoint
+    public class TechIndicatorDataPoint : DataPointBase
     {
-        public DateTime Time {get; set;}
-        
         public ICollection<TechIndicatorParameter> Parameters { get; set; } = new List<TechIndicatorParameter>();
     }
 }

@@ -29,7 +29,7 @@ namespace AlphaVantage.Net.Stocks.Client
             OutputSize size = OutputSize.Compact,
             bool isAdjusted = false)
         {
-            var parser = new TimeSeriesParser(interval, isAdjusted);
+            var parser = new StocksTimeSeriesParser(interval, isAdjusted);
             
             var query = new Dictionary<string, string>()
             {

@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using AlphaVantage.Net.Common.Exceptions;
 using AlphaVantage.Net.Common.Parsing;
-using AlphaVantage.Net.Core.Exceptions;
 
 namespace AlphaVantage.Net.TechnicalIndicators.Parsing
 {
-    internal class TechIndicatorsResultParser : IAlphaVantageJsonDocumentParser<TechIndicatorResult>
+    internal class TechIndicatorsResultParser : IAlphaVantageJsonDocumentParser<TechIndicatorTimeSeries>
     {
-        public TechIndicatorResult ParseApiResponse(JsonDocument jsonDocument)
+        public TechIndicatorTimeSeries ParseApiResponse(JsonDocument jsonDocument)
         {
-            var result = new TechIndicatorResult();
+            var result = new TechIndicatorTimeSeries();
             
             try
             {

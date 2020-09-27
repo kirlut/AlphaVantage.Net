@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 
-namespace AlphaVantage.Net.Core.Exceptions
+namespace AlphaVantage.Net.Common.Exceptions
 {
     public class AlphaVantageParsingException : AlphaVantageException
     {

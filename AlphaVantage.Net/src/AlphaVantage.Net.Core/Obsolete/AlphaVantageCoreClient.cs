@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Common;
-using AlphaVantage.Net.Core.Exceptions;
+using AlphaVantage.Net.Common.Exceptions;
 using AlphaVantage.Net.Core.HttpClientWrapper;
 using AlphaVantage.Net.Core.Validation;
 using JetBrains.Annotations;

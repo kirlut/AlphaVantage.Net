@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
+using AlphaVantage.Net.Common.Exceptions;
 using AlphaVantage.Net.Common.Intervals;
 using AlphaVantage.Net.Common.Size;
 using AlphaVantage.Net.Core.Client;
-using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Stocks.Client;
 using AlphaVantage.Net.Stocks.TimeSeries;
 using AlphaVantage.Net.TestUtils;

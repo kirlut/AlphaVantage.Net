@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Common;
-using AlphaVantage.Net.Core.Exceptions;
+using AlphaVantage.Net.Common.Exceptions;
 using AlphaVantage.Net.Core.HttpClientWrapper;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.WebUtilities;

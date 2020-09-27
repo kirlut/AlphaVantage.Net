@@ -1,5 +1,5 @@
 ﻿using System;
-using AlphaVantage.Net.Core.Exceptions;
+using AlphaVantage.Net.Common.Exceptions;
 
 // ReSharper disable once CheckNamespace
 namespace AlphaVantage.Net.Stocks.Parsing.Exceptions

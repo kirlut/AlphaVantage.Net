@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AlphaVantage.Net.Common.Exceptions;
 using AlphaVantage.Net.Common.Intervals;
 using AlphaVantage.Net.Core.Client;
-using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.TechnicalIndicators.Client;
 using AlphaVantage.Net.TestUtils;
 using FluentAssertions;
@@ -36,7 +36,7 @@ namespace AlphaVantage.Net.TechnicalIndicators.Tests
                 {"series_type", "close"}
             };
 
-            var result = await client.GetTechnicalIndicatorAsync(symbol, indicatorType, interval, query);
+            var result = await client.GetTechIndicatorTimeSeriesAsync(symbol, indicatorType, interval, query);
 
             AssertTechIndicatorResultValid(result, interval, indicatorType, 1);
         }
@@ -62,7 +62,7 @@ namespace AlphaVantage.Net.TechnicalIndicators.Tests
                 {"series_type", "close"}
             };
 
-            var result = await client.GetTechnicalIndicatorAsync(symbol, indicatorType, interval, query);
+            var result = await client.GetTechIndicatorTimeSeriesAsync(symbol, indicatorType, interval, query);
 
             AssertTechIndicatorResultValid(result, interval, indicatorType, 3);
         }
@@ -80,7 +80,7 @@ namespace AlphaVantage.Net.TechnicalIndicators.Tests
             
             await Assert.ThrowsAsync<AlphaVantageException>(async () =>
             {
-                await client.GetTechnicalIndicatorAsync(symbol, indicatorType, interval);
+                await client.GetTechIndicatorTimeSeriesAsync(symbol, indicatorType, interval);
             });
         }
 
@@ -97,25 +97,25 @@ namespace AlphaVantage.Net.TechnicalIndicators.Tests
             var symbol = "IBM";
             var indicatorType = TechIndicatorType.VWAP;
             
-            var result = await client.GetTechnicalIndicatorAsync(symbol, indicatorType, interval);
+            var result = await client.GetTechIndicatorTimeSeriesAsync(symbol, indicatorType, interval);
             AssertTechIndicatorResultValid(result, interval, indicatorType, 1);
         }
 
         private static void AssertTechIndicatorResultValid(
-            TechIndicatorResult result, 
+            TechIndicatorTimeSeries timeSeries, 
             Interval interval,  
             TechIndicatorType indicatorType,
             int expectedParamsCount)
         {
-            result.Should().NotBeNull()
-                .And.Match<TechIndicatorResult>(ti =>
+            timeSeries.Should().NotBeNull()
+                .And.Match<TechIndicatorTimeSeries>(ti =>
                     ti.Interval == interval &&
                     ti.IndicatorType == indicatorType);
 
-            result.MetaData.Should().NotBeNull()
+            timeSeries.MetaData.Should().NotBeNull()
                 .And.HaveCountGreaterThan(1);
 
-            result.DataPoints.Should().NotBeNull()
+            timeSeries.DataPoints.Should().NotBeNull()
                 .And.HaveCountGreaterThan(1)
                 .And.NotContainNulls()
                 .And.OnlyContain(dp => IsDataPointValid(dp, expectedParamsCount));

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Common;
+using AlphaVantage.Net.Common.Exceptions;
 using AlphaVantage.Net.Common.Intervals;
 using AlphaVantage.Net.Core.Client;
-using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.TechnicalIndicators.Parsing;
 
 namespace AlphaVantage.Net.TechnicalIndicators.Client
@@ -22,7 +22,7 @@ namespace AlphaVantage.Net.TechnicalIndicators.Client
         /// <param name="additionalParameters"></param>
         /// <returns></returns>
         /// <exception cref="AlphaVantageException"></exception>
-        public static async Task<TechIndicatorResult> GetTechnicalIndicatorAsync(this AlphaVantageClient client,
+        public static async Task<TechIndicatorTimeSeries> GetTechIndicatorTimeSeriesAsync(this AlphaVantageClient client,
             string symbol,
             TechIndicatorType indicatorType, 
             Interval interval,

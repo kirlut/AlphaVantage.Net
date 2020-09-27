@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using AlphaVantage.Net.Common.Exceptions;
 using AlphaVantage.Net.Common.Parsing;
-using AlphaVantage.Net.Core.Exceptions;
 using JetBrains.Annotations;
 
 namespace AlphaVantage.Net.Stocks.Parsing

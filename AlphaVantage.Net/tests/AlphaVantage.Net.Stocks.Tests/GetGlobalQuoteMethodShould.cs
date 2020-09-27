@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
+using AlphaVantage.Net.Common.Exceptions;
 using AlphaVantage.Net.Core.Client;
-using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Stocks.Client;
 using AlphaVantage.Net.TestUtils;
 using FluentAssertions;

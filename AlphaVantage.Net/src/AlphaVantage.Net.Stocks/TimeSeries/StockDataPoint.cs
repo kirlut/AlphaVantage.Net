@@ -1,14 +1,12 @@
-﻿using System;
+﻿using AlphaVantage.Net.Common.TimeSeries;
 
 namespace AlphaVantage.Net.Stocks.TimeSeries
 {
     /// <summary>
     /// Represent single element of time series
     /// </summary>
-    public class StockDataPoint
+    public class StockDataPoint : DataPointBase
     {
-        public DateTime Time {get; set;}
-                
         public decimal OpeningPrice {get; set;}
         
         public decimal ClosingPrice {get; set;}
