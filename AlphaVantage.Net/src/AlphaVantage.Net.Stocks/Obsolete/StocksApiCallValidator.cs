@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using AlphaVantage.Net.Core;
+using AlphaVantage.Net.Common;
 using AlphaVantage.Net.Core.Validation;
 // ReSharper disable CheckNamespace
 

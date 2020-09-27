@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace AlphaVantage.Net.Core.Parsing
+namespace AlphaVantage.Net.Common.Parsing
 {
     public interface IAlphaVantageJsonDocumentParser<out T>
     {

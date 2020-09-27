@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using AlphaVantage.Net.Core.Intervals;
+using AlphaVantage.Net.Common.Intervals;
 
 namespace AlphaVantage.Net.Stocks.TimeSeries
 {

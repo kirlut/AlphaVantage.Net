@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.TechnicalI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.TechnicalIndicators.Tests", "tests\AlphaVantage.Net.TechnicalIndicators.Tests\AlphaVantage.Net.TechnicalIndicators.Tests.csproj", "{59331F85-4FEE-4AE8-BCA9-2CC4F4C43FE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Currencies.Common", "src\AlphaVantage.Net.Currencies.Common\AlphaVantage.Net.Currencies.Common.csproj", "{222CEDBA-8936-40A6-A0D2-FD9F38EEC1DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Common", "src\AlphaVantage.Net.Common\AlphaVantage.Net.Common.csproj", "{222CEDBA-8936-40A6-A0D2-FD9F38EEC1DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Forex", "src\AlphaVantage.Net.Forex\AlphaVantage.Net.Forex.csproj", "{30A49889-5219-4A8B-A487-01FBB9E5EA18}"
 EndProject

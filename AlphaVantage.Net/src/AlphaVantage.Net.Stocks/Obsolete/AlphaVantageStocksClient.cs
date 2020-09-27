@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AlphaVantage.Net.Common;
 using AlphaVantage.Net.Core;
 using AlphaVantage.Net.Stocks.BatchQuotes;
 using AlphaVantage.Net.Stocks.Parsing;

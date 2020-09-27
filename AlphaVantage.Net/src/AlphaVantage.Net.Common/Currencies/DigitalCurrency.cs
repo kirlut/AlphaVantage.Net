@@ -3,7 +3,7 @@
 // ReSharper disable UnusedMember.Global
 // ReSharper disable IdentifierTypo
 
-namespace AlphaVantage.Net.Currencies.Common
+namespace AlphaVantage.Net.Common.Currencies
 {
     public enum DigitalCurrency
     {

@@ -1,5 +1,5 @@
 using System;
-using AlphaVantage.Net.Core;
+using AlphaVantage.Net.Common;
 
 namespace AlphaVantage.Net.TechnicalIndicators.Client
 {

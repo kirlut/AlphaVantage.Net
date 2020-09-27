@@ -1,4 +1,4 @@
-namespace AlphaVantage.Net.Core.Parsing
+namespace AlphaVantage.Net.Common.Parsing
 {
     public interface IAlphaVantageJsonParser<out T>
     {

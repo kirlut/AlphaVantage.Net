@@ -1,4 +1,4 @@
-namespace AlphaVantage.Net.Core.Size
+namespace AlphaVantage.Net.Common.Size
 {
     public enum OutputSize
     {

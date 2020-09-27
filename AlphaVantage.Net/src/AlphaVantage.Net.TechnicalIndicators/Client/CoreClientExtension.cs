@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AlphaVantage.Net.Core;
+using AlphaVantage.Net.Common;
+using AlphaVantage.Net.Common.Intervals;
 using AlphaVantage.Net.Core.Client;
 using AlphaVantage.Net.Core.Exceptions;
-using AlphaVantage.Net.Core.Intervals;
 using AlphaVantage.Net.TechnicalIndicators.Parsing;
-using JetBrains.Annotations;
 
 namespace AlphaVantage.Net.TechnicalIndicators.Client
 {

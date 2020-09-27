@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AlphaVantage.Net.Common.Intervals;
 using AlphaVantage.Net.Core.Client;
 using AlphaVantage.Net.Core.Exceptions;
-using AlphaVantage.Net.Core.Intervals;
 using AlphaVantage.Net.TechnicalIndicators.Client;
 using AlphaVantage.Net.TestUtils;
 using FluentAssertions;

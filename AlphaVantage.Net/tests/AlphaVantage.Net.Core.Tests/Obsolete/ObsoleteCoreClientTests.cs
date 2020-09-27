@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AlphaVantage.Net.Common;
 using AlphaVantage.Net.Core.Exceptions;
 using AlphaVantage.Net.Core.Validation;
 using AlphaVantage.Net.TestUtils;

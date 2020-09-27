@@ -17,8 +17,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\AlphaVantage.Net.Common\AlphaVantage.Net.Common.csproj" />
       <ProjectReference Include="..\AlphaVantage.Net.Core\AlphaVantage.Net.Core.csproj" />
-      <ProjectReference Include="..\AlphaVantage.Net.Currencies.Common\AlphaVantage.Net.Currencies.Common.csproj" />
     </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 
-namespace AlphaVantage.Net.Core.Parsing
+namespace AlphaVantage.Net.Common.Parsing
 {
     public static class MetaDataExtractor
     {

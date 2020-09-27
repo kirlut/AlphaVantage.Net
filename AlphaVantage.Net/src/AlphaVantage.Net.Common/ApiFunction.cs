@@ -1,5 +1,5 @@
 ﻿// ReSharper disable InconsistentNaming
-namespace AlphaVantage.Net.Core
+namespace AlphaVantage.Net.Common
 {
     /// <summary>
     /// All possible functions of Alpha Vantage API

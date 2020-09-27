@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using AlphaVantage.Net.Common;
 using AlphaVantage.Net.Core.Client;
 using AlphaVantage.Net.Core.Exceptions;
 using FluentAssertions;

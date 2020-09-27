@@ -1,6 +1,6 @@
 using System;
 
-namespace AlphaVantage.Net.Currencies.Common
+namespace AlphaVantage.Net.Common.Currencies
 {
     public abstract class ExchangeRateBase
     {

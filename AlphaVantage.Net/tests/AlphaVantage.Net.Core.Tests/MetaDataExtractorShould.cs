@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AlphaVantage.Net.Core.Parsing;
+using AlphaVantage.Net.Common;
+using AlphaVantage.Net.Common.Parsing;
 using AlphaVantage.Net.TestUtils;
 using FluentAssertions;
 using Xunit;

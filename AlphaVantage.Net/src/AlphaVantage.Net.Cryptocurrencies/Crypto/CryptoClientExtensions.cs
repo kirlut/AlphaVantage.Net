@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
-using AlphaVantage.Net.Core.Intervals;
-using AlphaVantage.Net.Currencies.Common;
+using AlphaVantage.Net.Common.Currencies;
+using AlphaVantage.Net.Common.Intervals;
 
 namespace AlphaVantage.Net.Cryptocurrencies.Crypto
 {

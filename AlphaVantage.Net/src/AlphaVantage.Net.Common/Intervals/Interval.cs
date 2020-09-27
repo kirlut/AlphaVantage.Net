@@ -1,4 +1,4 @@
-namespace AlphaVantage.Net.Core.Intervals
+namespace AlphaVantage.Net.Common.Intervals
 {
     public enum Interval
     {

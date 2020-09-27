@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using AlphaVantage.Net.Common.Parsing;
 using AlphaVantage.Net.Core.Exceptions;
-using AlphaVantage.Net.Core.Parsing;
 
 namespace AlphaVantage.Net.TechnicalIndicators.Parsing
 {

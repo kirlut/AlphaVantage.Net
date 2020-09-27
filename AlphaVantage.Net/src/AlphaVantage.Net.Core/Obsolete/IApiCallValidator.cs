@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AlphaVantage.Net.Common;
 
 // ReSharper disable once CheckNamespace
 namespace AlphaVantage.Net.Core.Validation

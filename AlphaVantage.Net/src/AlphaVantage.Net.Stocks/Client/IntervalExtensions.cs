@@ -1,5 +1,5 @@
-﻿using AlphaVantage.Net.Core;
-using AlphaVantage.Net.Core.Intervals;
+﻿using AlphaVantage.Net.Common;
+using AlphaVantage.Net.Common.Intervals;
 
 namespace AlphaVantage.Net.Stocks.Client
 {

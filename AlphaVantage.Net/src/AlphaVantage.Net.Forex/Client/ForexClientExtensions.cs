@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using AlphaVantage.Net.Core.Intervals;
-using AlphaVantage.Net.Core.Size;
-using AlphaVantage.Net.Currencies.Common;
+using AlphaVantage.Net.Common.Currencies;
+using AlphaVantage.Net.Common.Intervals;
+using AlphaVantage.Net.Common.Size;
 
 namespace AlphaVantage.Net.Forex.Client
 {

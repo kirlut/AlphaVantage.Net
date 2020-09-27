@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json;
+using AlphaVantage.Net.Common.Intervals;
+using AlphaVantage.Net.Common.Parsing;
 using AlphaVantage.Net.Core.Exceptions;
-using AlphaVantage.Net.Core.Intervals;
-using AlphaVantage.Net.Core.Parsing;
 using AlphaVantage.Net.Stocks.TimeSeries;
 
 namespace AlphaVantage.Net.Stocks.Parsing

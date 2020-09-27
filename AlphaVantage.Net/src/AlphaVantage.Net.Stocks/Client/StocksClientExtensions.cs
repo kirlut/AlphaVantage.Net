@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AlphaVantage.Net.Core;
-using AlphaVantage.Net.Core.Exceptions;
-using AlphaVantage.Net.Core.Intervals;
-using AlphaVantage.Net.Core.Size;
+using AlphaVantage.Net.Common;
+using AlphaVantage.Net.Common.Intervals;
+using AlphaVantage.Net.Common.Size;
 using AlphaVantage.Net.Stocks.Parsing;
 using AlphaVantage.Net.Stocks.TimeSeries;
-using AlphaVantage.Net.Stocks.Utils;
 
 namespace AlphaVantage.Net.Stocks.Client
 {

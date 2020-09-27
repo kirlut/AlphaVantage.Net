@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AlphaVantage.Net.Core.Intervals
+namespace AlphaVantage.Net.Common.Intervals
 {
     public static class IntervalExtensions
     {

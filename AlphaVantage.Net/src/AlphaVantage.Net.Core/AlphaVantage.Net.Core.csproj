@@ -19,8 +19,9 @@
     <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="NodaTime" Version="3.0.0" />
-    <PackageReference Include="NodaTime.Serialization.SystemTextJson" Version="1.0.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AlphaVantage.Net.Common\AlphaVantage.Net.Common.csproj" />
   </ItemGroup>
 </Project>

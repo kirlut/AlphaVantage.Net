@@ -1,4 +1,4 @@
-using AlphaVantage.Net.Currencies.Common;
+using AlphaVantage.Net.Common.Currencies;
 
 namespace AlphaVantage.Net.Cryptocurrencies
 {

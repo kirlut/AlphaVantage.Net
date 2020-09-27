@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AlphaVantage.Net.Core.Parsing;
+using AlphaVantage.Net.Common;
+using AlphaVantage.Net.Common.Parsing;
 
 namespace AlphaVantage.Net.Core.Client
 {

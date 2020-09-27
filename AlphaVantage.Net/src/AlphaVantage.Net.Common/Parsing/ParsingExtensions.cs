@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace AlphaVantage.Net.Core.Parsing
+namespace AlphaVantage.Net.Common.Parsing
 {
     public static class ParsingExtensions
     {

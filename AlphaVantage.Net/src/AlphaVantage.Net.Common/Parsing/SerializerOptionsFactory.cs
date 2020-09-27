@@ -5,7 +5,7 @@ using NodaTime;
 using NodaTime.Serialization.SystemTextJson;
 using NodaTime.Text;
 
-namespace AlphaVantage.Net.Core.Parsing
+namespace AlphaVantage.Net.Common.Parsing
 {
     public static class SerializerOptionsFactory
     {

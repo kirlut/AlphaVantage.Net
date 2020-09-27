@@ -1,4 +1,4 @@
-﻿namespace AlphaVantage.Net.Core
+﻿namespace AlphaVantage.Net.Common
 {
     public static class ApiConstants
     {
