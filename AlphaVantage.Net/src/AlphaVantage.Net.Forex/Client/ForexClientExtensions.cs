@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AlphaVantage.Net.Common;
 using AlphaVantage.Net.Common.Currencies;
 using AlphaVantage.Net.Common.Intervals;
+using AlphaVantage.Net.Common.Parsing;
 using AlphaVantage.Net.Common.Size;
 using AlphaVantage.Net.Forex.Parsing;
 
@@ -10,6 +11,9 @@ namespace AlphaVantage.Net.Forex.Client
 {
     public static class ForexClientExtensions
     {
+        private static readonly WrappedValueParser<ForexExchangeRate> ExchangeRateParser = 
+            new WrappedValueParser<ForexExchangeRate>("Realtime Currency Exchange Rate");
+        
         /// <summary>
         /// Returns exchange rate for requested currencies pair
         /// </summary>
@@ -20,7 +24,13 @@ namespace AlphaVantage.Net.Forex.Client
         public static async Task<ForexExchangeRate> GetExchangeRatesAsync(this ForexClient forexClient, 
             PhysicalCurrency fromCurrency, PhysicalCurrency toCurrency)
         {
-            return await Task.FromResult(new ForexExchangeRate());
+            var query = new Dictionary<string, string>()
+            {
+                {ApiQueryConstants.FromCurrencyQueryVar, fromCurrency.ToString()},
+                {ApiQueryConstants.ToCurrencyQueryVar, toCurrency.ToString()}
+            };
+
+            return await forexClient.RequestApiAsync(ExchangeRateParser, ApiFunction.CURRENCY_EXCHANGE_RATE, query);        
         }
 
         /// <summary>

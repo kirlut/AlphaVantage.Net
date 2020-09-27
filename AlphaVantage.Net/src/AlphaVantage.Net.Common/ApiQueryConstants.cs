@@ -14,6 +14,10 @@
         
         public const string ToSymbolQueryVar = "to_symbol";
         
+        public const string FromCurrencyQueryVar = "from_currency";
+        
+        public const string ToCurrencyQueryVar = "to_currency";
+        
         public const string OutputSizeQueryVar = "outputsize";
         
         public const string IntervalQueryVar = "interval";

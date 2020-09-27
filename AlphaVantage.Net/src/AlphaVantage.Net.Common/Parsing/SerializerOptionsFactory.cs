@@ -25,7 +25,8 @@ namespace AlphaVantage.Net.Common.Parsing
             options.Converters.Add(localDateConverter);
             options.Converters.Add(new DecimalConverter());
             options.Converters.Add(new LongConverter());
-
+            options.Converters.Add(new JsonStringEnumConverter());
+            
             return options;
         }
 

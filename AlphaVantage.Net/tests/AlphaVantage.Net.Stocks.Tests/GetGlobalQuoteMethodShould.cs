@@ -37,7 +37,7 @@ namespace AlphaVantage.Net.Stocks.Tests
         }
         
         [Fact]
-        public async Task ReturnNull_OnNonExistingSymbol()
+        public async Task ThrowException_OnNonExistingSymbol()
         {
             using var client = new AlphaVantageClient(_apiKey);
             using var stocksClient = client.Stocks();

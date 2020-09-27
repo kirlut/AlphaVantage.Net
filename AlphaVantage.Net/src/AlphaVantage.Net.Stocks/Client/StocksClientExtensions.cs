@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AlphaVantage.Net.Common;
 using AlphaVantage.Net.Common.Intervals;
+using AlphaVantage.Net.Common.Parsing;
 using AlphaVantage.Net.Common.Size;
 using AlphaVantage.Net.Stocks.Parsing;
 using AlphaVantage.Net.Stocks.TimeSeries;
@@ -10,8 +11,11 @@ namespace AlphaVantage.Net.Stocks.Client
 {
     public static class StocksClientExtensions
     {
-        private static readonly GlobalQuoteParser GlobalQuoteParser = new GlobalQuoteParser();
-        private static readonly SearchResultParser SearchResultParser = new SearchResultParser();
+        private static readonly WrappedValueParser<GlobalQuote> GlobalQuoteParser = 
+            new WrappedValueParser<GlobalQuote>("Global Quote");
+        
+        private static readonly WrappedValueParser<List<SymbolSearchMatch>> SearchResultParser = 
+            new WrappedValueParser<List<SymbolSearchMatch>>("bestMatches");
         
         
         /// <summary>
