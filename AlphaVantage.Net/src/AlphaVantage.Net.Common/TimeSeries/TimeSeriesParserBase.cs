@@ -16,8 +16,8 @@ namespace AlphaVantage.Net.Common.TimeSeries
 
         protected abstract TDataPoint CreateDataPointInstance();
 
-        protected abstract Dictionary<string, Action<TDataPoint, string>> ParsingDelegates { get; }
-
+        protected abstract Action<TDataPoint, string>? GetParsingDelegate(string fieldName);
+        
         protected readonly Interval TimeSeriesInterval;
 
         protected TimeSeriesParserBase(Interval timeSeriesInterval)
@@ -69,9 +69,7 @@ namespace AlphaVantage.Net.Common.TimeSeries
         {
             foreach (var fieldJson in dataPointFieldsJson.EnumerateObject())
             {
-                if (ParsingDelegates.ContainsKey(fieldJson.Name) == false) continue;
-
-                ParsingDelegates[fieldJson.Name].Invoke(dataPoint, fieldJson.Value.GetString());
+                GetParsingDelegate(fieldJson.Name)?.Invoke(dataPoint, fieldJson.Value.GetString());
             }
         }
     }

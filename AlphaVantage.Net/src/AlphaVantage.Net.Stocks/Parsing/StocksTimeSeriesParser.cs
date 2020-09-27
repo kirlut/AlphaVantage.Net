@@ -31,10 +31,12 @@ namespace AlphaVantage.Net.Stocks.Parsing
             return _isAdjusted ? new StockAdjustedDataPoint() : new StockDataPoint();
         }
 
-        protected override Dictionary<string, Action<StockDataPoint, string>> ParsingDelegates => _parsingDelegates;
-
-        // ReSharper disable once InconsistentNaming
-        private static readonly Dictionary<string, Action<StockDataPoint, string>> _parsingDelegates =
+        protected override Action<StockDataPoint, string>? GetParsingDelegate(string fieldName)
+        {
+            return ParsingDelegates.ContainsKey(fieldName) ? ParsingDelegates[fieldName] : null;
+        }
+        
+        private static readonly Dictionary<string, Action<StockDataPoint, string>> ParsingDelegates =
             new Dictionary<string, Action<StockDataPoint, string>>()
             {
                 {"open", (dataPoint, strValue) => { dataPoint.OpeningPrice = strValue.ParseToDecimal(); }},

@@ -17,7 +17,8 @@ namespace AlphaVantage.Net.Core.Client
     {
         private readonly IHttpClientWrapper _httpClient;
         private readonly string _apiKey;
-
+        
+        private const string BadRequestToken = "Error Message";
         /// <summary>
         /// Request Alpha Vantage API and get result as parsed <see cref="JsonDocument"/>
         /// </summary>
@@ -88,10 +89,10 @@ namespace AlphaVantage.Net.Core.Client
         {
             var fullQueryDict = new Dictionary<string, string>(query ?? new Dictionary<string, string>(0))
             {
-                {ApiConstants.ApiKeyQueryVar, apiKey}, {ApiConstants.FunctionQueryVar, function.ToString()}
+                {ApiQueryConstants.ApiKeyQueryVar, apiKey}, {ApiQueryConstants.FunctionQueryVar, function.ToString()}
             };
 
-            var urlWithQueryString = QueryHelpers.AddQueryString(ApiConstants.AlfaVantageUrl, fullQueryDict);
+            var urlWithQueryString = QueryHelpers.AddQueryString(ApiQueryConstants.AlfaVantageUrl, fullQueryDict);
             var urlWithQuery = new Uri(urlWithQueryString);
 
             var request = new HttpRequestMessage
@@ -111,7 +112,7 @@ namespace AlphaVantage.Net.Core.Client
         
         private void AssertNotBadRequest(string jsonString)
         {
-            if (jsonString.Contains(ApiConstants.BadRequestToken))
+            if (jsonString.Contains(BadRequestToken))
             {
                 throw new AlphaVantageException(jsonString);
             }

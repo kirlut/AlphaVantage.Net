@@ -1,12 +1,12 @@
 using System;
+using AlphaVantage.Net.Common.TimeSeries;
+
 // ReSharper disable InconsistentNaming
 
 namespace AlphaVantage.Net.Cryptocurrencies
 {
-    public class CryptoDataPoint
+    public class CryptoDataPoint : DataPointBase
     {
-        public DateTime Time {get; set;}
-                
         public decimal OpeningPrice {get; set;}
         
         public decimal OpeningPriceUSD {get; set;}

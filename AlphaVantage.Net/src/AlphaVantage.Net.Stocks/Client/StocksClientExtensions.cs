@@ -15,7 +15,7 @@ namespace AlphaVantage.Net.Stocks.Client
         
         
         /// <summary>
-        /// Return stocks time series for requested symbol 
+        /// Returns stocks time series for requested symbol 
         /// </summary>
         /// <param name="stocksClient"></param>
         /// <param name="symbol"></param>
@@ -33,14 +33,14 @@ namespace AlphaVantage.Net.Stocks.Client
             
             var query = new Dictionary<string, string>()
             {
-                {ApiConstants.SymbolQueryVar, symbol},
-                {ApiConstants.OutputSizeQueryVar, size.ConvertToString()}
+                {ApiQueryConstants.SymbolQueryVar, symbol},
+                {ApiQueryConstants.OutputSizeQueryVar, size.ConvertToString()}
             };
 
             var function = interval.ConvertToApiFunction(isAdjusted);
             if (function == ApiFunction.TIME_SERIES_INTRADAY)
             {
-                query.Add(ApiConstants.IntervalQueryVar, interval.ConvertToString());
+                query.Add(ApiQueryConstants.IntervalQueryVar, interval.ConvertToString());
             }
             
             return await stocksClient.RequestApiAsync(parser, function, query);
@@ -56,7 +56,7 @@ namespace AlphaVantage.Net.Stocks.Client
         /// </remarks>
         public static async Task<GlobalQuote?> GetGlobalQuoteAsync(this StocksClient stocksClient, string symbol)
         {
-            var query = new Dictionary<string, string>(){{ApiConstants.SymbolQueryVar, symbol}};
+            var query = new Dictionary<string, string>(){{ApiQueryConstants.SymbolQueryVar, symbol}};
             return await stocksClient.RequestApiAsync(GlobalQuoteParser, ApiFunction.GLOBAL_QUOTE, query);
         }
         

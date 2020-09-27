@@ -19,6 +19,7 @@ namespace AlphaVantage.Net.Core
     public class AlphaVantageCoreClient
     {
         private readonly IApiCallValidator? _apiCallValidator;
+        private const string BadRequestToken = "Error Message";
         
         [CanBeNull]
         private readonly TimeSpan? _timeout;
@@ -52,10 +53,10 @@ namespace AlphaVantage.Net.Core
         private HttpRequestMessage ComposeHttpRequest(string apiKey, ApiFunction function, IDictionary<string, string>? query)
         {
             var fullQueryDict = new Dictionary<string, string>(query ?? new Dictionary<string, string>(0));
-            fullQueryDict.Add(ApiConstants.ApiKeyQueryVar, apiKey);
-            fullQueryDict.Add(ApiConstants.FunctionQueryVar, function.ToString());
+            fullQueryDict.Add(ApiQueryConstants.ApiKeyQueryVar, apiKey);
+            fullQueryDict.Add(ApiQueryConstants.FunctionQueryVar, function.ToString());
             
-            var urlWithQueryString = QueryHelpers.AddQueryString(ApiConstants.AlfaVantageUrl, fullQueryDict);
+            var urlWithQueryString = QueryHelpers.AddQueryString(ApiQueryConstants.AlfaVantageUrl, fullQueryDict);
             var urlWithQuery = new Uri(urlWithQueryString);
 
             var request = new HttpRequestMessage
@@ -79,8 +80,8 @@ namespace AlphaVantage.Net.Core
         
         private void AssertNotBadRequest(JObject jObject)
         {
-            if(jObject.ContainsKey(ApiConstants.BadRequestToken))
-                throw new AlphaVantageException(jObject[ApiConstants.BadRequestToken].ToString());
+            if(jObject.ContainsKey(BadRequestToken))
+                throw new AlphaVantageException(jObject[BadRequestToken].ToString());
         }
     }
 }

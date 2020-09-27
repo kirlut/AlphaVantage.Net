@@ -1,11 +1,9 @@
-using System;
+using AlphaVantage.Net.Common.TimeSeries;
 
 namespace AlphaVantage.Net.Forex
 {
-    public class ForexDataPoint
+    public class ForexDataPoint : DataPointBase
     {
-        public DateTime Time {get; set;}
-                
         public decimal OpeningPrice {get; set;}
         
         public decimal ClosingPrice {get; set;}

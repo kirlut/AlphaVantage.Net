@@ -1,6 +1,6 @@
 using AlphaVantage.Net.Core.Client;
 
-namespace AlphaVantage.Net.Cryptocurrencies.Crypto
+namespace AlphaVantage.Net.Cryptocurrencies.Client
 {
     public static class CoreClientExtension
     {
