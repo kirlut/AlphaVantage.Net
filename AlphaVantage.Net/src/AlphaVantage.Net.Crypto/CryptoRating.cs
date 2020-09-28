@@ -1,9 +1,11 @@
 using System;
 using System.Text.Json.Serialization;
 using AlphaVantage.Net.Common.Currencies;
+using JetBrains.Annotations;
 
-namespace AlphaVantage.Net.Cryptocurrencies
+namespace AlphaVantage.Net.Crypto
 {
+    [UsedImplicitly]
     public class CryptoRating
     {
         [JsonPropertyName("symbol")]

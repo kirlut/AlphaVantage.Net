@@ -4,9 +4,9 @@ using AlphaVantage.Net.Common;
 using AlphaVantage.Net.Common.Currencies;
 using AlphaVantage.Net.Common.Intervals;
 using AlphaVantage.Net.Common.Parsing;
-using AlphaVantage.Net.Cryptocurrencies.Parsing;
+using AlphaVantage.Net.Crypto.Parsing;
 
-namespace AlphaVantage.Net.Cryptocurrencies.Client
+namespace AlphaVantage.Net.Crypto.Client
 {
     public static class CryptoClientExtensions
     {
@@ -23,7 +23,7 @@ namespace AlphaVantage.Net.Cryptocurrencies.Client
         /// <param name="fromCurrency"></param>
         /// <param name="toCurrency"></param>
         /// <returns></returns>
-        public static async Task<CryptoExchangeRate> GetExchangeRatesAsync(this CryptoClient cryptoClient,
+        public static async Task<CryptoExchangeRate> GetExchangeRateAsync(this CryptoClient cryptoClient,
             DigitalCurrency fromCurrency, PhysicalCurrency toCurrency)
         {
             var query = new Dictionary<string, string>()
@@ -34,18 +34,6 @@ namespace AlphaVantage.Net.Cryptocurrencies.Client
 
             return await cryptoClient.RequestApiAsync(ExchangeRateParser, ApiFunction.CURRENCY_EXCHANGE_RATE, query);
         }
-
-        public static async Task<CryptoRating> GetCryptoRatingAsync(this CryptoClient cryptoClient,
-            DigitalCurrency currency)
-        {
-            var query = new Dictionary<string, string>()
-            {
-                {ApiQueryConstants.SymbolQueryVar, currency.ToString().Replace("_", "")},
-            };
-
-            return await cryptoClient.RequestApiAsync(CryptoRatingParser, ApiFunction.CRYPTO_RATING, query);
-        }
-        
 
         /// <summary>
         /// Returns cryptocurrency time series for requested currencies pair
@@ -71,6 +59,23 @@ namespace AlphaVantage.Net.Cryptocurrencies.Client
             };
 
             return await cryptoClient.RequestApiAsync(parser, function, query);
+        }
+        
+        /// <summary>
+        /// Returns crypto rating FCAS for requested digital currency
+        /// </summary>
+        /// <param name="cryptoClient"></param>
+        /// <param name="currency"></param>
+        /// <returns></returns>
+        public static async Task<CryptoRating> GetCryptoRatingAsync(this CryptoClient cryptoClient,
+            DigitalCurrency currency)
+        {
+            var query = new Dictionary<string, string>()
+            {
+                {ApiQueryConstants.SymbolQueryVar, currency.ToString().Replace("_", "")},
+            };
+
+            return await cryptoClient.RequestApiAsync(CryptoRatingParser, ApiFunction.CRYPTO_RATING, query);
         }
     }
 }

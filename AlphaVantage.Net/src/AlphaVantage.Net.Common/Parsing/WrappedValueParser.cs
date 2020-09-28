@@ -1,7 +1,5 @@
 using System;
-using System.IO.Compression;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using AlphaVantage.Net.Common.Exceptions;
 using JetBrains.Annotations;
 
@@ -50,9 +48,9 @@ namespace AlphaVantage.Net.Common.Parsing
 
             public override string ConvertName(string name)
             {
-                if (name != "WrappedValue") return name;
+                if (name == "WrappedValue") return _wrappedValuePropertyName;
                 
-                return _wrappedValuePropertyName;
+                return name;
             }
         }
         

@@ -19,5 +19,10 @@ namespace AlphaVantage.Net.Common.Parsing
         {
             return long.Parse(stringToParse, CultureInfo.InvariantCulture);
         }
+        
+        public static int ParseToInt(this string stringToParse)
+        {
+            return int.Parse(stringToParse, CultureInfo.InvariantCulture);
+        }
     }
 }

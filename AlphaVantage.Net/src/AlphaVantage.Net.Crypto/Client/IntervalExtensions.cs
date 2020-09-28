@@ -2,7 +2,7 @@ using AlphaVantage.Net.Common;
 using AlphaVantage.Net.Common.Exceptions;
 using AlphaVantage.Net.Common.Intervals;
 
-namespace AlphaVantage.Net.Cryptocurrencies.Client
+namespace AlphaVantage.Net.Crypto.Client
 {
     internal static class IntervalExtensions
     {

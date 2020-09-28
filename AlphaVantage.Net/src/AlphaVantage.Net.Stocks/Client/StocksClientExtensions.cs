@@ -38,13 +38,13 @@ namespace AlphaVantage.Net.Stocks.Client
             var query = new Dictionary<string, string>()
             {
                 {ApiQueryConstants.SymbolQueryVar, symbol},
-                {ApiQueryConstants.OutputSizeQueryVar, size.ConvertToString()}
+                {ApiQueryConstants.OutputSizeQueryVar, size.ConvertToQueryString()}
             };
 
             var function = interval.ConvertToApiFunction(isAdjusted);
             if (function == ApiFunction.TIME_SERIES_INTRADAY)
             {
-                query.Add(ApiQueryConstants.IntervalQueryVar, interval.ConvertToString());
+                query.Add(ApiQueryConstants.IntervalQueryVar, interval.ConvertToQueryString());
             }
             
             return await stocksClient.RequestApiAsync(parser, function, query);

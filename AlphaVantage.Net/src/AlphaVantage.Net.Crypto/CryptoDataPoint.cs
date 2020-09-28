@@ -1,9 +1,8 @@
-using System;
 using AlphaVantage.Net.Common.TimeSeries;
 
 // ReSharper disable InconsistentNaming
 
-namespace AlphaVantage.Net.Cryptocurrencies
+namespace AlphaVantage.Net.Crypto
 {
     public class CryptoDataPoint : DataPointBase
     {

@@ -1,7 +1,7 @@
 using AlphaVantage.Net.Core.Client;
 using JetBrains.Annotations;
 
-namespace AlphaVantage.Net.Cryptocurrencies.Client
+namespace AlphaVantage.Net.Crypto.Client
 {
     public class CryptoClient : TypedAlphaVantageClient
     {

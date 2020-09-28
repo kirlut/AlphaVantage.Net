@@ -1,8 +1,15 @@
 #!/bin/bash
 
-PACKAGES=( AlphaVantage.Net.Core AlphaVantage.Net.Stocks AlphaVantage.Net.TechnicalIndicators )
+PACKAGES=( 
+	AlphaVantage.Net.Common 
+	AlphaVantage.Net.Core 
+	AlphaVantage.Net.Crypto
+	AlphaVantage.Net.Forex
+	AlphaVantage.Net.Stocks 
+	AlphaVantage.Net.TechnicalIndicators 
+)
 API_KEY=apikey
-VERSION=2.0.0-preview-2
+VERSION=2.0.0-preview-3
 
 for packageName in "${PACKAGES[@]}"
 do

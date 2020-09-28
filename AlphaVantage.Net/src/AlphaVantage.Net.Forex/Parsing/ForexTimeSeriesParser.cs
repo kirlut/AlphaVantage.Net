@@ -25,8 +25,8 @@ namespace AlphaVantage.Net.Forex.Parsing
         {
             return new ForexTimeSeries()
             {
-                FromSymbol = _fromSymbol,
-                ToSymbol = _toSymbol
+                FromCurrency = _fromSymbol,
+                ToCurrency = _toSymbol
             };
         }
 

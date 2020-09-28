@@ -1,11 +1,11 @@
 using AlphaVantage.Net.Common.Currencies;
 using AlphaVantage.Net.Common.TimeSeries;
 
-namespace AlphaVantage.Net.Forex
+namespace AlphaVantage.Net.Crypto
 {
-    public class ForexTimeSeries : TimeSeriesBase<ForexDataPoint>
+    public class CryptoTimeSeries : TimeSeriesBase<CryptoDataPoint>
     {
-        public PhysicalCurrency FromCurrency { get; set; }
+        public DigitalCurrency FromCurrency { get; set; }
         
         public PhysicalCurrency ToCurrency { get; set; }
     }

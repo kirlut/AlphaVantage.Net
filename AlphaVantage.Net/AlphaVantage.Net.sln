@@ -22,7 +22,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Common", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Forex", "src\AlphaVantage.Net.Forex\AlphaVantage.Net.Forex.csproj", "{30A49889-5219-4A8B-A487-01FBB9E5EA18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Cryptocurrencies", "src\AlphaVantage.Net.Cryptocurrencies\AlphaVantage.Net.Cryptocurrencies.csproj", "{B0F749FD-3924-4091-8F16-30A42C877514}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Crypto", "src\AlphaVantage.Net.Crypto\AlphaVantage.Net.Crypto.csproj", "{B0F749FD-3924-4091-8F16-30A42C877514}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Forex.Tests", "tests\AlphaVantage.Net.Forex.Tests\AlphaVantage.Net.Forex.Tests.csproj", "{81228D87-40A2-4C32-841D-46F47BDB7EBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Net.Crypto.Tests", "tests\AlphaVantage.Net.Crypto.Tests\AlphaVantage.Net.Crypto.Tests.csproj", "{6C1E9E00-78C1-4A29-B69C-1B04468F2CCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +74,14 @@ Global
 		{B0F749FD-3924-4091-8F16-30A42C877514}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0F749FD-3924-4091-8F16-30A42C877514}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0F749FD-3924-4091-8F16-30A42C877514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81228D87-40A2-4C32-841D-46F47BDB7EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81228D87-40A2-4C32-841D-46F47BDB7EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81228D87-40A2-4C32-841D-46F47BDB7EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81228D87-40A2-4C32-841D-46F47BDB7EBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C1E9E00-78C1-4A29-B69C-1B04468F2CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C1E9E00-78C1-4A29-B69C-1B04468F2CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C1E9E00-78C1-4A29-B69C-1B04468F2CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C1E9E00-78C1-4A29-B69C-1B04468F2CCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6A482C82-3191-4026-9284-2A02DE195A8D} = {768F93FA-CA7A-4828-8ECA-BC4EF5433811}
@@ -82,5 +94,7 @@ Global
 		{222CEDBA-8936-40A6-A0D2-FD9F38EEC1DD} = {768F93FA-CA7A-4828-8ECA-BC4EF5433811}
 		{30A49889-5219-4A8B-A487-01FBB9E5EA18} = {768F93FA-CA7A-4828-8ECA-BC4EF5433811}
 		{B0F749FD-3924-4091-8F16-30A42C877514} = {768F93FA-CA7A-4828-8ECA-BC4EF5433811}
+		{81228D87-40A2-4C32-841D-46F47BDB7EBA} = {059E80BE-F596-41CE-ABCA-243EE7987523}
+		{6C1E9E00-78C1-4A29-B69C-1B04468F2CCF} = {059E80BE-F596-41CE-ABCA-243EE7987523}
 	EndGlobalSection
 EndGlobal

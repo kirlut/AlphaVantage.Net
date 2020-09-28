@@ -1,4 +1,3 @@
-using System;
 using AlphaVantage.Net.Common;
 using AlphaVantage.Net.Common.Intervals;
 

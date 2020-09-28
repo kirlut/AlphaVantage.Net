@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using AlphaVantage.Net.Common.Currencies;
 
-namespace AlphaVantage.Net.Cryptocurrencies
+namespace AlphaVantage.Net.Crypto
 {
     public class CryptoExchangeRate : ExchangeRateBase
     {

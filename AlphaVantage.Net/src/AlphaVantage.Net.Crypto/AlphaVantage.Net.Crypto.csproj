@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <PackageId>AlphaVantage.Net.Cryptocurrencies</PackageId>
+        <PackageId>AlphaVantage.Net.Crypto</PackageId>
         <Description>
-            High-level POCO classes and extensions for client from AlphaVantage.Net.Core that simplify retrieval of Cryptocurrencies data
+            Fully typed client for retrieval Cryptocurrencies data from Alpha Vantage API. Works with newest and fastest parser System.Text.Json under the hood
         </Description>
         <Version>2.0.0-preview-3</Version>
         <Authors>LutsenkoKirill</Authors>
@@ -13,12 +13,19 @@
         <LangVersion>8</LangVersion>
         <Nullable>enable</Nullable>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>logo.jpg</PackageIcon>
         <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\AlphaVantage.Net.Common\AlphaVantage.Net.Common.csproj" />
       <ProjectReference Include="..\AlphaVantage.Net.Core\AlphaVantage.Net.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\logo.jpg" Pack="true" PackagePath="">
+            <Link>logo.jpg</Link>
+        </None>
     </ItemGroup>
 
 </Project>

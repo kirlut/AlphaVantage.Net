@@ -5,7 +5,7 @@ using AlphaVantage.Net.Common.Currencies;
 using AlphaVantage.Net.Common.Intervals;
 using AlphaVantage.Net.Common.TimeSeries;
 
-namespace AlphaVantage.Net.Cryptocurrencies.Parsing
+namespace AlphaVantage.Net.Crypto.Parsing
 {
     internal sealed class CryptoTimeSeriesParser : TimeSeriesParserBase<CryptoTimeSeries, CryptoDataPoint>
     {
@@ -28,8 +28,8 @@ namespace AlphaVantage.Net.Cryptocurrencies.Parsing
         {
             return new CryptoTimeSeries()
             {
-                FromSymbol = _fromSymbol,
-                ToSymbol = _toSymbol
+                FromCurrency = _fromSymbol,
+                ToCurrency = _toSymbol
             };
         }
 
@@ -76,8 +76,8 @@ namespace AlphaVantage.Net.Cryptocurrencies.Parsing
                 {"high (USD)", (dataPoint, strValue) => { dataPoint.HighestPriceUSD = strValue.ParseToDecimal(); }},
                 {"low (USD)", (dataPoint, strValue) => { dataPoint.LowestPriceUSD = strValue.ParseToDecimal(); }},
                 {"close (USD)", (dataPoint, strValue) => { dataPoint.ClosingPriceUSD = strValue.ParseToDecimal(); }},
-                {"volume", (dataPoint, strValue) => { dataPoint.Volume = strValue.ParseToLong(); }},
-                {"market cap (USD)", (dataPoint, strValue) => { dataPoint.MarketCapitalization = strValue.ParseToLong(); }}
+                {"volume", (dataPoint, strValue) => { dataPoint.Volume = strValue.ParseToDecimal(); }},
+                {"market cap (USD)", (dataPoint, strValue) => { dataPoint.MarketCapitalization = strValue.ParseToDecimal(); }}
             };
     }
 }

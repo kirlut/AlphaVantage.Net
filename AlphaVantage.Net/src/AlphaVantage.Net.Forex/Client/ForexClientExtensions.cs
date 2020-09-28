@@ -15,13 +15,13 @@ namespace AlphaVantage.Net.Forex.Client
             new WrappedValueParser<ForexExchangeRate>("Realtime Currency Exchange Rate");
         
         /// <summary>
-        /// Returns exchange rate for requested currencies pair
+        /// Returns exchange rate for a given currencies pair
         /// </summary>
         /// <param name="forexClient"></param>
         /// <param name="fromCurrency"></param>
         /// <param name="toCurrency"></param>
         /// <returns></returns>
-        public static async Task<ForexExchangeRate> GetExchangeRatesAsync(this ForexClient forexClient, 
+        public static async Task<ForexExchangeRate> GetExchangeRateAsync(this ForexClient forexClient, 
             PhysicalCurrency fromCurrency, PhysicalCurrency toCurrency)
         {
             var query = new Dictionary<string, string>()
@@ -34,7 +34,7 @@ namespace AlphaVantage.Net.Forex.Client
         }
 
         /// <summary>
-        /// Returns Forex time series for requested currencies pair
+        /// Returns Forex time series for a given currencies pair
         /// </summary>
         /// <param name="forexClient"></param>
         /// <param name="fromCurrency"></param>
@@ -60,12 +60,12 @@ namespace AlphaVantage.Net.Forex.Client
             
             if (function == ApiFunction.FX_INTRADAY)
             {
-                query.Add(ApiQueryConstants.IntervalQueryVar, interval.ConvertToString());
+                query.Add(ApiQueryConstants.IntervalQueryVar, interval.ConvertToQueryString());
             }
             
             if (function == ApiFunction.FX_INTRADAY || function == ApiFunction.FX_DAILY)
             {
-                query.Add(ApiQueryConstants.OutputSizeQueryVar, outputSize.ConvertToString());
+                query.Add(ApiQueryConstants.OutputSizeQueryVar, outputSize.ConvertToQueryString());
             }
             
             return await forexClient.RequestApiAsync(parser, function, query);

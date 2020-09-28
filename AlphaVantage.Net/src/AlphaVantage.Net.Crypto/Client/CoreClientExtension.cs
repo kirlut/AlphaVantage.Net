@@ -1,6 +1,6 @@
 using AlphaVantage.Net.Core.Client;
 
-namespace AlphaVantage.Net.Cryptocurrencies.Client
+namespace AlphaVantage.Net.Crypto.Client
 {
     public static class CoreClientExtension
     {
@@ -9,7 +9,7 @@ namespace AlphaVantage.Net.Cryptocurrencies.Client
         /// </summary>
         /// <param name="client"></param>
         /// <returns></returns>
-        public static CryptoClient Forex(this AlphaVantageClient client)
+        public static CryptoClient Crypto(this AlphaVantageClient client)
         {
             return new CryptoClient(client);
         }

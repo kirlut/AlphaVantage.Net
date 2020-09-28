@@ -25,6 +25,8 @@ namespace AlphaVantage.Net.Common.Parsing
             options.Converters.Add(localDateConverter);
             options.Converters.Add(new DecimalConverter());
             options.Converters.Add(new LongConverter());
+            options.Converters.Add(new IntConverter());
+            options.Converters.Add(new DateTimeConverter());
             options.Converters.Add(new JsonStringEnumConverter());
             
             return options;
@@ -56,6 +58,36 @@ namespace AlphaVantage.Net.Common.Parsing
             public override void Write(
                 Utf8JsonWriter writer,
                 long dateTimeValue,
+                JsonSerializerOptions options) =>
+                throw new NotImplementedException();
+        }
+
+        private class IntConverter : JsonConverter<int>
+        {
+            public override int Read(
+                ref Utf8JsonReader reader,
+                Type typeToConvert,
+                JsonSerializerOptions options) =>
+                reader.GetString().ParseToInt();
+
+            public override void Write(
+                Utf8JsonWriter writer,
+                int dateTimeValue,
+                JsonSerializerOptions options) =>
+                throw new NotImplementedException();
+        }
+
+        private class DateTimeConverter : JsonConverter<DateTime>
+        {
+            public override DateTime Read(
+                ref Utf8JsonReader reader,
+                Type typeToConvert,
+                JsonSerializerOptions options) =>
+                reader.GetString().ParseToDateTime();
+
+            public override void Write(
+                Utf8JsonWriter writer,
+                DateTime dateTimeValue,
                 JsonSerializerOptions options) =>
                 throw new NotImplementedException();
         }

@@ -35,7 +35,7 @@ namespace AlphaVantage.Net.TechnicalIndicators.Client
 
             var query = additionalParameters ?? new Dictionary<string, string>();
             
-            query.Add(ApiQueryConstants.IntervalQueryVar, interval.ConvertToString());
+            query.Add(ApiQueryConstants.IntervalQueryVar, interval.ConvertToQueryString());
             query.Add(ApiQueryConstants.SymbolQueryVar, symbol);
             var function = indicatorType.ToApiFunction();
             

@@ -1,4 +1,4 @@
-namespace AlphaVantage.Net.Cryptocurrencies
+namespace AlphaVantage.Net.Crypto
 {
     public enum FcasRating
     {

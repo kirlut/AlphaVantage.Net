@@ -23,40 +23,13 @@
     <None Remove="StockDataParserTests\Data\intraday.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\intraday.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\daily-adjusted.json" />
-    <EmbeddedResource Include="Data\daily-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\daily-not-adjusted.json" />
-    <EmbeddedResource Include="Data\daily-not-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\weekly-not-adjusted.json" />
-    <EmbeddedResource Include="Data\weekly-not-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\weekly-adjusted.json" />
-    <EmbeddedResource Include="Data\weekly-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\monthly-adjusted.json" />
-    <EmbeddedResource Include="Data\monthly-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\monthly-not-adjusted.json" />
-    <EmbeddedResource Include="Data\monthly-not-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\bad-data.json" />
-    <EmbeddedResource Include="Data\bad-data.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\stock-quotes.json" />
-    <EmbeddedResource Include="Data\stock-quotes.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ namespace AlphaVantage.Net.Common.Intervals
             Interval.Min1, Interval.Min5, Interval.Min15, Interval.Min30, Interval.Min60
         };
         
-        public static string ConvertToString(this Interval interval)
+        public static string ConvertToQueryString(this Interval interval)
         {
             return interval switch
             {

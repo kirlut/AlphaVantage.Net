@@ -30,7 +30,7 @@ namespace AlphaVantage.Net.Stocks.Tests
         [InlineData(Interval.Daily, OutputSize.Full, true)]
         [InlineData(Interval.Weekly, OutputSize.Full, true)]
         [InlineData(Interval.Monthly, OutputSize.Full, true)]
-        public async Task ReturnValidTimeSeries(Interval interval, OutputSize size, bool isAdjusted)
+        public async Task ReturnValidNotIntradayTimeSeries(Interval interval, OutputSize size, bool isAdjusted)
         {
             using var client = new AlphaVantageClient(_apiKey);
             using var stocksClient = client.Stocks();
