@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageId>AlphaVantage.Net.Common</PackageId>
+        <Description>
+            Common classes for AlphaVantage.Net packages 
+        </Description>
+        <Version>2.0.1</Version>
+        <Authors>LutsenkoKirill</Authors>
+        <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net</RepositoryUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>logo.jpg</PackageIcon>
+        <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
+      <PackageReference Include="NodaTime" Version="3.0.0" />
+      <PackageReference Include="NodaTime.Serialization.SystemTextJson" Version="1.0.0" />
+      <PackageReference Include="System.Text.Json" Version="4.7.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\logo.jpg" Pack="true" PackagePath="">
+        <Link>logo.jpg</Link>
+      </None>
+    </ItemGroup>
+
+</Project>

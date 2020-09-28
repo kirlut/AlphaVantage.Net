@@ -1,16 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>AlphaVantage.Net.Core</PackageId>
-    <Description>Low-level wrapper for Alpha Vantage API based on HttpClient and Newtonsoft Json.Net</Description>
-    <Version>1.0.3</Version>
+    <Description>
+      Low-level client for Alpha Vantage API based on HttpClient with newest and fastest parser System.Text.Json under the hood
+    </Description>
+    <Version>2.0.1</Version>
     <Authors>LutsenkoKirill</Authors>
     <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>logo.jpg</PackageIcon>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.0.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AlphaVantage.Net.Common\AlphaVantage.Net.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\logo.jpg" Pack="true" PackagePath="">
+      <Link>logo.jpg</Link>
+    </None>
   </ItemGroup>
 </Project>

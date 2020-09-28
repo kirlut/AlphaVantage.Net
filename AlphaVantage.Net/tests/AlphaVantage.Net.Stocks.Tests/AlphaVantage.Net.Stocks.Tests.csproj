@@ -1,55 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
+    <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="xunit" Version="2.2.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\AlphaVantage.Net.Stocks\AlphaVantage.Net.Stocks.csproj" />
+    <ProjectReference Include="..\AlphaVantage.Net.TestUtils\AlphaVantage.Net.TestUtils.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="StockDataParserTests\Data\intraday.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\intraday.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\daily-adjusted.json" />
-    <EmbeddedResource Include="Data\daily-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\daily-not-adjusted.json" />
-    <EmbeddedResource Include="Data\daily-not-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\weekly-not-adjusted.json" />
-    <EmbeddedResource Include="Data\weekly-not-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\weekly-adjusted.json" />
-    <EmbeddedResource Include="Data\weekly-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\monthly-adjusted.json" />
-    <EmbeddedResource Include="Data\monthly-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\monthly-not-adjusted.json" />
-    <EmbeddedResource Include="Data\monthly-not-adjusted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\bad-data.json" />
-    <EmbeddedResource Include="Data\bad-data.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Remove="Data\stock-quotes.json" />
-    <EmbeddedResource Include="Data\stock-quotes.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>
