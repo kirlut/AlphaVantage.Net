@@ -10,11 +10,12 @@ The most popular .Net client library for [**Alpha Vantage API**](https://www.alp
 - All packages were written using newest C# `Nullable reference types` feature, to reduce possible bugs
 
 # Packages: 
-- [AlphaVantage.Net.Core](AlphaVantage.Net/src/AlphaVantage.Net.Core) - low-level client for Alpha Vantage API based on `HttpClient` and `System.Text.Json`
-### Extensions for the core client
-This packages contain high-level extensions and POCO classes that simplify work with corresponding API parts and do all parsing for you:
-- [AlphaVantage.Net.Stocks](AlphaVantage.Net/src/AlphaVantage.Net.Stocks) - for [stock time series data](https://www.alphavantage.co/documentation/#time-series-data)
-- [AlphaVantage.Net.TechnicalIndicators](AlphaVantage.Net/src/AlphaVantage.Net.TechnicalIndicators) - for [technical indicators data](https://www.alphavantage.co/documentation/#technical-indicators).
+- [**AlphaVantage.Net.Core**](AlphaVantage.Net/src/AlphaVantage.Net.Core) - low-level client for Alpha Vantage API based on `HttpClient` and `System.Text.Json`
+### Fully typed clients:
+- [**AlphaVantage.Net.Stocks**](AlphaVantage.Net/src/AlphaVantage.Net.Stocks) - [stock time series](https://www.alphavantage.co/documentation/#time-series-data)
+- [**AlphaVantage.Net.Forex**](AlphaVantage.Net/src/AlphaVantage.Net.Forex) - [Forex data](https://www.alphavantage.co/documentation/#fx)
+- [**AlphaVantage.Net.Crypto**](AlphaVantage.Net/src/AlphaVantage.Net.Crypto) - [cryptocurrencies data](https://www.alphavantage.co/documentation/#digital-currency)
+- [**AlphaVantage.Net.TechnicalIndicators**](AlphaVantage.Net/src/AlphaVantage.Net.TechnicalIndicators) - [technical indicators time series](https://www.alphavantage.co/documentation/#technical-indicators).
 
 # Documentation
 
@@ -25,33 +26,33 @@ This package allow you to request any available data from API, but you have to m
 
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.Core -Version 2.0.0-preview-2`  
+`Install-Package AlphaVantage.Net.Core -Version 2.0.0-preview-3`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.Core --version 2.0.0-preview-2`  
+`dotnet add package AlphaVantage.Net.Core --version 2.0.0-preview-3`  
 
 ### Usage: 
 ```csharp
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
-using AlphaVantage.Net.Core;
+using AlphaVantage.Net.Common;
 using AlphaVantage.Net.Core.Client;
 
-...
+.....
 
-public static async Task AlphaVantageCoreDemo()
+public static async Task CoreDemo()
 {
     // use your AlphaVantage API key
     string apiKey = "1";
-    // there's 5 more constructors allowed
+    // there's 5 more constructors available
     using var client = new AlphaVantageClient(apiKey);
 
     // query for intraday time series for Apple Inc:
     var query = new Dictionary<string, string>()
-            {
-                {"symbol", "AAPL"},
-                {"interval", "15min"}
-            };
+    {
+        {"symbol", "AAPL"},
+        {"interval", "15min"}
+    };
     
     // retrieve response as pure JSON string
     string stringResult = await client.RequestPureJsonAsync(ApiFunction.TIME_SERIES_INTRADAY, query);
@@ -63,36 +64,36 @@ public static async Task AlphaVantageCoreDemo()
 
 ## AlphaVantage.Net.Stocks
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/AlphaVantage.Net.Stocks)
-![Nuget](https://img.shields.io/nuget/dt/AlphaVantage.Net.Stocks)  
-This package provide additional abstraction layer under `AlphaVantage.Net.Core` and allow you to retrieve time series data without dealing with parsing. 
+![Nuget](https://img.shields.io/nuget/dt/AlphaVantage.Net.Stocks)   
 
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.Stocks -Version 2.0.0-preview-2`  
+`Install-Package AlphaVantage.Net.Stocks -Version 2.0.0-preview-3`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.Stocks --version 2.0.0-preview-2`  
+`dotnet add package AlphaVantage.Net.Stocks --version 2.0.0-preview-3`  
 
 ### Usage: 
 ```csharp
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AlphaVantage.Net.Common.Intervals;
+using AlphaVantage.Net.Common.Size;
 using AlphaVantage.Net.Core.Client;
-using AlphaVantage.Net.Core.Intervals;
 using AlphaVantage.Net.Stocks;
 using AlphaVantage.Net.Stocks.Client;
 using AlphaVantage.Net.Stocks.TimeSeries;
 
-...
+.....
 
-public async Task AlphaVantageStocksDemo()
+public static async Task StocksDemo()
 {
     // use your AlphaVantage API key
     string apiKey = "1";
-    // there's 5 more constructors allowed
+    // there are 5 more constructors available
     using var client = new AlphaVantageClient(apiKey);
     using var stocksClient = client.Stocks();
 
-    StockTimeSeries stockTs = await stocksClient.GetTimeSeriesAsync("AAPL", Interval.Daily, TimeSeriesSize.Full, isAdjusted: true);
+    StockTimeSeries stockTs = await stocksClient.GetTimeSeriesAsync("AAPL", Interval.Daily, OutputSize.Compact, isAdjusted: true);
 
     GlobalQuote globalQuote = await stocksClient.GetGlobalQuoteAsync("AAPL");
 
@@ -100,33 +101,112 @@ public async Task AlphaVantageStocksDemo()
 }
 ```
 
-## AlphaVantage.Net.TechnicalIndicators
-![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/AlphaVantage.Net.TechnicalIndicators)
-![Nuget](https://img.shields.io/nuget/dt/AlphaVantage.Net.TechnicalIndicators)  
-This package extension method for the core client and allow you to retrieve technical indicators data without dealing with parsing. Since API functions from this section have many different additional parameters, you still need to check Alpha Vantage documentation in order to use it. 
+## AlphaVantage.Net.Forex
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/AlphaVantage.Net.Forex)
+![Nuget](https://img.shields.io/nuget/dt/AlphaVantage.Net.Forex)  
 
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.TechnicalIndicators -Version 2.0.0-preview-2`  
+`Install-Package AlphaVantage.Net.Forex -Version 2.0.0-preview-3`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.TechnicalIndicators --version 2.0.0-preview-2`  
+`dotnet add package AlphaVantage.Net.Forex --version 2.0.0-preview-3`  
+
+### Usage: 
+```csharp
+using System.Threading.Tasks;
+using AlphaVantage.Net.Common.Currencies;
+using AlphaVantage.Net.Common.Intervals;
+using AlphaVantage.Net.Common.Size;
+using AlphaVantage.Net.Core.Client;
+using AlphaVantage.Net.Forex;
+using AlphaVantage.Net.Forex.Client;
+
+.....
+
+public static async Task ForexDemo()
+{
+    // use your AlphaVantage API key
+    string apiKey = "1";
+    // there are 5 more constructors available
+    using var client = new AlphaVantageClient(apiKey);
+    using var forexClient = client.Forex();
+
+    ForexTimeSeries forexTimeSeries = await forexClient.GetTimeSeriesAsync(
+        PhysicalCurrency.USD, 
+        PhysicalCurrency.ILS,
+        Interval.Daily, 
+        OutputSize.Compact);
+            
+    ForexExchangeRate forexExchangeRate = await forexClient.GetExchangeRateAsync(PhysicalCurrency.USD, PhysicalCurrency.ILS);
+}
+```
+
+## AlphaVantage.Net.Crypto
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/AlphaVantage.Net.Crypto)
+![Nuget](https://img.shields.io/nuget/dt/AlphaVantage.Net.Crypto)  
+
+### Installation: 
+- Package Manager:  
+`Install-Package AlphaVantage.Net.Crypto -Version 2.0.0-preview-3`  
+- .NET CLI:  
+`dotnet add package AlphaVantage.Net.Crypto --version 2.0.0-preview-3`  
+
+### Usage: 
+```csharp
+using System.Threading.Tasks;
+using AlphaVantage.Net.Common.Currencies;
+using AlphaVantage.Net.Common.Intervals;
+using AlphaVantage.Net.Core.Client;
+using AlphaVantage.Net.Crypto;
+using AlphaVantage.Net.Crypto.Client;
+
+.....
+
+public static async Task CryptoDemo()
+{
+    // use your AlphaVantage API key
+    string apiKey = "1";
+    // there are 5 more constructors available
+    using var client = new AlphaVantageClient(apiKey);
+    using var cryptoClient = client.Crypto();
+
+    CryptoTimeSeries cryptoTimeSeries =
+        await cryptoClient.GetTimeSeriesAsync(DigitalCurrency.BTC, PhysicalCurrency.ILS, Interval.Weekly);
+
+    CryptoRating cryptoRating = await cryptoClient.GetCryptoRatingAsync(DigitalCurrency.BTC);
+
+    CryptoExchangeRate exchangeRate =
+        await cryptoClient.GetExchangeRateAsync(DigitalCurrency.BTC, PhysicalCurrency.ILS);
+}
+```
+
+## AlphaVantage.Net.TechnicalIndicators
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/AlphaVantage.Net.TechnicalIndicators)
+![Nuget](https://img.shields.io/nuget/dt/AlphaVantage.Net.TechnicalIndicators)  
+Since API endpoints from this section have many different additional parameters, you still need to check Alpha Vantage documentation in order to use it. 
+
+### Installation: 
+- Package Manager:  
+`Install-Package AlphaVantage.Net.TechnicalIndicators -Version 2.0.0-preview-3`  
+- .NET CLI:  
+`dotnet add package AlphaVantage.Net.TechnicalIndicators --version 2.0.0-preview-3`  
 
 ### Usage: 
 ```csharp
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AlphaVantage.Net.Common.Intervals;
 using AlphaVantage.Net.Core.Client;
-using AlphaVantage.Net.Core.Intervals;
 using AlphaVantage.Net.TechnicalIndicators;
 using AlphaVantage.Net.TechnicalIndicators.Client;
 
-...
+.....
 
-public async Task AlphaVantageTechnicalIndicatorsDemo()
+public static async Task TechIndicatorsDemo()
 {
     // use your AlphaVantage API key
     string apiKey = "1";
-    // there's 5 more constructors allowed
+    // there are 5 more constructors available
     using var client = new AlphaVantageClient(apiKey);
 
     var symbol = "IBM";
@@ -137,6 +217,6 @@ public async Task AlphaVantageTechnicalIndicatorsDemo()
         {"series_type", "close"}
     };
 
-    TechIndicatorResult result = await client.GetTechnicalIndicatorAsync(symbol, indicatorType, Interval.Min15, query);
+    TechIndicatorTimeSeries result = await client.GetTechIndicatorTimeSeriesAsync(symbol, indicatorType, Interval.Min15, query);
 }
 ```
