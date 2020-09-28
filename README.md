@@ -12,7 +12,7 @@ The most popular .Net client library for [**Alpha Vantage API**](https://www.alp
 # Packages: 
 - [**AlphaVantage.Net.Core**](AlphaVantage.Net/src/AlphaVantage.Net.Core) - low-level client for Alpha Vantage API based on `HttpClient` and `System.Text.Json`
 ### Fully typed clients:
-- [**AlphaVantage.Net.Stocks**](AlphaVantage.Net/src/AlphaVantage.Net.Stocks) - [stock time series](https://www.alphavantage.co/documentation/#time-series-data)
+- [**AlphaVantage.Net.Stocks**](AlphaVantage.Net/src/AlphaVantage.Net.Stocks) - [stock time series](https://www.alphavantage.co/documentation/#time-series-data).
 - [**AlphaVantage.Net.Forex**](AlphaVantage.Net/src/AlphaVantage.Net.Forex) - [Forex data](https://www.alphavantage.co/documentation/#fx)
 - [**AlphaVantage.Net.Crypto**](AlphaVantage.Net/src/AlphaVantage.Net.Crypto) - [cryptocurrencies data](https://www.alphavantage.co/documentation/#digital-currency)
 - [**AlphaVantage.Net.TechnicalIndicators**](AlphaVantage.Net/src/AlphaVantage.Net.TechnicalIndicators) - [technical indicators time series](https://www.alphavantage.co/documentation/#technical-indicators).
