@@ -10,12 +10,12 @@ The most popular .Net client library for [**Alpha Vantage API**](https://www.alp
 - All packages were written using newest C# `Nullable reference types` feature, to reduce possible bugs
 
 # Packages: 
-- [**AlphaVantage.Net.Core**](AlphaVantage.Net/src/AlphaVantage.Net.Core) - low-level client for Alpha Vantage API based on `HttpClient` and `System.Text.Json`
+- [**AlphaVantage.Net.Core**](#alphavantagenetcore) - low-level client for Alpha Vantage API based on `HttpClient` and `System.Text.Json`
 ### Fully typed clients:
-- [**AlphaVantage.Net.Stocks**](AlphaVantage.Net/src/AlphaVantage.Net.Stocks) - [stock time series](https://www.alphavantage.co/documentation/#time-series-data)
-- [**AlphaVantage.Net.Forex**](AlphaVantage.Net/src/AlphaVantage.Net.Forex) - [Forex data](https://www.alphavantage.co/documentation/#fx)
-- [**AlphaVantage.Net.Crypto**](AlphaVantage.Net/src/AlphaVantage.Net.Crypto) - [cryptocurrencies data](https://www.alphavantage.co/documentation/#digital-currency)
-- [**AlphaVantage.Net.TechnicalIndicators**](AlphaVantage.Net/src/AlphaVantage.Net.TechnicalIndicators) - [technical indicators time series](https://www.alphavantage.co/documentation/#technical-indicators).
+- [**AlphaVantage.Net.Stocks**](#alphavantagenetstocks) - [stock time series](https://www.alphavantage.co/documentation/#time-series-data).
+- [**AlphaVantage.Net.Forex**](#alphavantagenetforex) - [Forex data](https://www.alphavantage.co/documentation/#fx)
+- [**AlphaVantage.Net.Crypto**](#alphavantagenetcrypto) - [cryptocurrencies data](https://www.alphavantage.co/documentation/#digital-currency)
+- [**AlphaVantage.Net.TechnicalIndicators**](#alphavantagenettechnicalindicators) - [technical indicators time series](https://www.alphavantage.co/documentation/#technical-indicators).
 
 # Documentation
 
@@ -81,7 +81,6 @@ using AlphaVantage.Net.Common.Size;
 using AlphaVantage.Net.Core.Client;
 using AlphaVantage.Net.Stocks;
 using AlphaVantage.Net.Stocks.Client;
-using AlphaVantage.Net.Stocks.TimeSeries;
 
 .....
 

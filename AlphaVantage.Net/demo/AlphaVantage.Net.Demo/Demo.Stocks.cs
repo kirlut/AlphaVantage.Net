@@ -5,7 +5,6 @@ using AlphaVantage.Net.Common.Size;
 using AlphaVantage.Net.Core.Client;
 using AlphaVantage.Net.Stocks;
 using AlphaVantage.Net.Stocks.Client;
-using AlphaVantage.Net.Stocks.TimeSeries;
 
 namespace AlphaVantage.Net.Demo
 {

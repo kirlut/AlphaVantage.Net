@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AlphaVantage.Net.Core" Version="2.0.0-preview-3" />
-      <PackageReference Include="AlphaVantage.Net.Crypto" Version="2.0.0-preview-3" />
-      <PackageReference Include="AlphaVantage.Net.Forex" Version="2.0.0-preview-3" />
-      <PackageReference Include="AlphaVantage.Net.Stocks" Version="2.0.0-preview-3" />
-      <PackageReference Include="AlphaVantage.Net.TechnicalIndicators" Version="2.0.0-preview-3" />
+      <PackageReference Include="AlphaVantage.Net.Core" Version="2.0.1" />
+      <PackageReference Include="AlphaVantage.Net.Crypto" Version="2.0.1" />
+      <PackageReference Include="AlphaVantage.Net.Forex" Version="2.0.1" />
+      <PackageReference Include="AlphaVantage.Net.Stocks" Version="2.0.1" />
+      <PackageReference Include="AlphaVantage.Net.TechnicalIndicators" Version="2.0.1" />
     </ItemGroup>
 
 </Project>

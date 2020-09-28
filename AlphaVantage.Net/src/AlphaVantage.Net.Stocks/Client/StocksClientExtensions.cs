@@ -5,7 +5,6 @@ using AlphaVantage.Net.Common.Intervals;
 using AlphaVantage.Net.Common.Parsing;
 using AlphaVantage.Net.Common.Size;
 using AlphaVantage.Net.Stocks.Parsing;
-using AlphaVantage.Net.Stocks.TimeSeries;
 
 namespace AlphaVantage.Net.Stocks.Client
 {

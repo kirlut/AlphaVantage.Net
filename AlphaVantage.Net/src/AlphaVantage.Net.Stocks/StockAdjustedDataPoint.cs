@@ -1,4 +1,4 @@
-﻿namespace AlphaVantage.Net.Stocks.TimeSeries
+﻿namespace AlphaVantage.Net.Stocks
 {
     /// <summary>
     /// Represent single adjusted element of time series

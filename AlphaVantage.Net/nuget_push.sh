@@ -9,7 +9,7 @@ PACKAGES=(
 	AlphaVantage.Net.TechnicalIndicators 
 )
 API_KEY=apikey
-VERSION=2.0.0-preview-3
+VERSION=2.0.1
 
 for packageName in "${PACKAGES[@]}"
 do
