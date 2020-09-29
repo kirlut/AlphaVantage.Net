@@ -26,9 +26,9 @@ This package allow you to request any available data from API, but you have to m
 
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.Core -Version 2.0.0-preview-3`  
+`Install-Package AlphaVantage.Net.Core -Version 2.0.1`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.Core --version 2.0.0-preview-3`  
+`dotnet add package AlphaVantage.Net.Core --version 2.0.1`  
 
 ### Usage: 
 ```csharp
@@ -68,9 +68,9 @@ public static async Task CoreDemo()
 
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.Stocks -Version 2.0.0-preview-3`  
+`Install-Package AlphaVantage.Net.Stocks -Version 2.0.1`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.Stocks --version 2.0.0-preview-3`  
+`dotnet add package AlphaVantage.Net.Stocks --version 2.0.1`  
 
 ### Usage: 
 ```csharp
@@ -106,9 +106,9 @@ public static async Task StocksDemo()
 
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.Forex -Version 2.0.0-preview-3`  
+`Install-Package AlphaVantage.Net.Forex -Version 2.0.1`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.Forex --version 2.0.0-preview-3`  
+`dotnet add package AlphaVantage.Net.Forex --version 2.0.1`  
 
 ### Usage: 
 ```csharp
@@ -146,9 +146,9 @@ public static async Task ForexDemo()
 
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.Crypto -Version 2.0.0-preview-3`  
+`Install-Package AlphaVantage.Net.Crypto -Version 2.0.1`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.Crypto --version 2.0.0-preview-3`  
+`dotnet add package AlphaVantage.Net.Crypto --version 2.0.1`  
 
 ### Usage: 
 ```csharp
@@ -186,9 +186,9 @@ Since API endpoints from this section have many different additional parameters,
 
 ### Installation: 
 - Package Manager:  
-`Install-Package AlphaVantage.Net.TechnicalIndicators -Version 2.0.0-preview-3`  
+`Install-Package AlphaVantage.Net.TechnicalIndicators -Version 2.0.1`  
 - .NET CLI:  
-`dotnet add package AlphaVantage.Net.TechnicalIndicators --version 2.0.0-preview-3`  
+`dotnet add package AlphaVantage.Net.TechnicalIndicators --version 2.0.1`  
 
 ### Usage: 
 ```csharp
