@@ -61,7 +61,7 @@ namespace AlphaVantage.Net.Core.HttpClientWrapper
 
             if (delayInterval.HasValue)
             {
-                await Task.Delay(delayInterval.Value.Milliseconds);
+                await Task.Delay((int)Math.Ceiling(delayInterval.Value.TotalMilliseconds));
             }
         }
 
