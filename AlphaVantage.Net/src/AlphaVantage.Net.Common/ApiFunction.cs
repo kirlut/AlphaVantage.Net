@@ -26,6 +26,7 @@ namespace AlphaVantage.Net.Common
         INCOME_STATEMENT,
         BALANCE_SHEET,
         CASH_FLOW,
+        EARNINGS,
         LISTING_STATUS,
         
         // Forex (FX)
