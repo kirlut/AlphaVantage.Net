@@ -16,8 +16,8 @@ namespace AlphaVantage.Net.Core.HttpClientWrapper
         private readonly Semaphore _concurrentRequestsCounter;
         private DateTime _previousRequestStartTime;
         private readonly Object _lockObject = new Object();
-        
-        internal HttpClientWithRateLimit(HttpClient client, int maxRequestPerMinutes, int maxConcurrentRequests)
+
+        public HttpClientWithRateLimit(HttpClient client, int maxRequestPerMinutes, int maxConcurrentRequests)
         {
             _client = client;
             _minRequestInterval = new TimeSpan(0, 0, 0, 0, 60000 / maxRequestPerMinutes);
@@ -38,10 +38,10 @@ namespace AlphaVantage.Net.Core.HttpClientWrapper
             {
                 _concurrentRequestsCounter.Release();
             }
-            
+
             return response;
         }
-        
+
         private async Task WaitForRequestedMinimumInterval()
         {
             TimeSpan? delayInterval = null;
@@ -58,13 +58,13 @@ namespace AlphaVantage.Net.Core.HttpClientWrapper
                     _previousRequestStartTime.AddMilliseconds(delayInterval.Value.Milliseconds);
                 }
             }
-            
+
             if (delayInterval.HasValue)
             {
-                await Task.Delay(delayInterval.Value.Milliseconds);
+                await Task.Delay((int)Math.Ceiling(delayInterval.Value.TotalMilliseconds));
             }
         }
-        
+
         public void SetTimeOut(TimeSpan timeSpan)
         {
             _client.Timeout = timeSpan;
