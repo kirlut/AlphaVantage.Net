@@ -5,7 +5,7 @@
         <Description>
             Fully typed client for retrieval Cryptocurrencies data from Alpha Vantage API. Works with newest and fastest parser System.Text.Json under the hood
         </Description>
-        <Version>2.0.1</Version>
+        <Version>2.0.2</Version>
         <Authors>LutsenkoKirill</Authors>
         <RepositoryUrl>https://github.com/LutsenkoKirill/AlphaVantage.Net</RepositoryUrl>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
