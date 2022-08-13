@@ -1,5 +1,8 @@
 ![GitHub](https://img.shields.io/github/license/LutsenkoKirill/AlphaVantage.Net)
 
+# This project is in the archive.
+Unfortunately, I don't have time to contribute to this repo anymore and publish updates. Feel free to fork and use it however you need to. If you would like to continue development and want to hold ownership of NuGet packages, please email me: **lutkir@pm.me**  
+
 # AlphaVantage.Net
 The most popular .Net client library for [**Alpha Vantage API**](https://www.alphavantage.co/).  
 
